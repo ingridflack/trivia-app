@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import * as UserService from "../services/userService";
 
 interface UserData {
   username: string;
@@ -11,7 +12,12 @@ export default function Home() {
     const userData = localStorage.getItem("userData");
 
     if (!userData) return;
+
     setUserData(JSON.parse(userData));
+
+    UserService.getUser().then((response) => {
+      console.log(response);
+    });
   }, []);
 
   return (

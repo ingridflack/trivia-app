@@ -25,7 +25,8 @@ export default function LoginForm() {
   const onSubmit: SubmitHandler<LoginFormValues> = async (values) => {
     try {
       const { data } = await login(values);
-      localStorage.setItem("userData", JSON.stringify(data.userData));
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("userData", JSON.stringify(data.user));
 
       navigate("/home");
     } catch (error) {

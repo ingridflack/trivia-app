@@ -1,10 +1,20 @@
-import axios from "axios";
-import { BASE_URL } from "../config/baseUrl";
+import axios from "../config/api";
 
 interface LoginParams {
   email: string;
   password: string;
 }
 
-export const login = ({ email, password }: LoginParams) =>
-  axios.post(`${BASE_URL}/login`, { email, password });
+interface RegisterParams {
+  email: string;
+  password: string;
+  name: string;
+  username: string;
+  avatar?: string;
+  passwordConfirmation: string;
+}
+
+export const login = (params: LoginParams) => axios.post("/login", params);
+
+export const register = (params: RegisterParams) =>
+  axios.post("/register", params);
