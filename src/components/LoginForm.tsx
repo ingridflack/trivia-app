@@ -6,6 +6,8 @@ import {
   Input,
 } from "@chakra-ui/react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { login } from "../services/authService";
+import { useNavigate } from "react-router-dom";
 
 interface LoginFormValues {
   email: string;
@@ -18,9 +20,17 @@ export default function LoginForm() {
     register,
     formState: { errors, isSubmitting },
   } = useForm<LoginFormValues>();
+  const navigate = useNavigate();
 
-  const onSubmit: SubmitHandler<LoginFormValues> = (values) => {
-    console.log(values);
+  const onSubmit: SubmitHandler<LoginFormValues> = async (values) => {
+    try {
+      const { data } = await login(values);
+      localStorage.setItem("userData", JSON.stringify(data.userData));
+
+      navigate("/home");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
