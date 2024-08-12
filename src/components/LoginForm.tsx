@@ -35,9 +35,20 @@ export default function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <FormControl isInvalid={!!errors.email}>
-        <FormLabel htmlFor="email">Email address</FormLabel>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      style={{
+        width: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
+      }}
+    >
+      <FormControl isInvalid={!!errors.email} maxWidth="400px">
+        <FormLabel htmlFor="email" fontSize="small" marginBottom="4px">
+          Email address
+        </FormLabel>
         <Input
           type="email"
           placeholder="Email"
@@ -55,8 +66,13 @@ export default function LoginForm() {
         </FormErrorMessage>
       </FormControl>
 
-      <FormControl isInvalid={!!errors.password}>
-        <FormLabel marginTop="16px" htmlFor="password">
+      <FormControl isInvalid={!!errors.password} maxWidth="400px">
+        <FormLabel
+          marginTop="16px"
+          htmlFor="password"
+          fontSize="small"
+          marginBottom="4px"
+        >
           Password
         </FormLabel>
         <Input
@@ -80,6 +96,7 @@ export default function LoginForm() {
         colorScheme="purple"
         size="lg"
         width="100%"
+        maxWidth="400px"
         marginTop="16px"
         isLoading={isSubmitting}
         type="submit"
