@@ -1,8 +1,23 @@
 import { useEffect, useState } from "react";
 import * as UserService from "../services/userService";
+import {
+  Avatar,
+  Box,
+  Button,
+  Container,
+  IconButton,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Text,
+} from "@chakra-ui/react";
+import { HamburgerIcon } from "@chakra-ui/icons";
+import GameConfig from "../components/GameConfig";
 
 interface UserData {
   username: string;
+  avatar?: string;
 }
 
 export default function Home() {
@@ -22,7 +37,55 @@ export default function Home() {
 
   return (
     <div>
-      <h1>Welcome, {userData?.username}</h1>
+      <Box
+        w="100%"
+        bg="purple.500"
+        padding="10px"
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <Text fontSize="large" color="white">
+          Trivia App Logo
+        </Text>
+
+        <Button fontSize="large">Play Trivia</Button>
+
+        <Box display="flex" alignItems="center" gap="16px">
+          <Avatar
+            src={userData?.avatar}
+            width="50px"
+            height="50px"
+            borderColor="white"
+            borderWidth={3}
+            bg="purple.500"
+            padding={2}
+          />
+
+          <Menu>
+            <MenuButton
+              as={IconButton}
+              aria-label="Options"
+              icon={<HamburgerIcon color="white" />}
+              variant="outline"
+            />
+            <MenuList>
+              <MenuItem>Trivia History</MenuItem>
+              <MenuItem>Settings</MenuItem>
+              <MenuItem>Logout</MenuItem>
+            </MenuList>
+          </Menu>
+        </Box>
+      </Box>
+
+      <Container
+        centerContent
+        height="100%"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <GameConfig />
+      </Container>
     </div>
   );
 }
