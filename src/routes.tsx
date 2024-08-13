@@ -3,6 +3,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
 import PrivateRoute from "./components/PrivateRoute";
+import Trivia from "./pages/Trivia";
 
 export const router = createBrowserRouter([
   {
@@ -18,7 +19,11 @@ export const router = createBrowserRouter([
     element: <SignUp />,
   },
   {
-    path: "/home",
+    path: "/trivia/config",
     element: <PrivateRoute Component={Home} />,
+  },
+  {
+    path: "/trivia/:triviaId",
+    element: <PrivateRoute Component={Trivia} />,
   },
 ]);
