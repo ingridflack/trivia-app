@@ -13,7 +13,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
-import GameConfig from "../components/GameConfig";
+import TriviaConfig from "../components/TriviaConfig";
 
 interface UserData {
   username: string;
@@ -84,7 +84,7 @@ export default function Home() {
         alignItems="center"
         justifyContent="center"
       >
-        <GameConfig />
+        <TriviaConfig />
       </Container>
     </div>
   );

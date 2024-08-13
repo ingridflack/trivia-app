@@ -28,7 +28,7 @@ export default function LoginForm() {
       localStorage.setItem("token", data.token);
       localStorage.setItem("userData", JSON.stringify(data.user));
 
-      navigate("/home");
+      navigate("/trivia/config");
     } catch (error) {
       console.log(error);
     }
