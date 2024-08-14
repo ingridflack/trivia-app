@@ -153,19 +153,20 @@ export default function TriviaConfig() {
         >
           Amount
         </FormLabel>
-        <NumberInput
-          max={20}
-          min={1}
-          size="sm"
-          maxW={20}
-          {...register("amount")}
-        >
-          <NumberInputField />
-          <NumberInputStepper>
-            <NumberIncrementStepper />
-            <NumberDecrementStepper />
-          </NumberInputStepper>
-        </NumberInput>
+
+        <Controller
+          name="amount"
+          render={({ field }) => (
+            <NumberInput {...field} max={20} min={5} size="sm" maxW={20}>
+              <NumberInputField />
+              <NumberInputStepper>
+                <NumberIncrementStepper />
+                <NumberDecrementStepper />
+              </NumberInputStepper>
+            </NumberInput>
+          )}
+          control={control}
+        />
 
         <FormErrorMessage>
           {errors.amount && errors.amount.message}

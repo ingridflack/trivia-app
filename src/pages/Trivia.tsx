@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import * as TriviaService from "../services/triviaService";
 import { Question, Trivia as TriviaType } from "../types/sharedTypes";
 import QuestionItem from "../components/QuestionItem";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Button, FormControl, FormErrorMessage } from "@chakra-ui/react";
+import {
+  Button,
+  Container,
+  FormControl,
+  FormErrorMessage,
+  Text,
+} from "@chakra-ui/react";
 
 export interface AnswerFormValues {
   answer: string;
@@ -17,9 +23,11 @@ export default function Trivia() {
   const {
     handleSubmit,
     control,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm<AnswerFormValues>();
-  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!triviaId) return;
@@ -38,44 +46,72 @@ export default function Trivia() {
   }, [triviaId]);
 
   const handleNextQuestion = () => {
-    setCurrentQuestion((prev) => prev + 1);
+    reset();
+    setCurrentQuestionIndex((prev) => prev + 1);
   };
 
   const onSubmit: SubmitHandler<AnswerFormValues> = async (values) => {
-    console.log(values);
+    if (!trivia || !triviaId) return;
 
-    // Send answer to backend
-    // Check if answer is correct
-    // Add notification if it is correct
+    try {
+      const { data } = await TriviaService.answerQuestion({
+        questionId: trivia.questions[currentQuestionIndex]?._id,
+        answer: values.answer,
+        answerTime: 10,
+        triviaId: triviaId,
+      });
+
+      if (data.data.isCorrect) {
+        alert("Correct answer!");
+      }
+
+      if (data.data.triviaStatus === "completed") {
+        alert("Trivia completed!");
+
+        navigate("/trivia/config");
+      }
+
+      handleNextQuestion();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <h1>Trivia</h1>
+    <Container
+      centerContent
+      height="100%"
+      alignItems="center"
+      justifyContent="center"
+    >
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Text fontSize="xx-large" marginBottom="30px">
+          Trivia App Logo
+        </Text>
 
-      <FormControl isInvalid={!!errors.answer}>
-        {trivia?.questions.map(
-          (item: Question, index) =>
-            index === currentQuestion && (
-              <QuestionItem key={item._id} item={item} control={control} />
-            )
-        )}
-        <FormErrorMessage>
-          {errors.answer && errors.answer.message}
-        </FormErrorMessage>
-      </FormControl>
+        <FormControl isInvalid={!!errors.answer}>
+          {trivia?.questions.map(
+            (item: Question, index) =>
+              index === currentQuestionIndex && (
+                <QuestionItem key={item._id} item={item} control={control} />
+              )
+          )}
+          <FormErrorMessage>
+            {errors.answer && errors.answer.message}
+          </FormErrorMessage>
+        </FormControl>
 
-      <Button
-        colorScheme="purple"
-        size="lg"
-        width="100%"
-        marginTop="16px"
-        isLoading={isSubmitting}
-        type="submit"
-        onClick={handleNextQuestion}
-      >
-        Next
-      </Button>
-    </form>
+        <Button
+          colorScheme="purple"
+          size="lg"
+          width="100%"
+          marginTop="16px"
+          isLoading={isSubmitting}
+          type="submit"
+        >
+          Next
+        </Button>
+      </form>
+    </Container>
   );
 }

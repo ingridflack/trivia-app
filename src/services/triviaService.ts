@@ -12,6 +12,13 @@ interface TriviaQueryParams {
   type?: string;
 }
 
+interface AnswerQuestionParams {
+  answer: string;
+  answerTime: number;
+  questionId: string;
+  triviaId: string;
+}
+
 interface TriviaResponse extends ApiResponse {
   triviaId: string;
 }
@@ -25,8 +32,20 @@ export const getCategories = () =>
 
 export const createTrivia = (params: TriviaQueryParams) =>
   axios.post<TriviaResponse>(
-    `/trivia?amount=${params.amount}&type=&difficulty=${params.difficulty}&category=${params.category}`
+    `/trivia?amount=${params.amount}&type=boolean&difficulty=${params.difficulty}&category=${params.category}`
   );
 
 export const getTriviaById = (triviaId: string) =>
   axios.get<TriviaByIdResponse>(`/trivia/${triviaId}`);
+
+export const answerQuestion = ({
+  answer,
+  answerTime,
+  questionId,
+  triviaId,
+}: AnswerQuestionParams) =>
+  axios.post(`/trivia/${triviaId}/answer`, {
+    questionId,
+    answer,
+    answerTime,
+  });

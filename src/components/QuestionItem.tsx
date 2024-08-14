@@ -18,7 +18,6 @@ export default function QuestionItem({ item, control }: QuestionItemProps) {
       />
 
       <Controller
-        key={item._id}
         control={control}
         name="answer"
         rules={{ required: "Please select an answer" }}
