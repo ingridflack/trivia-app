@@ -20,7 +20,6 @@ export default function QuestionItem({ item, control }: QuestionItemProps) {
       <Controller
         control={control}
         name="answer"
-        rules={{ required: "Please select an answer" }}
         render={({ field }) => (
           <RadioGroup {...field}>
             <Stack direction="row">

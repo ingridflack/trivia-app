@@ -6,7 +6,7 @@ interface CategoryResponse extends ApiResponse {
 }
 
 interface TriviaQueryParams {
-  category: number;
+  category: string;
   difficulty: string;
   amount: number;
   type?: string;

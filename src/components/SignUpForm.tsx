@@ -10,7 +10,8 @@ import {
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import * as AuthService from "../services/authService";
 import { useNavigate } from "react-router-dom";
-import { avatars } from "../constants/avatarOptions";
+import { useToast } from "@chakra-ui/react";
+import { AVATAR_OPTIONS } from "../constants/user";
 
 interface LoginFormValues {
   email: string;
@@ -29,20 +30,35 @@ export default function SignUpForm() {
     formState: { errors, isSubmitting },
   } = useForm<LoginFormValues>();
   const navigate = useNavigate();
+  const toast = useToast();
 
   const onSubmit: SubmitHandler<LoginFormValues> = async (values) => {
     try {
-      const { data } = await AuthService.register({
+      await AuthService.register({
         ...values,
-        avatar: undefined,
       });
 
-      // Add toast notification
+      toast({
+        title: "Account created",
+        description: "Account created successfully. Please log in.",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+        position: "top-right",
+      });
 
       navigate("/login");
-      console.log(values, data);
     } catch (error) {
       console.log(error);
+
+      toast({
+        title: "Oops!",
+        description: "Something went wrong. Try again.",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "top-right",
+      });
     }
   };
 
@@ -136,7 +152,7 @@ export default function SignUpForm() {
           Avatar
         </FormLabel>
         <AvatarGroup spacing="4px">
-          {avatars.map((imageSrc) => (
+          {AVATAR_OPTIONS.map((imageSrc) => (
             <Controller
               key={imageSrc}
               control={control}

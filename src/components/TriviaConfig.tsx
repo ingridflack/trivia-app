@@ -12,16 +12,14 @@ import {
   RadioGroup,
   Select,
   Stack,
+  useToast,
 } from "@chakra-ui/react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import {
-  difficultyOptions,
-  gameModeOptions,
-} from "../constants/gameConfigFields";
 import { useEffect, useState } from "react";
 import * as TriviaService from "../services/triviaService";
 import { Category } from "../types/sharedTypes";
 import { useNavigate } from "react-router-dom";
+import { DIFFICULTY_OPTIONS, GAME_MODE_OPTIONS } from "../constants/trivia";
 
 interface GameConfigValues {
   category: string;
@@ -38,12 +36,14 @@ export default function TriviaConfig() {
     formState: { errors, isSubmitting },
   } = useForm<GameConfigValues>({
     defaultValues: {
-      difficulty: "easy",
-      amount: 10,
+      category: "any",
+      difficulty: "any",
+      amount: 5,
     },
   });
   const [categories, setCategories] = useState<Category[]>([]);
   const navigate = useNavigate();
+  const toast = useToast();
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -57,18 +57,34 @@ export default function TriviaConfig() {
   const onSubmit: SubmitHandler<GameConfigValues> = async (values) => {
     try {
       const params = {
-        category: parseInt(values.category),
+        category: values.category,
         difficulty: values.difficulty,
         amount: values.amount,
       };
 
       const { data } = await TriviaService.createTrivia(params);
 
-      navigate(`/trivia/${data.triviaId}`);
+      toast({
+        title: "Trivia created",
+        description: "Trivia created successfully.",
+        status: "success",
+        duration: 2000,
+        isClosable: true,
+        position: "top-right",
+      });
 
-      console.log(data);
+      navigate(`/trivia/${data.triviaId}`);
     } catch {
       console.log("error");
+
+      toast({
+        title: "Oops!",
+        description: "Something went wrong. Try again.",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "top-right",
+      });
     }
   };
 
@@ -93,12 +109,12 @@ export default function TriviaConfig() {
           Category
         </FormLabel>
         <Select
-          placeholder="Select category"
           id="category"
           {...register("category", {
             required: "Category is required.",
           })}
         >
+          <option value="any">Any category</option>
           {categories.map((category) => (
             <option key={category.id} value={category.id}>
               {category.name}
@@ -125,7 +141,7 @@ export default function TriviaConfig() {
           render={({ field }) => (
             <RadioGroup {...field}>
               <Stack direction="row">
-                {difficultyOptions.map((option) => (
+                {DIFFICULTY_OPTIONS.map((option) => (
                   <Radio
                     key={option.value}
                     colorScheme="purple"
@@ -157,7 +173,7 @@ export default function TriviaConfig() {
         <Controller
           name="amount"
           render={({ field }) => (
-            <NumberInput {...field} max={20} min={5} size="sm" maxW={20}>
+            <NumberInput {...field} max={10} min={5} size="sm" maxW={20}>
               <NumberInputField />
               <NumberInputStepper>
                 <NumberIncrementStepper />
@@ -188,7 +204,7 @@ export default function TriviaConfig() {
           render={({ field }) => (
             <RadioGroup {...field}>
               <Stack direction="row">
-                {gameModeOptions.map((option) => (
+                {GAME_MODE_OPTIONS.map((option) => (
                   <Radio
                     key={option.value}
                     colorScheme="purple"
