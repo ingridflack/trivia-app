@@ -19,13 +19,18 @@ import { useEffect, useState } from "react";
 import * as TriviaService from "../services/triviaService";
 import { Category } from "../types/sharedTypes";
 import { useNavigate } from "react-router-dom";
-import { DIFFICULTY_OPTIONS, GAME_MODE_OPTIONS } from "../constants/trivia";
+import {
+  DIFFICULTY_OPTIONS,
+  GAME_MODE_OPTIONS,
+  TYPE_OPTIONS,
+} from "../constants/trivia";
 
 interface GameConfigValues {
   category: string;
   difficulty: string;
   amount: number;
   gameMode: string;
+  type: string;
 }
 
 export default function TriviaConfig() {
@@ -38,6 +43,7 @@ export default function TriviaConfig() {
     defaultValues: {
       category: "any",
       difficulty: "any",
+      type: "any",
       amount: 5,
     },
   });
@@ -60,6 +66,7 @@ export default function TriviaConfig() {
         category: values.category,
         difficulty: values.difficulty,
         amount: values.amount,
+        type: values.type,
       };
 
       const { data } = await TriviaService.createTrivia(params);
@@ -189,10 +196,44 @@ export default function TriviaConfig() {
         </FormErrorMessage>
       </FormControl>
 
-      <FormControl isInvalid={!!errors.gameMode}>
+      <FormControl isInvalid={!!errors.type}>
         <FormLabel
           marginTop="16px"
           htmlFor="type"
+          fontSize="small"
+          marginBottom="4px"
+        >
+          Type
+        </FormLabel>
+        <Controller
+          name="type"
+          control={control}
+          render={({ field }) => (
+            <RadioGroup {...field}>
+              <Stack direction="row">
+                {TYPE_OPTIONS.map((option) => (
+                  <Radio
+                    key={option.value}
+                    colorScheme="purple"
+                    value={option.value}
+                  >
+                    {option.label}
+                  </Radio>
+                ))}
+              </Stack>
+            </RadioGroup>
+          )}
+        />
+
+        <FormErrorMessage>
+          {errors.type && errors.type.message}
+        </FormErrorMessage>
+      </FormControl>
+
+      <FormControl isInvalid={!!errors.gameMode}>
+        <FormLabel
+          marginTop="16px"
+          htmlFor="gameMode"
           fontSize="small"
           marginBottom="4px"
         >

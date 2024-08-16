@@ -27,6 +27,17 @@ export interface Trivia {
   difficulty: string;
   game_mode: string;
   questions: Question[];
+  score: number;
   users: User[];
   _id: string;
+}
+
+export interface TriviaHistory {
+  items: {
+    answerTime: number;
+    isCorrect: boolean;
+    question: Question;
+    _id: string;
+  }[];
+  trivia: Trivia;
 }

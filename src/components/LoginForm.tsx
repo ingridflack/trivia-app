@@ -4,6 +4,7 @@ import {
   FormErrorMessage,
   FormLabel,
   Input,
+  useToast,
 } from "@chakra-ui/react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -21,6 +22,7 @@ export default function LoginForm() {
     formState: { errors, isSubmitting },
   } = useForm<LoginFormValues>();
   const navigate = useNavigate();
+  const toast = useToast();
 
   const onSubmit: SubmitHandler<LoginFormValues> = async (values) => {
     try {
@@ -28,9 +30,26 @@ export default function LoginForm() {
       localStorage.setItem("token", data.token);
       localStorage.setItem("userData", JSON.stringify(data.user));
 
+      toast({
+        title: "Logged in",
+        description: "You have been logged in.",
+        status: "success",
+        duration: 2000,
+        isClosable: true,
+        position: "top-right",
+      });
+
       navigate("/trivia/config");
     } catch (error) {
       console.log(error);
+      toast({
+        title: "An error occurred.",
+        description: "Unable to login.",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+        position: "top-right",
+      });
     }
   };
 
@@ -81,10 +100,6 @@ export default function LoginForm() {
           id="password"
           {...register("password", {
             required: "Password is required.",
-            minLength: {
-              value: 8,
-              message: "Password must be at least 8 characters long",
-            },
           })}
         />
         <FormErrorMessage>

@@ -15,6 +15,7 @@ import {
 import Timer from "../components/Timer";
 import useTimer from "../hooks/useTimer";
 import { ANSWER_TIME_LIMIT } from "../constants/trivia";
+import Menu from "../components/Menu";
 
 export interface AnswerFormValues {
   answer: string;
@@ -35,11 +36,7 @@ export default function Trivia() {
   const toast = useToast();
   const formRef = useRef<HTMLFormElement>(null);
 
-  const handleTimeOut = useCallback(async (timeLeft: number) => {
-    console.log({ timeLeft });
-
-    console.log(formRef.current);
-
+  const handleTimeOut = useCallback(async () => {
     formRef.current?.dispatchEvent(
       new Event("submit", { cancelable: true, bubbles: true })
     );
@@ -122,7 +119,7 @@ export default function Trivia() {
           position: "top-right",
         });
 
-        navigate("/trivia/config");
+        navigate("/trivia/history");
       }
 
       handleNextQuestion();
@@ -132,42 +129,46 @@ export default function Trivia() {
   };
 
   return (
-    <Container
-      centerContent
-      height="100%"
-      alignItems="center"
-      justifyContent="center"
-    >
-      <form ref={formRef} onSubmit={handleSubmit(onSubmit)}>
-        <Text fontSize="xx-large" marginBottom="30px">
-          Trivia App Logo
-        </Text>
+    <div>
+      <Menu />
 
-        <Timer value={timeLeft} maxValue={startTime} />
+      <Container
+        centerContent
+        height="100%"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <form ref={formRef} onSubmit={handleSubmit(onSubmit)}>
+          <Text fontSize="xx-large" marginBottom="30px">
+            Trivia App Logo
+          </Text>
 
-        <FormControl isInvalid={!!errors.answer}>
-          {trivia?.questions.map(
-            (item: Question, index) =>
-              index === currentQuestionIndex && (
-                <QuestionItem key={item._id} item={item} control={control} />
-              )
-          )}
-          <FormErrorMessage>
-            {errors.answer && errors.answer.message}
-          </FormErrorMessage>
-        </FormControl>
+          <Timer value={timeLeft} maxValue={startTime} />
 
-        <Button
-          colorScheme="purple"
-          size="lg"
-          width="100%"
-          marginTop="16px"
-          isLoading={isSubmitting}
-          type="submit"
-        >
-          Next
-        </Button>
-      </form>
-    </Container>
+          <FormControl isInvalid={!!errors.answer}>
+            {trivia?.questions.map(
+              (item: Question, index) =>
+                index === currentQuestionIndex && (
+                  <QuestionItem key={item._id} item={item} control={control} />
+                )
+            )}
+            <FormErrorMessage>
+              {errors.answer && errors.answer.message}
+            </FormErrorMessage>
+          </FormControl>
+
+          <Button
+            colorScheme="purple"
+            size="lg"
+            width="100%"
+            marginTop="16px"
+            isLoading={isSubmitting}
+            type="submit"
+          >
+            Next
+          </Button>
+        </form>
+      </Container>
+    </div>
   );
 }

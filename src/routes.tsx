@@ -4,6 +4,7 @@ import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
 import PrivateRoute from "./components/PrivateRoute";
 import Trivia from "./pages/Trivia";
+import TriviaHistory from "./pages/TriviaHistory";
 
 export const router = createBrowserRouter([
   {
@@ -25,5 +26,9 @@ export const router = createBrowserRouter([
   {
     path: "/trivia/:triviaId",
     element: <PrivateRoute Component={Trivia} />,
+  },
+  {
+    path: "/trivia/history",
+    element: <PrivateRoute Component={TriviaHistory} />,
   },
 ]);
