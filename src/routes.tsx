@@ -1,15 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
-import Home from "./pages/Home";
 import PrivateRoute from "./components/PrivateRoute";
 import Trivia from "./pages/Trivia";
 import TriviaHistory from "./pages/TriviaHistory";
+import Config from "./pages/Config";
+import Welcome from "./pages/Welcome";
+import Home from "./pages/Home";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <></>,
+    element: <Home />,
   },
   {
     path: "/login",
@@ -20,8 +22,12 @@ export const router = createBrowserRouter([
     element: <SignUp />,
   },
   {
+    path: "/trivia/home",
+    element: <PrivateRoute Component={Welcome} />,
+  },
+  {
     path: "/trivia/config",
-    element: <PrivateRoute Component={Home} />,
+    element: <PrivateRoute Component={Config} />,
   },
   {
     path: "/trivia/:triviaId",

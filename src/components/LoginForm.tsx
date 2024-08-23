@@ -39,7 +39,7 @@ export default function LoginForm() {
         position: "top-right",
       });
 
-      navigate("/trivia/config");
+      navigate("/trivia/home");
     } catch (error) {
       console.log(error);
       toast({

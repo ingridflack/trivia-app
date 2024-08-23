@@ -1,18 +1,6 @@
-import {
-  Avatar,
-  Box,
-  IconButton,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Text,
-  useToast,
-  Menu as ChakraMenu,
-} from "@chakra-ui/react";
-import { HamburgerIcon } from "@chakra-ui/icons";
+import { Avatar, Box, Text, useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import * as UserService from "../services/userService";
+import { Link, useNavigate } from "react-router-dom";
 
 interface UserData {
   username: string;
@@ -31,10 +19,6 @@ export default function Menu() {
     if (!userData) return;
 
     setUserData(JSON.parse(userData));
-
-    UserService.getUser().then((response) => {
-      console.log(response);
-    });
   }, []);
 
   const handleLogout = () => {
@@ -53,47 +37,44 @@ export default function Menu() {
     navigate("/login");
   };
 
-  const handleTriviaHistory = () => {
-    navigate("/trivia/history");
-  };
-
   return (
     <Box
       w="100%"
-      bg="purple.500"
-      padding="10px"
+      bg="gray.200"
+      height="50px"
       display="flex"
       justifyContent="space-between"
       alignItems="center"
+      paddingX="50px"
+      fontFamily="Slackey"
     >
-      <Text fontSize="large" color="white">
-        Trivia App Logo
+      <Text fontSize="26px" fontWeight="bold">
+        Trivia
       </Text>
 
       <Box display="flex" alignItems="center" gap="16px">
-        <Avatar
-          src={userData?.avatar}
-          width="50px"
-          height="50px"
-          borderColor="white"
-          borderWidth={3}
-          bg="purple.500"
-          padding={2}
-        />
-
-        <ChakraMenu>
-          <MenuButton
-            as={IconButton}
-            aria-label="Options"
-            icon={<HamburgerIcon color="white" />}
-            variant="outline"
-          />
-          <MenuList>
-            <MenuItem onClick={handleTriviaHistory}>Trivia History</MenuItem>
-            <MenuItem>Settings</MenuItem>
-            <MenuItem onClick={handleLogout}>Logout</MenuItem>
-          </MenuList>
-        </ChakraMenu>
+        {userData ? (
+          <>
+            <Link to="/trivia/history"> History </Link>
+            <Link to="/login" onClick={handleLogout}>
+              Logout
+            </Link>
+            <Avatar
+              src={userData?.avatar}
+              width="50px"
+              height="50px"
+              borderColor="white"
+              borderWidth={3}
+              bg="purple.500"
+              padding={2}
+            />
+          </>
+        ) : (
+          <>
+            <Link to="/login"> Login </Link>
+            <Link to="/sign-up"> Sign Up </Link>
+          </>
+        )}
       </Box>
     </Box>
   );
