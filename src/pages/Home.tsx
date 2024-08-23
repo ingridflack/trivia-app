@@ -7,13 +7,7 @@ export default function Home() {
       <Menu />
       <Box width="100%" backgroundColor="#AE79F8">
         <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Container
-            height="100%"
-            width="100%"
-            maxWidth="992px"
-            paddingY="80px"
-            position="relative"
-          >
+          <Container maxWidth="992px" paddingY="80px" position="relative">
             <Text
               fontSize="6xl"
               lineHeight="1.2"

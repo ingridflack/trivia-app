@@ -1,4 +1,11 @@
-import { Avatar, Box, Text, useToast } from "@chakra-ui/react";
+import {
+  Avatar,
+  Box,
+  Container,
+  Stack,
+  Text,
+  useToast,
+} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -48,34 +55,38 @@ export default function Menu() {
       paddingX="50px"
       fontFamily="Slackey"
     >
-      <Text fontSize="26px" fontWeight="bold">
-        Trivia
-      </Text>
+      <Container maxWidth="992px">
+        <Stack direction="row" justifyContent="space-between" spacing={4}>
+          <Text fontSize="26px" fontWeight="bold">
+            Trivia
+          </Text>
 
-      <Box display="flex" alignItems="center" gap="16px">
-        {userData ? (
-          <>
-            <Link to="/trivia/history"> History </Link>
-            <Link to="/login" onClick={handleLogout}>
-              Logout
-            </Link>
-            <Avatar
-              src={userData?.avatar}
-              width="50px"
-              height="50px"
-              borderColor="white"
-              borderWidth={3}
-              bg="purple.500"
-              padding={2}
-            />
-          </>
-        ) : (
-          <>
-            <Link to="/login"> Login </Link>
-            <Link to="/sign-up"> Sign Up </Link>
-          </>
-        )}
-      </Box>
+          <Box display="flex" alignItems="center" gap="16px">
+            {userData ? (
+              <>
+                <Link to="/trivia/history"> History </Link>
+                <Link to="/login" onClick={handleLogout}>
+                  Logout
+                </Link>
+                <Avatar
+                  src={userData?.avatar}
+                  width="50px"
+                  height="50px"
+                  borderColor="white"
+                  borderWidth={3}
+                  bg="purple.500"
+                  padding={2}
+                />
+              </>
+            ) : (
+              <>
+                <Link to="/login"> Login </Link>
+                <Link to="/sign-up"> Sign Up </Link>
+              </>
+            )}
+          </Box>
+        </Stack>
+      </Container>
     </Box>
   );
 }
