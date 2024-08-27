@@ -14,7 +14,7 @@ interface UserData {
   avatar?: string;
 }
 
-export default function Menu() {
+export default function Header() {
   const navigate = useNavigate();
   const toast = useToast();
 
@@ -47,7 +47,7 @@ export default function Menu() {
   return (
     <Box
       w="100%"
-      bg="gray.200"
+      bg="white"
       height="50px"
       display="flex"
       justifyContent="space-between"
@@ -57,9 +57,11 @@ export default function Menu() {
     >
       <Container maxWidth="992px">
         <Stack direction="row" justifyContent="space-between" spacing={4}>
-          <Text fontSize="26px" fontWeight="bold">
-            Trivia
-          </Text>
+          <Link to="/">
+            <Text fontSize="26px" fontWeight="bold">
+              Trivia
+            </Text>
+          </Link>
 
           <Box display="flex" alignItems="center" gap="16px">
             {userData ? (
@@ -80,7 +82,7 @@ export default function Menu() {
               </>
             ) : (
               <>
-                <Link to="/login"> Login </Link>
+                <Link to="/login"> Sign in </Link>
                 <Link to="/sign-up"> Sign Up </Link>
               </>
             )}

@@ -1,11 +1,11 @@
 import { Container } from "@chakra-ui/react";
 import TriviaConfig from "../components/TriviaConfig";
-import Menu from "../components/Menu";
+import Header from "../components/Header";
 
 export default function Config() {
   return (
     <div>
-      <Menu />
+      <Header />
 
       <Container
         centerContent

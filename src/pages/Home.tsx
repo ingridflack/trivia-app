@@ -1,10 +1,10 @@
 import { Box, Button, Container, Image, Text } from "@chakra-ui/react";
-import Menu from "../components/Menu";
+import Header from "../components/Header";
 
 export default function Home() {
   return (
     <>
-      <Menu />
+      <Header />
       <Box width="100%" backgroundColor="#AE79F8">
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Container maxWidth="992px" paddingY="80px" position="relative">

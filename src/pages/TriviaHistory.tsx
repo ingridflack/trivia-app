@@ -15,7 +15,7 @@ import {
   TagLabel,
   Text,
 } from "@chakra-ui/react";
-import Menu from "../components/Menu";
+import Header from "../components/Header";
 import DOMPurify from "dompurify";
 
 const CATEGORY_LABELS: { [key: string]: string } = {
@@ -47,7 +47,7 @@ export default function TriviaHistory() {
 
   return (
     <div>
-      <Menu />
+      <Header />
 
       <Container
         centerContent

@@ -15,7 +15,7 @@ import {
 import Timer from "../components/Timer";
 import useTimer from "../hooks/useTimer";
 import { ANSWER_TIME_LIMIT } from "../constants/trivia";
-import Menu from "../components/Menu";
+import Header from "../components/Header";
 
 export interface AnswerFormValues {
   answer: string;
@@ -130,7 +130,7 @@ export default function Trivia() {
 
   return (
     <div>
-      <Menu />
+      <Header />
 
       <Container
         centerContent

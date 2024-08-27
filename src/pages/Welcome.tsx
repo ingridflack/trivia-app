@@ -1,10 +1,10 @@
 import { Container } from "@chakra-ui/react";
-import Menu from "../components/Menu";
+import Header from "../components/Header";
 
 export default function Welcome() {
   return (
     <div>
-      <Menu />
+      <Header />
 
       <Container
         centerContent
