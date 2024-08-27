@@ -57,20 +57,22 @@ export default function LoginForm() {
     <form
       onSubmit={handleSubmit(onSubmit)}
       style={{
-        width: "100%",
         display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
         flexDirection: "column",
       }}
     >
-      <FormControl isInvalid={!!errors.email} maxWidth="400px">
-        <FormLabel htmlFor="email" fontSize="small" marginBottom="4px">
+      <FormControl isInvalid={!!errors.email} maxWidth="392px">
+        <FormLabel
+          htmlFor="email"
+          marginBottom="4px"
+          fontSize="small"
+          color="gray.500"
+        >
           Email address
         </FormLabel>
         <Input
           type="email"
-          placeholder="Email"
+          placeholder="Enter your email"
           id="email"
           {...register("email", {
             required: "Email is required.",
@@ -85,18 +87,19 @@ export default function LoginForm() {
         </FormErrorMessage>
       </FormControl>
 
-      <FormControl isInvalid={!!errors.password} maxWidth="400px">
+      <FormControl isInvalid={!!errors.password} maxWidth="392px">
         <FormLabel
           marginTop="16px"
           htmlFor="password"
           fontSize="small"
           marginBottom="4px"
+          color="gray.500"
         >
           Password
         </FormLabel>
         <Input
           type="password"
-          placeholder="Password"
+          placeholder="Enter your password"
           id="password"
           {...register("password", {
             required: "Password is required.",
@@ -116,7 +119,7 @@ export default function LoginForm() {
         isLoading={isSubmitting}
         type="submit"
       >
-        Login
+        Sign in
       </Button>
     </form>
   );
