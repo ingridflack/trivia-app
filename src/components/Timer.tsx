@@ -9,12 +9,16 @@ export default function Timer({ value, maxValue }: TimerProps) {
   return (
     <CircularProgress
       value={value}
-      color="green.400"
-      size="120px"
+      color="gray.400"
+      size="74px"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
       min={0}
       max={maxValue}
+      thickness="4px"
     >
-      <CircularProgressLabel>{value}</CircularProgressLabel>
+      <CircularProgressLabel color="gray.400">{value}</CircularProgressLabel>
     </CircularProgress>
   );
 }

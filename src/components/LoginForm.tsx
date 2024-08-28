@@ -30,16 +30,7 @@ export default function LoginForm() {
       localStorage.setItem("token", data.token);
       localStorage.setItem("userData", JSON.stringify(data.user));
 
-      toast({
-        title: "Logged in",
-        description: "You have been logged in.",
-        status: "success",
-        duration: 2000,
-        isClosable: true,
-        position: "top-right",
-      });
-
-      navigate("/trivia/home");
+      navigate("/");
     } catch (error) {
       console.log(error);
       toast({

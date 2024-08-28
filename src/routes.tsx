@@ -5,7 +5,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import Trivia from "./pages/Trivia";
 import TriviaHistory from "./pages/TriviaHistory";
 import Config from "./pages/Config";
-import Welcome from "./pages/Welcome";
+
 import Home from "./pages/Home";
 
 export const router = createBrowserRouter([
@@ -20,10 +20,6 @@ export const router = createBrowserRouter([
   {
     path: "/sign-up",
     element: <SignUp />,
-  },
-  {
-    path: "/trivia/home",
-    element: <PrivateRoute Component={Welcome} />,
   },
   {
     path: "/trivia/config",

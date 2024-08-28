@@ -1,11 +1,4 @@
-import {
-  Avatar,
-  Box,
-  Container,
-  Stack,
-  Text,
-  useToast,
-} from "@chakra-ui/react";
+import { Avatar, Box, Container, Stack, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -16,7 +9,6 @@ interface UserData {
 
 export default function Header() {
   const navigate = useNavigate();
-  const toast = useToast();
 
   const [userData, setUserData] = useState<UserData | null>(null);
 
@@ -31,15 +23,6 @@ export default function Header() {
   const handleLogout = () => {
     localStorage.removeItem("userData");
     setUserData(null);
-
-    toast({
-      title: "Logged out",
-      description: "You have been logged out.",
-      status: "success",
-      duration: 2000,
-      isClosable: true,
-      position: "top-right",
-    });
 
     navigate("/login");
   };

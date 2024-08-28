@@ -1,14 +1,16 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import * as TriviaService from "../services/triviaService";
-import { Question, Trivia as TriviaType } from "../types/sharedTypes";
 import QuestionItem from "../components/QuestionItem";
 import { SubmitHandler, useForm } from "react-hook-form";
 import {
+  Badge,
+  Box,
   Button,
+  Card,
   Container,
-  FormControl,
-  FormErrorMessage,
+  Image,
+  Stack,
   Text,
   useToast,
 } from "@chakra-ui/react";
@@ -23,7 +25,7 @@ export interface AnswerFormValues {
 }
 
 export default function Trivia() {
-  const [trivia, setTrivia] = useState<TriviaType>();
+  const [question, setQuestion] = useState<TriviaService.TriviaQuestion>();
   const { triviaId } = useParams();
   const {
     handleSubmit,
@@ -31,7 +33,7 @@ export default function Trivia() {
     reset,
     formState: { errors, isSubmitting },
   } = useForm<AnswerFormValues>();
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(1);
   const navigate = useNavigate();
   const toast = useToast();
   const formRef = useRef<HTMLFormElement>(null);
@@ -52,9 +54,9 @@ export default function Trivia() {
 
     const fetchTrivia = async (triviaId: string) => {
       try {
-        const { data } = await TriviaService.getTriviaById(triviaId);
+        const { data } = await TriviaService.getTriviaQuestion(triviaId);
 
-        setTrivia(data.trivia);
+        setQuestion(data.question);
       } catch {
         console.log("error");
       }
@@ -63,18 +65,19 @@ export default function Trivia() {
     fetchTrivia(triviaId);
   }, [triviaId]);
 
-  const handleNextQuestion = () => {
+  const handleNextQuestion = (nextQuestion: TriviaService.TriviaQuestion) => {
     reset();
     resetTimer();
+    setQuestion(nextQuestion);
     setCurrentQuestionIndex((prev) => prev + 1);
   };
 
   const onSubmit: SubmitHandler<AnswerFormValues> = async (values) => {
-    if (!trivia || !triviaId) return;
+    if (!question || !triviaId) return;
 
     try {
       const { data } = await TriviaService.answerQuestion({
-        questionId: trivia.questions[currentQuestionIndex]?._id,
+        questionId: question._id,
         answer: values.answer,
         answerTime: elapsedTime,
         triviaId: triviaId,
@@ -122,53 +125,95 @@ export default function Trivia() {
         navigate("/trivia/history");
       }
 
-      handleNextQuestion();
+      handleNextQuestion(data.data.question);
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <div>
+    <>
       <Header />
 
       <Container
-        centerContent
-        height="100%"
+        backgroundColor="gray.200"
+        display="flex"
         alignItems="center"
         justifyContent="center"
+        flexDirection="column"
+        maxWidth="none"
+        minH="calc(var(--chakra-vh) - 50px)" // 100vh - 50px (height of the header)
       >
-        <form ref={formRef} onSubmit={handleSubmit(onSubmit)}>
-          <Text fontSize="xx-large" marginBottom="30px">
-            Trivia App Logo
-          </Text>
-
-          <Timer value={timeLeft} maxValue={startTime} />
-
-          <FormControl isInvalid={!!errors.answer}>
-            {trivia?.questions.map(
-              (item: Question, index) =>
-                index === currentQuestionIndex && (
-                  <QuestionItem key={item._id} item={item} control={control} />
-                )
-            )}
-            <FormErrorMessage>
-              {errors.answer && errors.answer.message}
-            </FormErrorMessage>
-          </FormControl>
-
-          <Button
-            colorScheme="purple"
-            size="lg"
-            width="100%"
-            marginTop="16px"
-            isLoading={isSubmitting}
-            type="submit"
+        <Box position="relative">
+          <Text
+            fontSize="large"
+            color="gray.500"
+            fontWeight="600"
+            marginBottom="10px"
           >
-            Next
-          </Button>
-        </form>
+            Question {currentQuestionIndex}/10
+          </Text>
+          <Card
+            display="flex"
+            flexDirection={["column", "column", "row"]}
+            gap="48px"
+            alignItems=""
+            maxW="992px"
+            paddingY="35px"
+            paddingX="45px"
+            shadow="xl"
+            minHeight="345px"
+          >
+            <Box
+              justifyContent="center"
+              display="flex"
+              alignItems="center"
+              flexDirection="column"
+            >
+              <Timer value={timeLeft} maxValue={startTime} />
+              <Badge colorScheme="blue" marginTop="20px" variant="outline">
+                {question?.difficulty}
+              </Badge>
+            </Box>
+
+            <Stack
+              direction="column"
+              as="form"
+              ref={formRef}
+              onSubmit={handleSubmit(onSubmit)}
+            >
+              <QuestionItem
+                question={question}
+                control={control}
+                errors={errors}
+              />
+
+              <Button
+                colorScheme="purple"
+                size="md"
+                width="100%"
+                maxWidth="270px"
+                marginTop="16px"
+                isLoading={isSubmitting}
+                type="submit"
+              >
+                Answer
+              </Button>
+            </Stack>
+          </Card>
+
+          <Image
+            src="/src/assets/trivia-question.svg"
+            alt="Question image"
+            position="absolute"
+            right="-180px"
+            bottom="-50px"
+            width="229px"
+            height="322px"
+            pointerEvents="none"
+          />
+        </Box>
       </Container>
-    </div>
+    </>
   );
 }

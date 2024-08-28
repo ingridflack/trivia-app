@@ -24,11 +24,13 @@ export default function Home() {
               width="180px"
               _hover="green.400"
               marginTop="38px"
+              as="a"
+              href="/trivia/config"
             >
               Start a trivia
             </Button>
             <Image
-              src="src/assets/home.svg"
+              src="/src/assets/home.svg"
               alt="Home image"
               position="absolute"
               right="-160px"

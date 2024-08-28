@@ -19,11 +19,7 @@ import { useEffect, useState } from "react";
 import * as TriviaService from "../services/triviaService";
 import { Category } from "../types/sharedTypes";
 import { useNavigate } from "react-router-dom";
-import {
-  DIFFICULTY_OPTIONS,
-  GAME_MODE_OPTIONS,
-  TYPE_OPTIONS,
-} from "../constants/trivia";
+import { DIFFICULTY_OPTIONS, GAME_MODE_OPTIONS } from "../constants/trivia";
 
 interface GameConfigValues {
   category: string;
@@ -70,15 +66,6 @@ export default function TriviaConfig() {
       };
 
       const { data } = await TriviaService.createTrivia(params);
-
-      toast({
-        title: "Trivia created",
-        description: "Trivia created successfully.",
-        status: "success",
-        duration: 2000,
-        isClosable: true,
-        position: "top-right",
-      });
 
       navigate(`/trivia/${data.triviaId}`);
     } catch {
@@ -193,40 +180,6 @@ export default function TriviaConfig() {
 
         <FormErrorMessage>
           {errors.amount && errors.amount.message}
-        </FormErrorMessage>
-      </FormControl>
-
-      <FormControl isInvalid={!!errors.type}>
-        <FormLabel
-          marginTop="16px"
-          htmlFor="type"
-          fontSize="small"
-          marginBottom="4px"
-        >
-          Type
-        </FormLabel>
-        <Controller
-          name="type"
-          control={control}
-          render={({ field }) => (
-            <RadioGroup {...field}>
-              <Stack direction="row">
-                {TYPE_OPTIONS.map((option) => (
-                  <Radio
-                    key={option.value}
-                    colorScheme="purple"
-                    value={option.value}
-                  >
-                    {option.label}
-                  </Radio>
-                ))}
-              </Stack>
-            </RadioGroup>
-          )}
-        />
-
-        <FormErrorMessage>
-          {errors.type && errors.type.message}
         </FormErrorMessage>
       </FormControl>
 
