@@ -16,7 +16,6 @@ export default function useTimer({ onTimeOut, startTime = 30 }: UseTimerProps) {
     if (timeLeft === 0) {
       clearInterval(intervalRef.current);
       onTimeOut?.(timeLeft);
-      console.log("oi");
     }
   }, [onTimeOut, timeLeft]);
 

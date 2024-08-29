@@ -1,8 +1,10 @@
 import {
   Button,
+  Flex,
   FormControl,
   FormErrorMessage,
   FormLabel,
+  Input,
   NumberDecrementStepper,
   NumberIncrementStepper,
   NumberInput,
@@ -12,6 +14,7 @@ import {
   RadioGroup,
   Select,
   Stack,
+  useClipboard,
   useToast,
 } from "@chakra-ui/react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
@@ -29,6 +32,8 @@ interface GameConfigValues {
   type: string;
 }
 
+const TRIVIA_INVITE_URL = `http://localhost:5173/trivia`;
+
 export default function TriviaConfig() {
   const {
     control,
@@ -43,9 +48,17 @@ export default function TriviaConfig() {
       amount: 5,
     },
   });
+
   const [categories, setCategories] = useState<Category[]>([]);
+  const [gameMode, setGameMode] = useState("single");
+  const [triviaId, setTriviaId] = useState("");
   const navigate = useNavigate();
   const toast = useToast();
+  const { onCopy, value, hasCopied } = useClipboard(
+    `${TRIVIA_INVITE_URL}/${triviaId}/invite/accept`
+  );
+
+  console.log(value);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -67,7 +80,11 @@ export default function TriviaConfig() {
 
       const { data } = await TriviaService.createTrivia(params);
 
-      navigate(`/trivia/${data.triviaId}`);
+      setTriviaId(data.triviaId);
+
+      if (gameMode === "single") {
+        navigate(`/trivia/${data.triviaId}`);
+      }
     } catch {
       console.log("error");
 
@@ -80,6 +97,10 @@ export default function TriviaConfig() {
         position: "top-right",
       });
     }
+  };
+
+  const handleGameModeChange = (value: string) => {
+    setGameMode(value);
   };
 
   return (
@@ -203,6 +224,7 @@ export default function TriviaConfig() {
                     key={option.value}
                     colorScheme="purple"
                     value={option.value}
+                    onChange={(e) => handleGameModeChange(e.target.value)}
                   >
                     {option.label}
                   </Radio>
@@ -217,16 +239,60 @@ export default function TriviaConfig() {
         </FormErrorMessage>
       </FormControl>
 
-      <Button
-        colorScheme="purple"
-        size="lg"
-        width="100%"
-        marginTop="16px"
-        isLoading={isSubmitting}
-        type="submit"
-      >
-        Start Game
-      </Button>
+      {gameMode === "single" ? (
+        <Button
+          colorScheme="purple"
+          size="lg"
+          width="100%"
+          marginTop="16px"
+          isLoading={isSubmitting}
+          type="submit"
+        >
+          Start Game
+        </Button>
+      ) : (
+        <>
+          {!triviaId ? (
+            <Button
+              colorScheme="purple"
+              size="lg"
+              width="100%"
+              marginTop="16px"
+              isLoading={isSubmitting}
+              type="submit"
+            >
+              Generate a trivia link
+            </Button>
+          ) : (
+            <>
+              <Flex mt={2} width="100%">
+                <Input
+                  placeholder={`${TRIVIA_INVITE_URL}/${triviaId}/invite/accept`}
+                  value={value}
+                  readOnly
+                  mr={2}
+                />
+                <Button onClick={onCopy}>
+                  {hasCopied ? "Copied!" : "Copy"}
+                </Button>
+              </Flex>
+
+              <Button
+                colorScheme="purple"
+                size="lg"
+                width="100%"
+                marginTop="16px"
+                isLoading={isSubmitting}
+                type="submit"
+                as={"a"}
+                href={`/trivia/${triviaId}`}
+              >
+                Start game
+              </Button>
+            </>
+          )}
+        </>
+      )}
     </form>
   );
 }

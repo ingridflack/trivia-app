@@ -71,3 +71,7 @@ export const answerQuestion = ({
 
 export const getTriviaHistory = () =>
   axios.get<TriviaHistoryResponse>("/trivia/history");
+
+export const acceptTriviaInvite = (triviaId: string) => {
+  return axios.post(`/trivia/${triviaId}/invite/accept`);
+};
