@@ -4,25 +4,22 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
+  Grid,
   Input,
-  NumberDecrementStepper,
-  NumberIncrementStepper,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  Radio,
-  RadioGroup,
   Select,
-  Stack,
   useClipboard,
   useToast,
 } from "@chakra-ui/react";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import * as TriviaService from "../services/triviaService";
 import { Category } from "../types/sharedTypes";
 import { useNavigate } from "react-router-dom";
-import { DIFFICULTY_OPTIONS, GAME_MODE_OPTIONS } from "../constants/trivia";
+import {
+  AMOUNT_OPTIONS,
+  DIFFICULTY_OPTIONS,
+  GAME_MODE_OPTIONS,
+} from "../constants/trivia";
 
 interface GameConfigValues {
   category: string;
@@ -36,7 +33,6 @@ const TRIVIA_INVITE_URL = `http://localhost:5173/trivia`;
 
 export default function TriviaConfig() {
   const {
-    control,
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
@@ -57,8 +53,6 @@ export default function TriviaConfig() {
   const { onCopy, value, hasCopied } = useClipboard(
     `${TRIVIA_INVITE_URL}/${triviaId}/invite/accept`
   );
-
-  console.log(value);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -114,130 +108,109 @@ export default function TriviaConfig() {
         flexDirection: "column",
       }}
     >
-      <FormControl isInvalid={!!errors.category}>
-        <FormLabel
-          marginTop="16px"
-          htmlFor="category"
-          fontSize="small"
-          marginBottom="4px"
-        >
-          Category
-        </FormLabel>
-        <Select
-          id="category"
-          {...register("category", {
-            required: "Category is required.",
-          })}
-        >
-          <option value="any">Any category</option>
-          {categories.map((category) => (
-            <option key={category.id} value={category.id}>
-              {category.name}
-            </option>
-          ))}
-        </Select>
-        <FormErrorMessage>
-          {errors.category && errors.category.message}
-        </FormErrorMessage>
-      </FormControl>
+      <Grid templateColumns="repeat(2, 1fr)" gap="0 20px">
+        <FormControl isInvalid={!!errors.category}>
+          <FormLabel htmlFor="category" fontSize="small" marginBottom="4px">
+            Category
+          </FormLabel>
+          <Select
+            id="category"
+            {...register("category", {
+              required: "Category is required.",
+            })}
+          >
+            <option value="any">Any category</option>
+            {categories.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            ))}
+          </Select>
+          <FormErrorMessage>
+            {errors.category && errors.category.message}
+          </FormErrorMessage>
+        </FormControl>
 
-      <FormControl isInvalid={!!errors.difficulty}>
-        <FormLabel
-          marginTop="16px"
-          htmlFor="difficulty"
-          fontSize="small"
-          marginBottom="4px"
-        >
-          Difficulty
-        </FormLabel>
-        <Controller
-          name="difficulty"
-          control={control}
-          render={({ field }) => (
-            <RadioGroup {...field}>
-              <Stack direction="row">
-                {DIFFICULTY_OPTIONS.map((option) => (
-                  <Radio
-                    key={option.value}
-                    colorScheme="purple"
-                    value={option.value}
-                  >
-                    {option.label}
-                  </Radio>
-                ))}
-              </Stack>
-            </RadioGroup>
-          )}
-        />
+        <FormControl isInvalid={!!errors.difficulty}>
+          <FormLabel htmlFor="difficulty" fontSize="small" marginBottom="4px">
+            Difficulty
+          </FormLabel>
 
-        <FormErrorMessage>
-          {errors.difficulty && errors.difficulty.message}
-        </FormErrorMessage>
-      </FormControl>
+          <Select
+            id="difficulty"
+            {...register("difficulty", {
+              required: "Difficulty is required.",
+            })}
+          >
+            {DIFFICULTY_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </Select>
 
-      <FormControl isInvalid={!!errors.amount}>
-        <FormLabel
-          marginTop="16px"
-          htmlFor="amount"
-          fontSize="small"
-          marginBottom="4px"
-        >
-          Amount
-        </FormLabel>
+          <FormErrorMessage>
+            {errors.difficulty && errors.difficulty.message}
+          </FormErrorMessage>
+        </FormControl>
 
-        <Controller
-          name="amount"
-          render={({ field }) => (
-            <NumberInput {...field} max={10} min={5} size="sm" maxW={20}>
-              <NumberInputField />
-              <NumberInputStepper>
-                <NumberIncrementStepper />
-                <NumberDecrementStepper />
-              </NumberInputStepper>
-            </NumberInput>
-          )}
-          control={control}
-        />
+        <FormControl isInvalid={!!errors.amount}>
+          <FormLabel
+            marginTop="16px"
+            htmlFor="amount"
+            fontSize="small"
+            marginBottom="4px"
+          >
+            Number of questions
+          </FormLabel>
 
-        <FormErrorMessage>
-          {errors.amount && errors.amount.message}
-        </FormErrorMessage>
-      </FormControl>
+          <Select
+            id="amount"
+            {...register("amount", {
+              required: "Amount is required.",
+            })}
+          >
+            {AMOUNT_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.value}
+              </option>
+            ))}
+          </Select>
 
-      <FormControl isInvalid={!!errors.gameMode}>
-        <FormLabel
-          marginTop="16px"
-          htmlFor="gameMode"
-          fontSize="small"
-          marginBottom="4px"
-        >
-          Game mode
-        </FormLabel>
-        <Controller
-          name="gameMode"
-          control={control}
-          render={({ field }) => (
-            <RadioGroup {...field}>
-              <Stack direction="row">
-                {GAME_MODE_OPTIONS.map((option) => (
-                  <Radio
-                    key={option.value}
-                    colorScheme="purple"
-                    value={option.value}
-                    onChange={(e) => handleGameModeChange(e.target.value)}
-                  >
-                    {option.label}
-                  </Radio>
-                ))}
-              </Stack>
-            </RadioGroup>
-          )}
-        />
+          <FormErrorMessage>
+            {errors.amount && errors.amount.message}
+          </FormErrorMessage>
+        </FormControl>
 
-        <FormErrorMessage>
-          {errors.gameMode && errors.gameMode.message}
-        </FormErrorMessage>
-      </FormControl>
+        <FormControl isInvalid={!!errors.gameMode}>
+          <FormLabel
+            marginTop="16px"
+            htmlFor="gameMode"
+            fontSize="small"
+            marginBottom="4px"
+          >
+            Game mode
+          </FormLabel>
+
+          <Select
+            id="gameMode"
+            {...register("gameMode", {
+              required: "Game mode is required.",
+            })}
+            onChange={(e) => handleGameModeChange(e.target.value)}
+          >
+            {GAME_MODE_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </Select>
+
+          <FormErrorMessage>
+            {errors.gameMode && errors.gameMode.message}
+          </FormErrorMessage>
+        </FormControl>
+      </Grid>
 
       {gameMode === "single" ? (
         <Button
@@ -248,7 +221,7 @@ export default function TriviaConfig() {
           isLoading={isSubmitting}
           type="submit"
         >
-          Start Game
+          Start trivia
         </Button>
       ) : (
         <>
@@ -261,7 +234,7 @@ export default function TriviaConfig() {
               isLoading={isSubmitting}
               type="submit"
             >
-              Generate a trivia link
+              Generate online game
             </Button>
           ) : (
             <>

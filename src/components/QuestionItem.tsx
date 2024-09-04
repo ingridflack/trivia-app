@@ -4,7 +4,6 @@ import {
   Grid,
   Radio,
   RadioGroup,
-  Stack,
   Text,
 } from "@chakra-ui/react";
 import DOMPurify from "dompurify";
@@ -30,7 +29,6 @@ export default function QuestionItem({
       <Text
         fontSize="x-large"
         fontWeight="bold"
-        maxW="400px"
         lineHeight="1.2"
         width="100%"
         dangerouslySetInnerHTML={{
@@ -44,19 +42,21 @@ export default function QuestionItem({
           name="answer"
           render={({ field }) => (
             <RadioGroup {...field}>
-              <Stack marginTop="30px">
-                <Grid templateColumns="repeat(2, 1fr)" gap="20px">
-                  {question.answers.map((option) => (
-                    <Radio key={option} colorScheme="purple" value={option}>
-                      <Text
-                        dangerouslySetInnerHTML={{
-                          __html: DOMPurify.sanitize(option),
-                        }}
-                      />
-                    </Radio>
-                  ))}
-                </Grid>
-              </Stack>
+              <Grid
+                templateColumns="repeat(2, 1fr)"
+                gap="20px"
+                marginTop="30px"
+              >
+                {question.answers.map((option) => (
+                  <Radio key={option} colorScheme="purple" value={option}>
+                    <Text
+                      dangerouslySetInnerHTML={{
+                        __html: DOMPurify.sanitize(option),
+                      }}
+                    />
+                  </Radio>
+                ))}
+              </Grid>
             </RadioGroup>
           )}
         />

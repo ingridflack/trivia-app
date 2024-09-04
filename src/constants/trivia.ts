@@ -11,3 +11,5 @@ export const GAME_MODE_OPTIONS = [
   { value: "single", label: "Single player" },
   { value: "multi", label: "Multiplayer" },
 ];
+
+export const AMOUNT_OPTIONS = [{ value: 5 }, { value: 10 }, { value: 15 }];

@@ -35,15 +35,11 @@ export default function TriviaHistory() {
     const fetchTriviaHistory = async () => {
       const { data } = await TriviaService.getTriviaHistory();
 
-      console.log(data.triviaHistory);
-
       setTriviaHistory(data.triviaHistory);
     };
 
     fetchTriviaHistory();
   }, []);
-
-  console.log(triviaHistory);
 
   return (
     <div>

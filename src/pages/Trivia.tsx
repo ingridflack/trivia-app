@@ -131,6 +131,19 @@ export default function Trivia() {
     }
   };
 
+  const badgeColor = () => {
+    switch (question?.difficulty) {
+      case "easy":
+        return "green";
+      case "medium":
+        return "orange";
+      case "hard":
+        return "red";
+      default:
+        return "gray";
+    }
+  };
+
   return (
     <>
       <Header />
@@ -171,7 +184,11 @@ export default function Trivia() {
               flexDirection="column"
             >
               <Timer value={timeLeft} maxValue={startTime} />
-              <Badge colorScheme="blue" marginTop="20px" variant="outline">
+              <Badge
+                colorScheme={badgeColor()}
+                marginTop="20px"
+                variant="outline"
+              >
                 {question?.difficulty}
               </Badge>
             </Box>

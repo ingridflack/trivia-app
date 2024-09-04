@@ -6,10 +6,12 @@ interface TimerProps {
 }
 
 export default function Timer({ value, maxValue }: TimerProps) {
+  const color = value <= 5 ? "red.400" : "green.400";
+
   return (
     <CircularProgress
       value={value}
-      color="gray.400"
+      color={color}
       size="74px"
       display="flex"
       alignItems="center"
@@ -18,7 +20,9 @@ export default function Timer({ value, maxValue }: TimerProps) {
       max={maxValue}
       thickness="4px"
     >
-      <CircularProgressLabel color="gray.400">{value}</CircularProgressLabel>
+      <CircularProgressLabel color={color} fontWeight={700}>
+        {value}
+      </CircularProgressLabel>
     </CircularProgress>
   );
 }
