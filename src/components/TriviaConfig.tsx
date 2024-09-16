@@ -5,21 +5,22 @@ import {
   FormErrorMessage,
   FormLabel,
   Grid,
-  Input,
   Select,
-  useClipboard,
   useToast,
 } from "@chakra-ui/react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import * as TriviaService from "../services/triviaService";
-import { Category } from "../types/sharedTypes";
+import * as UserService from "../services/userService";
+import { Category, UserSearchSelectOption } from "../types/sharedTypes";
 import { useNavigate } from "react-router-dom";
 import {
   AMOUNT_OPTIONS,
   DIFFICULTY_OPTIONS,
   GAME_MODE_OPTIONS,
 } from "../constants/trivia";
+import AsyncSelect from "react-select/async";
+import { MultiValue } from "react-select";
 
 interface GameConfigValues {
   category: string;
@@ -28,8 +29,6 @@ interface GameConfigValues {
   gameMode: string;
   type: string;
 }
-
-const TRIVIA_INVITE_URL = `http://localhost:5173/trivia`;
 
 export default function TriviaConfig() {
   const {
@@ -47,12 +46,11 @@ export default function TriviaConfig() {
 
   const [categories, setCategories] = useState<Category[]>([]);
   const [gameMode, setGameMode] = useState("single");
-  const [triviaId, setTriviaId] = useState("");
   const navigate = useNavigate();
   const toast = useToast();
-  const { onCopy, value, hasCopied } = useClipboard(
-    `${TRIVIA_INVITE_URL}/${triviaId}/invite/accept`
-  );
+  const [invitedUsers, setInvitedUsers] = useState<
+    MultiValue<UserSearchSelectOption>
+  >([]);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -65,20 +63,19 @@ export default function TriviaConfig() {
 
   const onSubmit: SubmitHandler<GameConfigValues> = async (values) => {
     try {
-      const params = {
-        category: values.category,
-        difficulty: values.difficulty,
-        amount: values.amount,
-        type: values.type,
+      const invitedUsersIds =
+        gameMode === "multi"
+          ? invitedUsers.map((option) => option.value)
+          : undefined;
+
+      const body = {
+        ...values,
+        invitedUsers: invitedUsersIds,
       };
 
-      const { data } = await TriviaService.createTrivia(params);
+      const { data } = await TriviaService.createTrivia(body);
 
-      setTriviaId(data.triviaId);
-
-      if (gameMode === "single") {
-        navigate(`/trivia/${data.triviaId}`);
-      }
+      navigate(`/trivia/${data.triviaId}`);
     } catch {
       console.log("error");
 
@@ -97,6 +94,20 @@ export default function TriviaConfig() {
     setGameMode(value);
   };
 
+  const handleInviteUser = (value: MultiValue<UserSearchSelectOption>) => {
+    setInvitedUsers(value);
+  };
+
+  const handleLoadUsers = async (username: string) => {
+    const userData = localStorage.getItem("userData");
+    const currentUserId = userData ? JSON.parse(userData).id : "";
+
+    const { data } = await UserService.search({ username });
+    return data
+      .filter((user) => user._id !== currentUserId)
+      .map((user) => ({ value: user._id, label: user.username }));
+  };
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -109,7 +120,7 @@ export default function TriviaConfig() {
       }}
     >
       <Grid templateColumns="repeat(2, 1fr)" gap="0 20px">
-        <FormControl isInvalid={!!errors.category}>
+        <FormControl isInvalid={!!errors.category} minW="186px">
           <FormLabel htmlFor="category" fontSize="small" marginBottom="4px">
             Category
           </FormLabel>
@@ -131,7 +142,7 @@ export default function TriviaConfig() {
           </FormErrorMessage>
         </FormControl>
 
-        <FormControl isInvalid={!!errors.difficulty}>
+        <FormControl isInvalid={!!errors.difficulty} minW="186px">
           <FormLabel htmlFor="difficulty" fontSize="small" marginBottom="4px">
             Difficulty
           </FormLabel>
@@ -154,7 +165,7 @@ export default function TriviaConfig() {
           </FormErrorMessage>
         </FormControl>
 
-        <FormControl isInvalid={!!errors.amount}>
+        <FormControl isInvalid={!!errors.amount} minW="186px">
           <FormLabel
             marginTop="16px"
             htmlFor="amount"
@@ -182,7 +193,7 @@ export default function TriviaConfig() {
           </FormErrorMessage>
         </FormControl>
 
-        <FormControl isInvalid={!!errors.gameMode}>
+        <FormControl isInvalid={!!errors.gameMode} minW="186px">
           <FormLabel
             marginTop="16px"
             htmlFor="gameMode"
@@ -225,45 +236,36 @@ export default function TriviaConfig() {
         </Button>
       ) : (
         <>
-          {!triviaId ? (
-            <Button
-              colorScheme="purple"
-              size="lg"
-              width="100%"
-              marginTop="16px"
-              isLoading={isSubmitting}
-              type="submit"
-            >
-              Generate online game
-            </Button>
-          ) : (
-            <>
-              <Flex mt={2} width="100%">
-                <Input
-                  placeholder={`${TRIVIA_INVITE_URL}/${triviaId}/invite/accept`}
-                  value={value}
-                  readOnly
-                  mr={2}
-                />
-                <Button onClick={onCopy}>
-                  {hasCopied ? "Copied!" : "Copy"}
-                </Button>
-              </Flex>
+          <Flex mt={2} width="100%">
+            <FormControl>
+              <AsyncSelect
+                isMulti
+                cacheOptions
+                loadOptions={handleLoadUsers}
+                placeholder="Select user"
+                options={[
+                  { value: "user1", label: "User 1" },
+                  { value: "user2", label: "User 2" },
+                  { value: "user3", label: "User 3" },
+                ]}
+                onChange={handleInviteUser}
+              />
+            </FormControl>
+          </Flex>
 
-              <Button
-                colorScheme="purple"
-                size="lg"
-                width="100%"
-                marginTop="16px"
-                isLoading={isSubmitting}
-                type="submit"
-                as={"a"}
-                href={`/trivia/${triviaId}`}
-              >
-                Start game
-              </Button>
-            </>
-          )}
+          {console.log({ invitedUsers, gameMode })}
+
+          <Button
+            colorScheme="purple"
+            size="lg"
+            width="100%"
+            marginTop="16px"
+            isLoading={isSubmitting}
+            type="submit"
+            isDisabled={invitedUsers.length === 0 && gameMode === "multi"}
+          >
+            Start game
+          </Button>
         </>
       )}
     </form>

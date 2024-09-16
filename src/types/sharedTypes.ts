@@ -29,6 +29,7 @@ export interface Trivia {
   questions: Question[];
   score: number;
   users: User[];
+  status: string;
   _id: string;
 }
 
@@ -40,4 +41,22 @@ export interface TriviaHistory {
     _id: string;
   }[];
   trivia: Trivia;
+}
+
+export interface UserSearchSelectOption {
+  label: string;
+  value: string;
+}
+
+export interface UserSearch {
+  _id: string;
+  username: string;
+}
+
+export interface CreateTriviaBody {
+  category: string;
+  difficulty: string;
+  amount: number;
+  type: string;
+  usernames?: string[];
 }

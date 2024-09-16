@@ -7,7 +7,6 @@ import TriviaHistory from "./pages/TriviaHistory";
 import Config from "./pages/Config";
 
 import Home from "./pages/Home";
-import TriviaInvite from "./pages/TriviaInvite";
 
 export const router = createBrowserRouter([
   {
@@ -33,9 +32,5 @@ export const router = createBrowserRouter([
   {
     path: "/trivia/history",
     element: <PrivateRoute Component={TriviaHistory} />,
-  },
-  {
-    path: "/trivia/:triviaId/invite/accept",
-    element: <PrivateRoute Component={TriviaInvite} />,
   },
 ]);

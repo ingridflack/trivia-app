@@ -18,6 +18,7 @@ import Timer from "../components/Timer";
 import useTimer from "../hooks/useTimer";
 import { ANSWER_TIME_LIMIT } from "../constants/trivia";
 import Header from "../components/Header";
+import { badgeColor } from "../helpers/trivia";
 
 export interface AnswerFormValues {
   answer: string;
@@ -131,33 +132,18 @@ export default function Trivia() {
     }
   };
 
-  const badgeColor = () => {
-    switch (question?.difficulty) {
-      case "easy":
-        return "green";
-      case "medium":
-        return "orange";
-      case "hard":
-        return "red";
-      default:
-        return "gray";
-    }
-  };
-
   return (
     <>
       <Header />
 
       <Container
-        backgroundColor="gray.200"
         display="flex"
         alignItems="center"
         justifyContent="center"
         flexDirection="column"
-        maxWidth="none"
         minH="calc(var(--chakra-vh) - 50px)" // 100vh - 50px (height of the header)
       >
-        <Box position="relative">
+        <Box width="100%" position="relative">
           <Text
             fontSize="large"
             color="gray.500"
@@ -185,7 +171,7 @@ export default function Trivia() {
             >
               <Timer value={timeLeft} maxValue={startTime} />
               <Badge
-                colorScheme={badgeColor()}
+                colorScheme={badgeColor(question?.difficulty)}
                 marginTop="20px"
                 variant="outline"
               >

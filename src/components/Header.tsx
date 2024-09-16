@@ -28,18 +28,14 @@ export default function Header() {
   };
 
   return (
-    <Box
-      w="100%"
-      bg="white"
-      height="50px"
-      display="flex"
-      justifyContent="space-between"
-      alignItems="center"
-      paddingX="50px"
-      fontFamily="Slackey"
-    >
-      <Container maxWidth="992px">
-        <Stack direction="row" justifyContent="space-between" spacing={4}>
+    <Box bg="white" height="50px" paddingX="50px" fontFamily="Slackey">
+      <Container>
+        <Stack
+          align="center"
+          direction="row"
+          justifyContent="space-between"
+          spacing={4}
+        >
           <Link to="/">
             <Text fontSize="26px" fontWeight="bold">
               Trivia

@@ -8,18 +8,15 @@ export default function Config() {
       <Header />
 
       <Container
-        backgroundColor="gray.200"
         display="flex"
         alignItems="center"
         justifyContent="center"
-        maxWidth="none"
         minH="calc(var(--chakra-vh) - 50px)" // 100vh - 50px (height of the header)
       >
         <Card
           display="flex"
           flexDirection={["column", "column", "row"]}
           justifyContent="space-around"
-          maxW="980px"
           width="100%"
           paddingY="50px"
           paddingX="70px"
