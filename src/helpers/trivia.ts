@@ -1,5 +1,4 @@
 export const badgeColor = (difficulty?: string) => {
-  console.log(difficulty);
   switch (difficulty) {
     case "easy":
       return "green";

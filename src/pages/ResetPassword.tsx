@@ -1,8 +1,8 @@
-import { Box, Card, Container, Image, Link, Text } from "@chakra-ui/react";
-import LoginForm from "../components/LoginForm";
+import { Box, Card, Container, Image, Text } from "@chakra-ui/react";
 import Header from "../components/Header";
+import ResetPasswordForm from "../components/ResetPasswordForm";
 
-export default function Login() {
+export default function ResetPassword() {
   return (
     <>
       <Header />
@@ -23,27 +23,13 @@ export default function Login() {
         >
           <Box maxW="392px" width="100%">
             <Text fontSize="xx-large" marginBottom="30px" color="gray.700">
-              Sign in
+              Reset your password
             </Text>
-            <LoginForm />
-
-            <Box marginTop="20px" display="flex" justifyContent="space-between">
-              <Link
-                fontSize="small"
-                color="gray.500"
-                href="/trivia/recovery-email"
-              >
-                Forgot your password?
-              </Link>
-
-              <Link fontSize="small" color="gray.500" href="/sign-up">
-                Create an account
-              </Link>
-            </Box>
+            <ResetPasswordForm />
           </Box>
 
           <Image
-            src="src/assets/login.svg"
+            src="/src/assets/recovery.svg"
             alt="Login image"
             width="325px"
             height="324px"

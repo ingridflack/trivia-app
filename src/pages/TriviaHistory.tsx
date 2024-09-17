@@ -47,8 +47,6 @@ export default function TriviaHistory() {
     fetchTriviaHistory();
   }, []);
 
-  console.log(triviaHistory);
-
   return (
     <>
       <Header />

@@ -253,8 +253,6 @@ export default function TriviaConfig() {
             </FormControl>
           </Flex>
 
-          {console.log({ invitedUsers, gameMode })}
-
           <Button
             colorScheme="purple"
             size="lg"

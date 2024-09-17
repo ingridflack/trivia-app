@@ -225,13 +225,14 @@ export default function SignUpForm() {
               value: 8,
               message: "Password must be at least 8 characters long",
             },
-            validate: (value) => {
-              return value === "password" ? true : "The passwords do not match";
+            validate: {
+              isEqual: (value, { password }) =>
+                value !== password ? "The passwords do not match" : true,
             },
           })}
         />
         <FormErrorMessage>
-          {errors.password && errors.password.message}
+          {errors.passwordConfirmation && errors.passwordConfirmation.message}
         </FormErrorMessage>
       </FormControl>
 
