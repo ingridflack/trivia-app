@@ -22,7 +22,7 @@ export default function Login() {
           shadow="xl"
         >
           <Box maxW="392px" width="100%">
-            <Text fontSize="xx-large" marginBottom="30px" color="gray.700">
+            <Text fontSize="xx-large" marginBottom="32px" color="gray.700">
               Sign in
             </Text>
             <LoginForm />

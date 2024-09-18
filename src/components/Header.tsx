@@ -28,7 +28,7 @@ export default function Header() {
   };
 
   return (
-    <Box bg="white" height="50px" paddingX="50px" fontFamily="Slackey">
+    <Box bg="white" paddingY="5px" paddingX="50px" fontFamily="Slackey">
       <Container>
         <Stack
           align="center"

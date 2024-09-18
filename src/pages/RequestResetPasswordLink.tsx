@@ -22,7 +22,7 @@ export default function RequestResetPasswordLink() {
           shadow="xl"
         >
           <Box maxW="392px" width="100%">
-            <Text fontSize="xx-large" marginBottom="30px" color="gray.700">
+            <Text fontSize="xx-large" marginBottom="32px" color="gray.700">
               Password recovery
             </Text>
             <SendEmailForm />

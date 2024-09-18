@@ -19,6 +19,13 @@ const theme = extendTheme({
         maxW: "992px",
       },
     },
+    FormLabel: {
+      baseStyle: {
+        marginBottom: "4px",
+        fontSize: "small",
+        color: "gray.500",
+      },
+    },
   },
 });
 

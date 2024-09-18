@@ -6,6 +6,7 @@ import {
   FormErrorMessage,
   FormLabel,
   Input,
+  Stack,
 } from "@chakra-ui/react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import * as AuthService from "../services/authService";
@@ -63,20 +64,9 @@ export default function SignUpForm() {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      style={{
-        width: "100%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "column",
-      }}
-    >
+    <Stack as="form" onSubmit={handleSubmit(onSubmit)} gap="16px">
       <FormControl isInvalid={!!errors.email}>
-        <FormLabel htmlFor="email" fontSize="small" marginBottom="4px">
-          Email address
-        </FormLabel>
+        <FormLabel htmlFor="email">Email address</FormLabel>
         <Input
           type="email"
           placeholder="Email"
@@ -94,63 +84,90 @@ export default function SignUpForm() {
         </FormErrorMessage>
       </FormControl>
 
-      <FormControl isInvalid={!!errors.name}>
-        <FormLabel
-          marginTop="16px"
-          htmlFor="name"
-          fontSize="small"
-          marginBottom="4px"
-        >
-          Name
-        </FormLabel>
-        <Input
-          type="text"
-          placeholder="Name"
-          id="name"
-          {...register("name", {
-            required: "Name is required.",
-          })}
-        />
-        <FormErrorMessage>
-          {errors.name && errors.name.message}
-        </FormErrorMessage>
-      </FormControl>
+      <Stack direction="row" gap="16px">
+        <FormControl isInvalid={!!errors.name}>
+          <FormLabel htmlFor="name">Name</FormLabel>
+          <Input
+            type="text"
+            placeholder="Name"
+            id="name"
+            {...register("name", {
+              required: "Name is required.",
+            })}
+          />
+          <FormErrorMessage>
+            {errors.name && errors.name.message}
+          </FormErrorMessage>
+        </FormControl>
 
-      <FormControl isInvalid={!!errors.username}>
-        <FormLabel
-          marginTop="16px"
-          htmlFor="username"
-          fontSize="small"
-          marginBottom="4px"
-        >
-          Username
-        </FormLabel>
-        <Input
-          type="text"
-          placeholder="Username"
-          id="username"
-          {...register("username", {
-            required: "Username is required.",
-            pattern: {
-              value: /^\S*$/,
-              message: "Username should not contain spaces",
-            },
-          })}
-        />
-        <FormErrorMessage>
-          {errors.name && errors.name.message}
-        </FormErrorMessage>
-      </FormControl>
+        <FormControl isInvalid={!!errors.username}>
+          <FormLabel htmlFor="username">Username</FormLabel>
+          <Input
+            type="text"
+            placeholder="Username"
+            id="username"
+            {...register("username", {
+              required: "Username is required.",
+              pattern: {
+                value: /^\S*$/,
+                message: "Username should not contain spaces",
+              },
+            })}
+          />
+          <FormErrorMessage>
+            {errors.username && errors.username.message}
+          </FormErrorMessage>
+        </FormControl>
+      </Stack>
+
+      <Stack direction="row" gap="16px">
+        <FormControl isInvalid={!!errors.password}>
+          <FormLabel htmlFor="password">Password</FormLabel>
+          <Input
+            type="password"
+            placeholder="Password"
+            id="password"
+            {...register("password", {
+              required: "Password is required.",
+              minLength: {
+                value: 8,
+                message: "Password must be at least 8 characters long",
+              },
+            })}
+          />
+          <FormErrorMessage>
+            {errors.password && errors.password.message}
+          </FormErrorMessage>
+        </FormControl>
+
+        <FormControl isInvalid={!!errors.passwordConfirmation}>
+          <FormLabel htmlFor="passwordConfirmation">
+            Password confirmation
+          </FormLabel>
+          <Input
+            type="password"
+            placeholder="Password Confirmation"
+            id="passwordConfirmation"
+            {...register("passwordConfirmation", {
+              required: "Password confirmation is required.",
+              minLength: {
+                value: 8,
+                message: "Password must be at least 8 characters long",
+              },
+              validate: {
+                isEqual: (value, { password }) =>
+                  value !== password ? "The passwords do not match" : true,
+              },
+            })}
+          />
+          <FormErrorMessage>
+            {errors.passwordConfirmation && errors.passwordConfirmation.message}
+          </FormErrorMessage>
+        </FormControl>
+      </Stack>
 
       <FormControl isInvalid={!!errors.avatar}>
-        <FormLabel
-          htmlFor="avatar"
-          marginTop="16px"
-          fontSize="small"
-          marginBottom="4px"
-        >
-          Avatar
-        </FormLabel>
+        <FormLabel htmlFor="avatar">Avatar</FormLabel>
         <AvatarGroup spacing="4px">
           {AVATAR_OPTIONS.map((imageSrc) => (
             <Controller
@@ -160,8 +177,8 @@ export default function SignUpForm() {
               render={({ field: { onChange, value, ref } }) => (
                 <Avatar
                   src={imageSrc}
-                  width="60px"
-                  height="60px"
+                  width="50px"
+                  height="50px"
                   borderColor="white"
                   borderWidth={3}
                   bg="purple.500"
@@ -170,6 +187,10 @@ export default function SignUpForm() {
                   onClick={() => onChange(imageSrc)}
                   ref={ref}
                   opacity={value === imageSrc ? 1 : 0.5}
+                  transition={"opacity 0.3s"}
+                  _hover={{
+                    opacity: 1,
+                  }}
                 />
               )}
             />
@@ -180,72 +201,15 @@ export default function SignUpForm() {
         </FormErrorMessage>
       </FormControl>
 
-      <FormControl isInvalid={!!errors.password}>
-        <FormLabel
-          marginTop="16px"
-          htmlFor="password"
-          fontSize="small"
-          marginBottom="4px"
-        >
-          Password
-        </FormLabel>
-        <Input
-          type="password"
-          placeholder="Password"
-          id="password"
-          {...register("password", {
-            required: "Password is required.",
-            minLength: {
-              value: 8,
-              message: "Password must be at least 8 characters long",
-            },
-          })}
-        />
-        <FormErrorMessage>
-          {errors.password && errors.password.message}
-        </FormErrorMessage>
-      </FormControl>
-
-      <FormControl isInvalid={!!errors.passwordConfirmation}>
-        <FormLabel
-          marginTop="16px"
-          htmlFor="passwordConfirmation"
-          fontSize="small"
-          marginBottom="4px"
-        >
-          Password confirmation
-        </FormLabel>
-        <Input
-          type="password"
-          placeholder="Password Confirmation"
-          id="passwordConfirmation"
-          {...register("passwordConfirmation", {
-            required: "Password confirmation is required.",
-            minLength: {
-              value: 8,
-              message: "Password must be at least 8 characters long",
-            },
-            validate: {
-              isEqual: (value, { password }) =>
-                value !== password ? "The passwords do not match" : true,
-            },
-          })}
-        />
-        <FormErrorMessage>
-          {errors.passwordConfirmation && errors.passwordConfirmation.message}
-        </FormErrorMessage>
-      </FormControl>
-
       <Button
         colorScheme="purple"
         size="lg"
         width="100%"
-        marginTop="16px"
         isLoading={isSubmitting}
         type="submit"
       >
         Sign Up
       </Button>
-    </form>
+    </Stack>
   );
 }

@@ -4,6 +4,7 @@ import {
   FormErrorMessage,
   FormLabel,
   Input,
+  Stack,
   useToast,
 } from "@chakra-ui/react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -64,22 +65,14 @@ export default function ResetPasswordForm() {
   }
 
   return (
-    <form
+    <Stack
+      as="form"
       onSubmit={handleSubmit(onSubmit)}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-      }}
+      gap="16px"
+      maxWidth="400px"
     >
       <FormControl isInvalid={!!errors.password}>
-        <FormLabel
-          marginTop="16px"
-          htmlFor="password"
-          fontSize="small"
-          marginBottom="4px"
-        >
-          Password
-        </FormLabel>
+        <FormLabel htmlFor="password">Password</FormLabel>
         <Input
           type="password"
           placeholder="Password"
@@ -98,12 +91,7 @@ export default function ResetPasswordForm() {
       </FormControl>
 
       <FormControl isInvalid={!!errors.passwordConfirmation}>
-        <FormLabel
-          marginTop="16px"
-          htmlFor="passwordConfirmation"
-          fontSize="small"
-          marginBottom="4px"
-        >
+        <FormLabel htmlFor="passwordConfirmation">
           Password confirmation
         </FormLabel>
         <Input
@@ -131,13 +119,11 @@ export default function ResetPasswordForm() {
         colorScheme="purple"
         size="lg"
         width="100%"
-        maxWidth="400px"
-        marginTop="16px"
         isLoading={isSubmitting}
         type="submit"
       >
         Reset
       </Button>
-    </form>
+    </Stack>
   );
 }

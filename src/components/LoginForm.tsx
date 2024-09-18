@@ -4,6 +4,7 @@ import {
   FormErrorMessage,
   FormLabel,
   Input,
+  Stack,
   useToast,
 } from "@chakra-ui/react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -45,22 +46,14 @@ export default function LoginForm() {
   };
 
   return (
-    <form
+    <Stack
+      as="form"
       onSubmit={handleSubmit(onSubmit)}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-      }}
+      gap="16px"
+      maxWidth="400px"
     >
-      <FormControl isInvalid={!!errors.email} maxWidth="392px">
-        <FormLabel
-          htmlFor="email"
-          marginBottom="4px"
-          fontSize="small"
-          color="gray.500"
-        >
-          Email address
-        </FormLabel>
+      <FormControl isInvalid={!!errors.email}>
+        <FormLabel htmlFor="email">Email address</FormLabel>
         <Input
           type="email"
           placeholder="Enter your email"
@@ -78,16 +71,8 @@ export default function LoginForm() {
         </FormErrorMessage>
       </FormControl>
 
-      <FormControl isInvalid={!!errors.password} maxWidth="392px">
-        <FormLabel
-          marginTop="16px"
-          htmlFor="password"
-          fontSize="small"
-          marginBottom="4px"
-          color="gray.500"
-        >
-          Password
-        </FormLabel>
+      <FormControl isInvalid={!!errors.password}>
+        <FormLabel htmlFor="password">Password</FormLabel>
         <Input
           type="password"
           placeholder="Enter your password"
@@ -105,13 +90,11 @@ export default function LoginForm() {
         colorScheme="purple"
         size="lg"
         width="100%"
-        maxWidth="400px"
-        marginTop="16px"
         isLoading={isSubmitting}
         type="submit"
       >
         Sign in
       </Button>
-    </form>
+    </Stack>
   );
 }
