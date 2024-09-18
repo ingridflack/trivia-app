@@ -28,7 +28,7 @@ export default function Header() {
   };
 
   return (
-    <Box bg="white" paddingY="5px" paddingX="50px" fontFamily="Slackey">
+    <Box as="header" bg="white" paddingY="5px" paddingX="50px">
       <Container>
         <Stack
           align="center"
@@ -37,7 +37,11 @@ export default function Header() {
           spacing={4}
         >
           <Link to="/">
-            <Text fontSize="26px" fontWeight="bold">
+            <Text
+              fontSize="26px"
+              fontWeight="bold"
+              fontFamily="Rowdies, sans-serif"
+            >
               Trivia
             </Text>
           </Link>

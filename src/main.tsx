@@ -6,6 +6,9 @@ import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import "./styles.css";
 
 const theme = extendTheme({
+  fonts: {
+    body: `'Mulish', sans-serif`,
+  },
   styles: {
     global: {
       body: {
