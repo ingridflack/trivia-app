@@ -51,7 +51,7 @@ export default function TriviaHistory() {
     <>
       <Header />
 
-      <Container>
+      <Container marginTop="32px">
         <Text color="gray.700" fontSize="3xl">
           Game History
         </Text>
@@ -92,7 +92,11 @@ export default function TriviaHistory() {
                               textTransform="capitalize"
                             >
                               <Box
-                                backgroundColor="green.500"
+                                backgroundColor={
+                                  historyItem.trivia.status === "completed"
+                                    ? "green.500"
+                                    : "orange.500"
+                                }
                                 borderRadius="full"
                                 width="10px"
                                 height="10px"
@@ -136,6 +140,7 @@ export default function TriviaHistory() {
                             justifyContent="space-between"
                             gap={4}
                             margin="20px"
+                            key={item._id}
                           >
                             <Text
                               color="gray.400"

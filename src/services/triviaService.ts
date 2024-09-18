@@ -10,13 +10,6 @@ interface CategoryResponse extends ApiResponse {
   categories: Category[];
 }
 
-interface TriviaQueryParams {
-  category: string;
-  difficulty: string;
-  amount: number;
-  type: string;
-}
-
 interface AnswerQuestionParams {
   answer: string;
   answerTime: number;
@@ -40,11 +33,11 @@ interface TriviaQuestionResponse extends ApiResponse {
 
 interface AnswerQuestionResponse extends ApiResponse {
   data: {
-    isCorrect: boolean;
-    triviaStatus: string;
+    timeOut: boolean;
     question: TriviaQuestion;
+    isCorrect: boolean;
+    completed: boolean;
   };
-  timeOut: boolean;
 }
 
 interface TriviaHistoryResponse extends ApiResponse {
@@ -74,7 +67,3 @@ export const answerQuestion = ({
 
 export const getTriviaHistory = () =>
   axios.get<TriviaHistoryResponse>("/trivia/history");
-
-export const acceptTriviaInvite = (triviaId: string) => {
-  return axios.post(`/trivia/${triviaId}/invite/accept`);
-};

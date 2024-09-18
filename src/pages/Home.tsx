@@ -1,5 +1,6 @@
 import { Box, Button, Container, Image, Text } from "@chakra-ui/react";
 import Header from "../components/Header";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
@@ -23,8 +24,8 @@ export default function Home() {
             width="180px"
             _hover="green.400"
             marginTop="38px"
-            as="a"
-            href="/trivia/config"
+            as={Link}
+            to="/trivia/config"
           >
             Start a trivia
           </Button>

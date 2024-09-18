@@ -84,7 +84,7 @@ export default function Trivia() {
         triviaId: triviaId,
       });
 
-      if (data.timeOut) {
+      if (data.data.timeOut) {
         toast({
           title: "Time's up!",
           description: "Sorry! You ran out of time.",
@@ -113,7 +113,7 @@ export default function Trivia() {
         });
       }
 
-      if (data.data.triviaStatus === "completed") {
+      if (data.data.completed) {
         toast({
           title: "Trivia completed!",
           description: "Congratulations! You answered all questions.",
@@ -124,9 +124,9 @@ export default function Trivia() {
         });
 
         navigate("/trivia/history");
+      } else {
+        handleNextQuestion(data.data.question);
       }
-
-      handleNextQuestion(data.data.question);
     } catch (error) {
       console.log(error);
     }
