@@ -4,6 +4,7 @@ import {
   ApiResponse,
   TriviaHistory,
   CreateTriviaBody,
+  PendingTrivia,
 } from "../types/sharedTypes";
 
 interface CategoryResponse extends ApiResponse {
@@ -44,6 +45,10 @@ interface TriviaHistoryResponse extends ApiResponse {
   triviaHistory: TriviaHistory[];
 }
 
+interface PendingTriviaResponse extends ApiResponse {
+  pendingTrivia: PendingTrivia[];
+}
+
 export const getCategories = () =>
   axios.get<CategoryResponse>("/trivia/categories");
 
@@ -67,3 +72,6 @@ export const answerQuestion = ({
 
 export const getTriviaHistory = () =>
   axios.get<TriviaHistoryResponse>("/trivia/history");
+
+export const getPendingTrivia = () =>
+  axios.get<PendingTriviaResponse>("/trivia/pending");

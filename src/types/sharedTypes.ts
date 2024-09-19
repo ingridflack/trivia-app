@@ -41,6 +41,7 @@ export interface TriviaHistory {
     _id: string;
   }[];
   trivia: Trivia;
+  completed: boolean;
 }
 
 export interface UserSearchSelectOption {
@@ -59,4 +60,17 @@ export interface CreateTriviaBody {
   amount: number;
   type: string;
   usernames?: string[];
+}
+
+export interface PendingTrivia {
+  trivia: {
+    category: string;
+    difficulty: string;
+    users: {
+      avatar?: string;
+      username: string;
+      _id: string;
+    }[];
+    _id: string;
+  };
 }

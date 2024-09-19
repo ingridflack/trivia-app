@@ -62,6 +62,11 @@ export default function Header() {
                   bg="purple.500"
                   padding={2}
                 />
+
+                <Text display={{ base: "none", md: "block" }}>
+                  {" "}
+                  {userData?.username}
+                </Text>
               </>
             ) : (
               <>

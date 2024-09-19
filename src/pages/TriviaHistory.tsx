@@ -63,136 +63,138 @@ export default function TriviaHistory() {
           alignItems="center"
           justifyContent="center"
         >
-          {triviaHistory.map((historyItem) => (
-            <Card
-              display="flex"
-              flexDirection={["column", "column", "row"]}
-              alignItems=""
-              maxW="992px"
-              shadow="xl"
-              w="100%"
-              marginBottom="20px"
-            >
-              <ListItem key={historyItem.trivia._id} w="100%">
-                <Accordion allowMultiple>
-                  <AccordionItem>
-                    <h2>
-                      <AccordionButton>
-                        <Box
-                          as="span"
-                          flex="1"
-                          textAlign="left"
-                          color="gray.500"
-                          display="flex"
-                          justifyContent="space-between"
-                        >
-                          <Box display="flex" alignItems="center" gap="16px">
-                            <Tooltip
-                              label={historyItem.trivia.status}
-                              textTransform="capitalize"
-                            >
-                              <Box
-                                backgroundColor={
-                                  historyItem.trivia.status === "completed"
-                                    ? "green.500"
-                                    : "orange.500"
-                                }
-                                borderRadius="full"
-                                width="10px"
-                                height="10px"
-                              />
-                            </Tooltip>
-                            <Text>
-                              {CATEGORY_LABELS[historyItem.trivia.category] ||
-                                "General Knowledge "}
-                            </Text>
-                          </Box>
-                          <Box display="flex" gap="30px">
-                            <Text>
-                              Score: {historyItem.trivia.score || 0} /{" "}
-                              {historyItem.items.length}
-                            </Text>
-                            <Badge
-                              display="flex"
-                              alignItems="center"
-                              justifyContent="center"
-                              colorScheme={badgeColor(
-                                historyItem.trivia.difficulty
-                              )}
-                            >
-                              {historyItem.trivia.difficulty}
-                            </Badge>
-                            <Text marginRight="8px">
-                              {new Date(
-                                historyItem.trivia.createdAt
-                              ).toLocaleDateString()}
-                            </Text>
-                          </Box>
-                        </Box>
-                        <AccordionIcon />
-                      </AccordionButton>
-                    </h2>
-                    <AccordionPanel pb={4} pr={16}>
-                      {historyItem.items.map((item) => (
-                        <>
+          {triviaHistory
+            .filter((item) => item.completed)
+            .map((historyItem) => (
+              <Card
+                display="flex"
+                flexDirection={["column", "column", "row"]}
+                alignItems=""
+                maxW="992px"
+                shadow="xl"
+                w="100%"
+                marginBottom="20px"
+              >
+                <ListItem key={historyItem.trivia._id} w="100%">
+                  <Accordion allowMultiple>
+                    <AccordionItem>
+                      <h2>
+                        <AccordionButton>
                           <Box
+                            as="span"
+                            flex="1"
+                            textAlign="left"
+                            color="gray.500"
                             display="flex"
                             justifyContent="space-between"
-                            gap={4}
-                            margin="20px"
-                            key={item._id}
                           >
-                            <Text
-                              color="gray.400"
-                              display="flex"
-                              fontSize="medium"
-                              dangerouslySetInnerHTML={{
-                                __html: DOMPurify.sanitize(
-                                  item.question.question
-                                ),
-                              }}
-                            />
-                            <Box display="flex" alignItems="center" gap="4">
-                              <Text
-                                fontSize="small"
-                                color="gray.500"
-                                width="146px"
+                            <Box display="flex" alignItems="center" gap="16px">
+                              <Tooltip
+                                label={historyItem.trivia.status}
+                                textTransform="capitalize"
                               >
-                                Answer time: {item.answerTime}{" "}
-                                {item.answerTime > 1 ? "seconds" : "second"}
+                                <Box
+                                  backgroundColor={
+                                    historyItem.trivia.status === "completed"
+                                      ? "green.500"
+                                      : "orange.500"
+                                  }
+                                  borderRadius="full"
+                                  width="10px"
+                                  height="10px"
+                                />
+                              </Tooltip>
+                              <Text>
+                                {CATEGORY_LABELS[historyItem.trivia.category] ||
+                                  "General Knowledge "}
                               </Text>
-
-                              <Tag
-                                size="md"
-                                key={item._id}
-                                borderRadius="full"
-                                variant="solid"
+                            </Box>
+                            <Box display="flex" gap="30px">
+                              <Text>
+                                Score: {historyItem.trivia.score || 0} /{" "}
+                                {historyItem.items.length}
+                              </Text>
+                              <Badge
                                 display="flex"
                                 alignItems="center"
                                 justifyContent="center"
-                                colorScheme={item.isCorrect ? "green" : "red"}
+                                colorScheme={badgeColor(
+                                  historyItem.trivia.difficulty
+                                )}
                               >
-                                <TagLabel>
-                                  <Text fontSize="small" fontWeight="bold">
-                                    {item.isCorrect ? (
-                                      <CheckIcon />
-                                    ) : (
-                                      <SmallCloseIcon />
-                                    )}
-                                  </Text>
-                                </TagLabel>
-                              </Tag>
+                                {historyItem.trivia.difficulty}
+                              </Badge>
+                              <Text marginRight="8px">
+                                {new Date(
+                                  historyItem.trivia.createdAt
+                                ).toLocaleDateString()}
+                              </Text>
                             </Box>
                           </Box>
-                          <Divider orientation="horizontal" />
-                        </>
-                      ))}
-                    </AccordionPanel>
-                  </AccordionItem>
-                </Accordion>
-              </ListItem>
-            </Card>
-          ))}
+                          <AccordionIcon />
+                        </AccordionButton>
+                      </h2>
+                      <AccordionPanel pb={4} pr={16}>
+                        {historyItem.items.map((item) => (
+                          <>
+                            <Box
+                              display="flex"
+                              justifyContent="space-between"
+                              gap={4}
+                              margin="20px"
+                              key={item._id}
+                            >
+                              <Text
+                                color="gray.400"
+                                display="flex"
+                                fontSize="medium"
+                                dangerouslySetInnerHTML={{
+                                  __html: DOMPurify.sanitize(
+                                    item.question.question
+                                  ),
+                                }}
+                              />
+                              <Box display="flex" alignItems="center" gap="4">
+                                <Text
+                                  fontSize="small"
+                                  color="gray.500"
+                                  width="146px"
+                                >
+                                  Answer time: {item.answerTime}{" "}
+                                  {item.answerTime > 1 ? "seconds" : "second"}
+                                </Text>
+
+                                <Tag
+                                  size="md"
+                                  key={item._id}
+                                  borderRadius="full"
+                                  variant="solid"
+                                  display="flex"
+                                  alignItems="center"
+                                  justifyContent="center"
+                                  colorScheme={item.isCorrect ? "green" : "red"}
+                                >
+                                  <TagLabel>
+                                    <Text fontSize="small" fontWeight="bold">
+                                      {item.isCorrect ? (
+                                        <CheckIcon />
+                                      ) : (
+                                        <SmallCloseIcon />
+                                      )}
+                                    </Text>
+                                  </TagLabel>
+                                </Tag>
+                              </Box>
+                            </Box>
+                            <Divider orientation="horizontal" />
+                          </>
+                        ))}
+                      </AccordionPanel>
+                    </AccordionItem>
+                  </Accordion>
+                </ListItem>
+              </Card>
+            ))}
         </List>
       </Container>
     </>
