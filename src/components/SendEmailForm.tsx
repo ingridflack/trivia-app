@@ -23,7 +23,7 @@ export default function SendEmailForm() {
     formState: { errors, isSubmitting },
   } = useForm<SendEmailFormValues>();
   const toast = useToast();
-  const [successufullySent, setSuccessufullySent] = useState(false);
+  const [successfullySent, setSuccessfullySent] = useState(false);
 
   const onSubmit: SubmitHandler<SendEmailFormValues> = async (values) => {
     try {
@@ -38,7 +38,7 @@ export default function SendEmailForm() {
         position: "top-right",
       });
 
-      setSuccessufullySent(true);
+      setSuccessfullySent(true);
     } catch (error) {
       console.log(error);
       toast({
@@ -52,7 +52,7 @@ export default function SendEmailForm() {
     }
   };
 
-  if (successufullySent) {
+  if (successfullySent) {
     return (
       <Text color="gray.600">
         Email sent successfully. Please check your inbox.
