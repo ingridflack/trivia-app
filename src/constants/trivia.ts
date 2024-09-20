@@ -13,3 +13,11 @@ export const GAME_MODE_OPTIONS = [
 ];
 
 export const AMOUNT_OPTIONS = [{ value: 5 }, { value: 10 }, { value: 15 }];
+
+export const CATEGORY_LABELS: { [key: string]: string } = {
+  9: "General Knowledge",
+  10: "Entertainment: Books",
+  31: "Entertainment: Japanese Anime & Manga",
+  19: "Science: Mathematics",
+  14: "Entertainment: Television",
+};

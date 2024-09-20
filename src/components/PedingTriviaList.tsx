@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { PendingTrivia } from "../types/sharedTypes";
 import { badgeColor } from "../helpers/trivia";
+import { CATEGORY_LABELS } from "../constants/trivia";
 
 interface PendingTriviaListProps {
   pendingTriviaList: PendingTrivia[];
@@ -32,7 +33,9 @@ export const PendingTriviaList = ({
               alignItems="center"
               justifyContent="space-between"
             >
-              <Text color="gray.500">Category: {trivia.category}</Text>
+              <Text color="gray.500">
+                {CATEGORY_LABELS[trivia.category] || "General Knowledge"}
+              </Text>
               <Badge colorScheme={badgeColor(trivia.difficulty)}>
                 {trivia.difficulty}
               </Badge>

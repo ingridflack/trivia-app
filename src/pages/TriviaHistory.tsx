@@ -23,14 +23,7 @@ import Header from "../components/Header";
 import DOMPurify from "dompurify";
 import { badgeColor } from "../helpers/trivia";
 import { CheckIcon, SmallCloseIcon } from "@chakra-ui/icons";
-
-const CATEGORY_LABELS: { [key: string]: string } = {
-  9: "General Knowledge",
-  10: "Entertainment: Books",
-  31: "Entertainment: Japanese Anime & Manga",
-  19: "Science: Mathematics",
-  14: "Entertainment: Television",
-};
+import { CATEGORY_LABELS } from "../constants/trivia";
 
 export default function TriviaHistory() {
   const [triviaHistory, setTriviaHistory] = useState<TriviaHistoryInterface[]>(
