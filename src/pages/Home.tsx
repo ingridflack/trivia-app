@@ -73,6 +73,7 @@ export default function Home() {
           <Text>No pending trivia.</Text>
         </Container>
       )}
+
       <Footer />
     </>
   );

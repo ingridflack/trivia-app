@@ -1,0 +1,38 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Footer > should match the snapshot 1`] = `
+<div>
+  <footer
+    class="css-1j3tw1d"
+  >
+    <div
+      class="chakra-stack css-11nd7jy"
+    >
+      <p
+        class="chakra-text css-0"
+      >
+        © 2024 Trivia App
+      </p>
+      <p
+        class="chakra-text css-0"
+      >
+        Developed by Ingrid Flack
+      </p>
+      <div
+        class="chakra-stack css-fhxiwe"
+      >
+        <a
+          href="https://www.linkedin.com/in/ingrid-flack/"
+        >
+          LinkedIn
+        </a>
+        <a
+          href="https://github.com/ingridflack"
+        >
+          GitHub
+        </a>
+      </div>
+    </div>
+  </footer>
+</div>
+`;
