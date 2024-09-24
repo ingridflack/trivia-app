@@ -5,52 +5,33 @@ import {
   FormLabel,
   Input,
   Stack,
-  useToast,
 } from "@chakra-ui/react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import * as AuthService from "../services/authService";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
+import { LoginFormValues } from "../../pages/Login";
+import { BaseSyntheticEvent } from "react";
 
-interface LoginFormValues {
-  email: string;
-  password: string;
+interface LoginFormProps {
+  onSubmit: (
+    e?: BaseSyntheticEvent<object, unknown, unknown> | undefined
+  ) => Promise<void>;
+  errors: FieldErrors<LoginFormValues>;
+  register: UseFormRegister<LoginFormValues>;
+  isSubmitting: boolean;
 }
 
-export default function LoginForm() {
-  const {
-    handleSubmit,
-    register,
-    formState: { errors, isSubmitting },
-  } = useForm<LoginFormValues>();
-  const navigate = useNavigate();
-  const toast = useToast();
-
-  const onSubmit: SubmitHandler<LoginFormValues> = async (values) => {
-    try {
-      const { data } = await AuthService.login(values);
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("userData", JSON.stringify(data.user));
-
-      navigate("/");
-    } catch (error) {
-      console.log(error);
-      toast({
-        title: "An error occurred.",
-        description: "Unable to login.",
-        status: "error",
-        duration: 2000,
-        isClosable: true,
-        position: "top-right",
-      });
-    }
-  };
-
+export default function LoginForm({
+  onSubmit,
+  errors,
+  register,
+  isSubmitting,
+}: LoginFormProps) {
   return (
     <Stack
       as="form"
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={onSubmit}
       gap="16px"
       maxWidth="400px"
+      role="form"
     >
       <FormControl isInvalid={!!errors.email}>
         <FormLabel htmlFor="email">Email address</FormLabel>

@@ -1,8 +1,52 @@
-import { Box, Card, Container, Image, Link, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Card,
+  Container,
+  Image,
+  Link,
+  Text,
+  useToast,
+} from "@chakra-ui/react";
 import LoginForm from "../components/LoginForm";
 import Header from "../components/Header";
+import { useNavigate } from "react-router-dom";
+import { SubmitHandler, useForm } from "react-hook-form";
+import * as AuthService from "../services/authService";
+
+export interface LoginFormValues {
+  email: string;
+  password: string;
+}
 
 export default function Login() {
+  const {
+    handleSubmit,
+    register,
+    formState: { errors, isSubmitting },
+  } = useForm<LoginFormValues>();
+  const navigate = useNavigate();
+  const toast = useToast();
+
+  const onSubmit: SubmitHandler<LoginFormValues> = async (values) => {
+    try {
+      const { data } = await AuthService.login(values);
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("userData", JSON.stringify(data.user));
+
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+      toast({
+        title: "An error occurred.",
+        description: "Unable to login.",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+        position: "top-right",
+      });
+    }
+  };
+
   return (
     <>
       <Header />
@@ -25,7 +69,12 @@ export default function Login() {
             <Text fontSize="xx-large" marginBottom="32px" color="gray.700">
               Sign in
             </Text>
-            <LoginForm />
+            <LoginForm
+              onSubmit={handleSubmit(onSubmit)}
+              errors={errors}
+              isSubmitting={isSubmitting}
+              register={register}
+            />
 
             <Box marginTop="20px" display="flex" justifyContent="space-between">
               <Link
