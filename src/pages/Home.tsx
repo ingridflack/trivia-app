@@ -1,7 +1,7 @@
 import { Box, Button, Container, Image, Text } from "@chakra-ui/react";
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
-import { PendingTriviaList } from "../components/PedingTriviaList";
+import { PendingTriviaList } from "../components/PendingTriviaList";
 import { useEffect, useState } from "react";
 import * as TriviaService from "../services/triviaService";
 import { PendingTrivia } from "../types/sharedTypes";

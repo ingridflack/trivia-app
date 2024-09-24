@@ -8,9 +8,9 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { PendingTrivia } from "../types/sharedTypes";
-import { badgeColor } from "../helpers/trivia";
-import { CATEGORY_LABELS } from "../constants/trivia";
+import { PendingTrivia } from "../../types/sharedTypes";
+import { badgeColor } from "../../helpers/trivia";
+import { CATEGORY_LABELS } from "../../constants/trivia";
 
 interface PendingTriviaListProps {
   pendingTriviaList: PendingTrivia[];

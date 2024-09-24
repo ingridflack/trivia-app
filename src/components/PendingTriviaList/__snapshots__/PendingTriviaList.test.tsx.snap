@@ -1,0 +1,131 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`PendingTriviaList > should match the snapshot 1`] = `
+<div>
+  <div
+    class="chakra-container css-8f57v9"
+  >
+    <p
+      class="chakra-text css-12a0wam"
+    >
+      Pending Trivia
+    </p>
+    <div
+      class="chakra-stack css-17gphto"
+    >
+      <div
+        class="chakra-card css-u646wo"
+        role="group"
+      >
+        <div
+          class="chakra-stack css-1y3f6ad"
+        >
+          <p
+            class="chakra-text css-ax9bdp"
+          >
+            General Knowledge
+          </p>
+          <span
+            class="chakra-badge css-ifsvay"
+          >
+            easy
+          </span>
+        </div>
+        <div
+          class="chakra-avatar__group css-1fv303w"
+          role="group"
+        >
+          <span
+            class="chakra-avatar css-1xczbvk"
+          >
+            <div
+              aria-label="User2"
+              class="chakra-avatar__initials css-0"
+              role="img"
+            >
+              U
+            </div>
+          </span>
+          <span
+            class="chakra-avatar css-1o6hphw"
+          >
+            <div
+              aria-label="User1"
+              class="chakra-avatar__initials css-0"
+              role="img"
+            >
+              U
+            </div>
+          </span>
+        </div>
+        <div
+          class="chakra-stack css-10cxrny"
+        >
+          <a
+            class="chakra-button css-4xx2wk"
+            href="/trivia/66c8f351942dd47ad29d4ba1"
+          >
+            Play!
+          </a>
+        </div>
+      </div>
+      <div
+        class="chakra-card css-u646wo"
+        role="group"
+      >
+        <div
+          class="chakra-stack css-1y3f6ad"
+        >
+          <p
+            class="chakra-text css-ax9bdp"
+          >
+            General Knowledge
+          </p>
+          <span
+            class="chakra-badge css-ifsvay"
+          >
+            medium
+          </span>
+        </div>
+        <div
+          class="chakra-avatar__group css-1fv303w"
+          role="group"
+        >
+          <span
+            class="chakra-avatar css-1xczbvk"
+          >
+            <div
+              aria-label="User4"
+              class="chakra-avatar__initials css-0"
+              role="img"
+            >
+              U
+            </div>
+          </span>
+          <span
+            class="chakra-avatar css-1o6hphw"
+          >
+            <div
+              aria-label="User3"
+              class="chakra-avatar__initials css-0"
+              role="img"
+            >
+              U
+            </div>
+          </span>
+        </div>
+        <div
+          class="chakra-stack css-10cxrny"
+        >
+          <a
+            class="chakra-button css-4xx2wk"
+            href="/trivia/66c8f351942dd47ad29d4ba2"
+          >
+            Play!
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
