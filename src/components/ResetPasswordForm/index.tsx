@@ -5,57 +5,25 @@ import {
   FormLabel,
   Input,
   Stack,
-  useToast,
 } from "@chakra-ui/react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import * as AuthService from "../services/authService";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
+import { ResetPasswordFormValues } from "../../pages/ResetPassword";
 
-import { useNavigate, useParams } from "react-router-dom";
-
-interface ResetPasswordFormValues {
-  password: string;
-  passwordConfirmation: string;
+interface ResetPasswordFormProps {
+  onSubmit: (e?: React.BaseSyntheticEvent) => Promise<void>;
+  errors: FieldErrors<ResetPasswordFormValues>;
+  register: UseFormRegister<ResetPasswordFormValues>;
+  isSubmitting: boolean;
+  token?: string;
 }
 
-export default function ResetPasswordForm() {
-  const {
-    handleSubmit,
-    register,
-    formState: { errors, isSubmitting },
-  } = useForm<ResetPasswordFormValues>();
-  const toast = useToast();
-  const navigate = useNavigate();
-  const { token } = useParams();
-
-  const onSubmit: SubmitHandler<ResetPasswordFormValues> = async (values) => {
-    if (!token) return;
-
-    try {
-      await AuthService.resetPassword(token, values);
-
-      toast({
-        title: "Email sent.",
-        description: "Check your inbox.",
-        status: "success",
-        duration: 2000,
-        isClosable: true,
-        position: "top-right",
-      });
-
-      navigate("/login");
-    } catch (error) {
-      console.log(error);
-      toast({
-        title: "An error occurred.",
-        description: "Unable to login.",
-        status: "error",
-        duration: 2000,
-        isClosable: true,
-        position: "top-right",
-      });
-    }
-  };
-
+export default function ResetPasswordForm({
+  onSubmit,
+  errors,
+  register,
+  isSubmitting,
+  token,
+}: ResetPasswordFormProps) {
   if (!token) {
     return (
       <div>
@@ -67,9 +35,10 @@ export default function ResetPasswordForm() {
   return (
     <Stack
       as="form"
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={onSubmit}
       gap="16px"
       maxWidth="400px"
+      role="form"
     >
       <FormControl isInvalid={!!errors.password}>
         <FormLabel htmlFor="password">Password</FormLabel>

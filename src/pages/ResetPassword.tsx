@@ -1,8 +1,53 @@
-import { Box, Card, Container, Image, Text } from "@chakra-ui/react";
+import { Box, Card, Container, Image, Text, useToast } from "@chakra-ui/react";
 import Header from "../components/Header";
 import ResetPasswordForm from "../components/ResetPasswordForm";
+import { useNavigate, useParams } from "react-router-dom";
+import { SubmitHandler, useForm } from "react-hook-form";
+import * as AuthService from "../services/authService";
+
+export interface ResetPasswordFormValues {
+  password: string;
+  passwordConfirmation: string;
+}
 
 export default function ResetPassword() {
+  const {
+    handleSubmit,
+    register,
+    formState: { errors, isSubmitting },
+  } = useForm<ResetPasswordFormValues>();
+  const toast = useToast();
+  const navigate = useNavigate();
+  const { token } = useParams();
+
+  const onSubmit: SubmitHandler<ResetPasswordFormValues> = async (values) => {
+    if (!token) return;
+
+    try {
+      await AuthService.resetPassword(token, values);
+
+      toast({
+        title: "Email sent.",
+        description: "Check your inbox.",
+        status: "success",
+        duration: 2000,
+        isClosable: true,
+        position: "top-right",
+      });
+
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+      toast({
+        title: "An error occurred.",
+        description: "Unable to login.",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+        position: "top-right",
+      });
+    }
+  };
   return (
     <>
       <Header />
@@ -25,7 +70,12 @@ export default function ResetPassword() {
             <Text fontSize="xx-large" marginBottom="32px" color="gray.700">
               Reset your password
             </Text>
-            <ResetPasswordForm />
+            <ResetPasswordForm
+              onSubmit={handleSubmit(onSubmit)}
+              errors={errors}
+              register={register}
+              isSubmitting={isSubmitting}
+            />
           </Box>
 
           <Image
