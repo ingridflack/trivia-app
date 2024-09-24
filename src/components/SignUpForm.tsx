@@ -13,6 +13,7 @@ import * as AuthService from "../services/authService";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import { AVATAR_OPTIONS } from "../constants/user";
+import { checkPasswordConfirmation } from "../helpers/form";
 
 interface LoginFormValues {
   email: string;
@@ -154,10 +155,7 @@ export default function SignUpForm() {
                 value: 8,
                 message: "Password must be at least 8 characters long",
               },
-              validate: {
-                isEqual: (value, { password }) =>
-                  value !== password ? "The passwords do not match" : true,
-              },
+              validate: { isEqual: checkPasswordConfirmation },
             })}
           />
           <FormErrorMessage>

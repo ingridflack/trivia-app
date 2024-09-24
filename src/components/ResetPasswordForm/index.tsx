@@ -8,8 +8,9 @@ import {
 } from "@chakra-ui/react";
 import { FieldErrors, UseFormRegister } from "react-hook-form";
 import { ResetPasswordFormValues } from "../../pages/ResetPassword";
+import { checkPasswordConfirmation } from "../../helpers/form";
 
-interface ResetPasswordFormProps {
+export interface ResetPasswordFormProps {
   onSubmit: (e?: React.BaseSyntheticEvent) => Promise<void>;
   errors: FieldErrors<ResetPasswordFormValues>;
   register: UseFormRegister<ResetPasswordFormValues>;
@@ -73,10 +74,7 @@ export default function ResetPasswordForm({
               value: 8,
               message: "Password must be at least 8 characters long",
             },
-            validate: {
-              isEqual: (value, { password }) =>
-                value !== password ? "The passwords do not match" : true,
-            },
+            validate: { isEqual: checkPasswordConfirmation },
           })}
         />
         <FormErrorMessage>

@@ -1,86 +1,70 @@
-import {
-  render,
-  fireEvent,
-  waitFor,
-  cleanup,
-  screen,
-} from "@testing-library/react";
+import { FieldErrors } from "react-hook-form";
+import { render, fireEvent, cleanup } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import ResetPasswordForm from ".";
+import ResetPasswordForm, { ResetPasswordFormProps } from ".";
+import { ResetPasswordFormValues } from "../../pages/ResetPassword";
 
-const mockOnSubmit = vi.fn();
-
-const setup = (errors = {}, isSubmitting = false) => {
-  const register = vi.fn();
-
+const setup = (props: Partial<ResetPasswordFormProps> = {}) =>
   render(
     <ResetPasswordForm
-      onSubmit={mockOnSubmit}
-      errors={errors}
-      register={register}
-      isSubmitting={isSubmitting}
+      onSubmit={vi.fn()}
+      errors={{}}
+      register={vi.fn()}
+      isSubmitting={false}
       token="valid-token"
+      {...props}
     />
   );
-};
+
+const formFieldsData = [
+  {
+    errors: { password: { message: "Invalid password" } },
+    name: "password",
+    regex: /invalid password/i,
+  },
+  {
+    errors: {
+      passwordConfirmation: { message: "Invalid password confirmation" },
+    },
+    name: "passwordConfirmation",
+    regex: /invalid password confirmation/i,
+  },
+];
 
 describe("ResetPasswordForm", () => {
-  setup();
-
   afterEach(() => {
     cleanup();
   });
 
   it("should match the snapshot", () => {
-    const { container } = render(
-      <ResetPasswordForm
-        onSubmit={mockOnSubmit}
-        errors={{}}
-        register={vi.fn()}
-        isSubmitting={false}
-      />
-    );
-
+    const { container } = setup();
     expect(container).toMatchSnapshot();
   });
 
-  it("displays password error message when password is invalid", () => {
-    setup({ password: { message: "Invalid password" } });
-    expect(screen.getByText(/invalid password/i)).toBeTruthy();
+  it("should match the snapshot when the token is invalid", () => {
+    const { container } = setup({ token: "" });
+    expect(container).toMatchSnapshot();
   });
 
-  it("displays passwordConfirmation error message when passwordConfirmation is invalid", () => {
-    setup({
-      passwordConfirmation: { message: "Invalid password confirmation" },
+  it("should call onSubmit when the form is submitted", () => {
+    const mockOnSubmit = vi.fn();
+    const { getByRole } = setup({ onSubmit: mockOnSubmit });
+
+    fireEvent.submit(getByRole("form"));
+    expect(mockOnSubmit).toHaveBeenCalled();
+  });
+
+  it("should render the button in loading state when isSubmitting is true", () => {
+    const { getByRole } = setup({ isSubmitting: true });
+    const button = getByRole("button", { name: /reset/i });
+    expect(button).toHaveProperty("disabled", true);
+  });
+
+  formFieldsData.forEach(({ errors, name, regex }) => {
+    it(`should display the ${name} error message when it's invalid`, () => {
+      const props = { errors: errors as FieldErrors<ResetPasswordFormValues> };
+      const { getByText } = setup(props);
+      expect(getByText(regex)).toBeTruthy();
     });
-    expect(screen.getByText(/invalid password confirmation/i)).toBeTruthy();
-  });
-
-  it("calls onSubmit when form is submitted", async () => {
-    setup();
-    fireEvent.submit(screen.getByRole("form"));
-    await waitFor(() => expect(mockOnSubmit).toHaveBeenCalled());
-  });
-
-  it("button is loading when isSubmitting is true", () => {
-    setup({}, true);
-    expect(screen.getByRole("button", { name: /reset/i })).toHaveProperty(
-      "disabled",
-      true
-    );
-  });
-
-  it("should render invalid token message when token is invalid", () => {
-    const { container } = render(
-      <ResetPasswordForm
-        onSubmit={mockOnSubmit}
-        errors={{}}
-        register={vi.fn()}
-        isSubmitting={false}
-        token=""
-      />
-    );
-
-    expect(container).toMatchSnapshot();
   });
 });
