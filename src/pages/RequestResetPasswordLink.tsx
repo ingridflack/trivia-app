@@ -1,5 +1,5 @@
 import { Box, Card, Container, Image, Text, useToast } from "@chakra-ui/react";
-import SendEmailForm from "../components/SendEmailForm";
+import SendEmailForm from "../components/SendEmailForm/SendEmailForm";
 import Header from "../components/Header";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
