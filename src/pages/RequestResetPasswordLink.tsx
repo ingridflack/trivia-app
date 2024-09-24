@@ -1,8 +1,49 @@
-import { Box, Card, Container, Image, Text } from "@chakra-ui/react";
+import { Box, Card, Container, Image, Text, useToast } from "@chakra-ui/react";
 import SendEmailForm from "../components/SendEmailForm";
 import Header from "../components/Header";
+import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import * as AuthService from "../services/authService";
+
+export interface SendEmailFormValues {
+  email: string;
+}
 
 export default function RequestResetPasswordLink() {
+  const {
+    handleSubmit,
+    register,
+    formState: { errors, isSubmitting },
+  } = useForm<SendEmailFormValues>();
+  const toast = useToast();
+  const [successfullySent, setSuccessfullySent] = useState(false);
+
+  const onSubmit: SubmitHandler<SendEmailFormValues> = async (values) => {
+    try {
+      await AuthService.requestResetPasswordLink(values.email);
+
+      toast({
+        title: "Email sent.",
+        description: "Check your inbox.",
+        status: "success",
+        duration: 2000,
+        isClosable: true,
+        position: "top-right",
+      });
+
+      setSuccessfullySent(true);
+    } catch (error) {
+      console.log(error);
+      toast({
+        title: "An error occurred.",
+        description: "Unable to login.",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+        position: "top-right",
+      });
+    }
+  };
   return (
     <>
       <Header />
@@ -25,7 +66,13 @@ export default function RequestResetPasswordLink() {
             <Text fontSize="xx-large" marginBottom="32px" color="gray.700">
               Password recovery
             </Text>
-            <SendEmailForm />
+            <SendEmailForm
+              onSubmit={handleSubmit(onSubmit)}
+              successfullySent={successfullySent}
+              errors={errors}
+              isSubmitting={isSubmitting}
+              register={register}
+            />
           </Box>
 
           <Image

@@ -6,52 +6,26 @@ import {
   Input,
   Stack,
   Text,
-  useToast,
 } from "@chakra-ui/react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import * as AuthService from "../services/authService";
-import { useState } from "react";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
 
-interface SendEmailFormValues {
-  email: string;
+import { SendEmailFormValues } from "../pages/RequestResetPasswordLink";
+
+interface SendEmailFormProps {
+  onSubmit: (e?: React.BaseSyntheticEvent) => Promise<void>;
+  successfullySent: boolean;
+  isSubmitting: boolean;
+  errors: FieldErrors<SendEmailFormValues>;
+  register: UseFormRegister<SendEmailFormValues>;
 }
 
-export default function SendEmailForm() {
-  const {
-    handleSubmit,
-    register,
-    formState: { errors, isSubmitting },
-  } = useForm<SendEmailFormValues>();
-  const toast = useToast();
-  const [successfullySent, setSuccessfullySent] = useState(false);
-
-  const onSubmit: SubmitHandler<SendEmailFormValues> = async (values) => {
-    try {
-      await AuthService.requestResetPasswordLink(values.email);
-
-      toast({
-        title: "Email sent.",
-        description: "Check your inbox.",
-        status: "success",
-        duration: 2000,
-        isClosable: true,
-        position: "top-right",
-      });
-
-      setSuccessfullySent(true);
-    } catch (error) {
-      console.log(error);
-      toast({
-        title: "An error occurred.",
-        description: "Unable to login.",
-        status: "error",
-        duration: 2000,
-        isClosable: true,
-        position: "top-right",
-      });
-    }
-  };
-
+export default function SendEmailForm({
+  onSubmit,
+  successfullySent,
+  isSubmitting,
+  errors,
+  register,
+}: SendEmailFormProps) {
   if (successfullySent) {
     return (
       <Text color="gray.600">
@@ -61,12 +35,7 @@ export default function SendEmailForm() {
   }
 
   return (
-    <Stack
-      as="form"
-      onSubmit={handleSubmit(onSubmit)}
-      gap="16px"
-      maxWidth="400px"
-    >
+    <Stack as="form" onSubmit={onSubmit} gap="16px" maxWidth="400px">
       <FormControl isInvalid={!!errors.email}>
         <FormLabel htmlFor="email">Email address</FormLabel>
         <Input
