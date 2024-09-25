@@ -13,7 +13,7 @@ exports[`SendEmailForm > should match the snapshot 1`] = `
       <label
         class="chakra-form__label css-uvho5g"
         for="email"
-        id="field-:r1:-label"
+        id="field-:r0:-label"
       >
         Email address
       </label>

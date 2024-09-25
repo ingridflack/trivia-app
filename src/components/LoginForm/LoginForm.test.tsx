@@ -1,69 +1,63 @@
-import {
-  render,
-  screen,
-  fireEvent,
-  waitFor,
-  cleanup,
-} from "@testing-library/react";
+import { render, fireEvent, cleanup } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import LoginForm from ".";
+import LoginForm, { LoginFormProps } from ".";
+import { FieldErrors } from "react-hook-form";
+import { LoginFormValues } from "../../pages/Login";
 
-const mockOnSubmit = vi.fn();
-
-const setup = (errors = {}, isSubmitting = false) => {
-  const register = vi.fn();
+const setup = (props: Partial<LoginFormProps> = {}) =>
   render(
     <LoginForm
-      onSubmit={mockOnSubmit}
-      errors={errors}
-      register={register}
-      isSubmitting={isSubmitting}
+      onSubmit={vi.fn()}
+      errors={{}}
+      register={vi.fn()}
+      isSubmitting={false}
+      {...props}
     />
   );
-};
+
+const formFieldsData = [
+  {
+    errors: { email: { message: "Invalid email address" } },
+    name: "email",
+    regex: /invalid email address/i,
+  },
+  {
+    errors: { password: { message: "Invalid password" } },
+    name: "password",
+    regex: /invalid password/i,
+  },
+];
 
 describe("LoginForm", () => {
-  setup();
-
   afterEach(() => {
     cleanup();
   });
 
   it("should match the snapshot", () => {
-    const { container } = render(
-      <LoginForm
-        onSubmit={mockOnSubmit}
-        errors={{}}
-        register={vi.fn()}
-        isSubmitting={false}
-      />
-    );
-
+    const { container } = setup();
     expect(container).toMatchSnapshot();
   });
 
-  it("displays email error message when email is invalid", () => {
-    setup({ email: { message: "Invalid email address" } });
-    expect(screen.getByText(/invalid email address/i)).toBeTruthy();
+  it("should call onSubmit when the form is submitted", () => {
+    const mockOnSubmit = vi.fn();
+    const { getByRole } = setup({ onSubmit: mockOnSubmit });
+
+    fireEvent.submit(getByRole("form"));
+    expect(mockOnSubmit).toHaveBeenCalled();
   });
 
-  it("displays password error message when password is required", () => {
-    setup({ password: { message: "Password is required." } });
-    expect(screen.getByText(/password is required/i)).toBeTruthy();
+  it("should render the button in loading state when isSubmitting is true", () => {
+    const { getByRole } = setup({ isSubmitting: true });
+    const button = getByRole("button", { name: /sign in/i });
+    expect(button).toHaveProperty("disabled", true);
   });
 
-  it("calls onSubmit when form is submitted", async () => {
-    setup();
-    fireEvent.submit(screen.getByRole("form"));
-    await waitFor(() => expect(mockOnSubmit).toHaveBeenCalled());
-  });
-
-  it("button is loading when isSubmitting is true", () => {
-    setup({}, true);
-    expect(screen.getByRole("button", { name: /sign in/i })).toHaveProperty(
-      "disabled",
-      true
-    );
+  formFieldsData.forEach(({ errors, name, regex }) => {
+    it(`should display the ${name} error message when it's invalid`, () => {
+      const props = { errors: errors as FieldErrors<LoginFormValues> };
+      const { getByText } = setup(props);
+      expect(getByText(regex)).toBeTruthy();
+    });
   });
 });

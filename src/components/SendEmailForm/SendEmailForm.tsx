@@ -11,7 +11,7 @@ import { FieldErrors, UseFormRegister } from "react-hook-form";
 
 import { SendEmailFormValues } from "../../pages/RequestResetPasswordLink";
 
-interface SendEmailFormProps {
+export interface SendEmailFormProps {
   onSubmit: (e?: React.BaseSyntheticEvent) => Promise<void>;
   successfullySent: boolean;
   isSubmitting: boolean;

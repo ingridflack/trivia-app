@@ -10,7 +10,7 @@ import { FieldErrors, UseFormRegister } from "react-hook-form";
 import { LoginFormValues } from "../../pages/Login";
 import { BaseSyntheticEvent } from "react";
 
-interface LoginFormProps {
+export interface LoginFormProps {
   onSubmit: (
     e?: BaseSyntheticEvent<object, unknown, unknown> | undefined
   ) => Promise<void>;
