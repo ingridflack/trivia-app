@@ -8,64 +8,34 @@ import {
   Input,
   Stack,
 } from "@chakra-ui/react";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import * as AuthService from "../services/authService";
-import { useNavigate } from "react-router-dom";
-import { useToast } from "@chakra-ui/react";
-import { AVATAR_OPTIONS } from "../constants/user";
-import { checkPasswordConfirmation } from "../helpers/form";
+import {
+  Control,
+  Controller,
+  FieldErrors,
+  UseFormRegister,
+} from "react-hook-form";
 
-interface LoginFormValues {
-  email: string;
-  password: string;
-  name: string;
-  username: string;
-  avatar?: string;
-  passwordConfirmation: string;
+import { AVATAR_OPTIONS } from "../../constants/user";
+import { checkPasswordConfirmation } from "../../helpers/form";
+import { SignUpValues } from "../../pages/SignUp";
+
+export interface SignUpFormProps {
+  onSubmit: (e?: React.BaseSyntheticEvent) => Promise<void>;
+  errors: FieldErrors<SignUpValues>;
+  register: UseFormRegister<SignUpValues>;
+  isSubmitting: boolean;
+  control: Control<SignUpValues, unknown>;
 }
 
-export default function SignUpForm() {
-  const {
-    handleSubmit,
-    register,
-    control,
-    formState: { errors, isSubmitting },
-  } = useForm<LoginFormValues>();
-  const navigate = useNavigate();
-  const toast = useToast();
-
-  const onSubmit: SubmitHandler<LoginFormValues> = async (values) => {
-    try {
-      await AuthService.register({
-        ...values,
-      });
-
-      toast({
-        title: "Account created",
-        description: "Account created successfully. Please log in.",
-        status: "success",
-        duration: 5000,
-        isClosable: true,
-        position: "top-right",
-      });
-
-      navigate("/login");
-    } catch (error) {
-      console.log(error);
-
-      toast({
-        title: "Oops!",
-        description: "Something went wrong. Try again.",
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-        position: "top-right",
-      });
-    }
-  };
-
+export default function SignUpForm({
+  onSubmit,
+  errors,
+  register,
+  isSubmitting,
+  control,
+}: SignUpFormProps) {
   return (
-    <Stack as="form" onSubmit={handleSubmit(onSubmit)} gap="16px">
+    <Stack as="form" onSubmit={onSubmit} gap="16px" role="form">
       <FormControl isInvalid={!!errors.email}>
         <FormLabel htmlFor="email">Email address</FormLabel>
         <Input
