@@ -21,3 +21,31 @@ export const CATEGORY_LABELS: { [key: string]: string } = {
   19: "Science: Mathematics",
   14: "Entertainment: Television",
 };
+
+export const CATEGORY_CARDS_DATA = [
+  {
+    title: "General Knowledge",
+    icon: "/src/assets/general-knowledge.svg",
+    color: "#abe885",
+  },
+  {
+    title: "Books",
+    icon: "/src/assets/books.svg",
+    color: "#c88ab3",
+  },
+  {
+    title: "Japanese Anime & Manga",
+    icon: "/src/assets/japanese.svg",
+    color: "#ffaf65",
+  },
+  {
+    title: "Mathematics",
+    icon: "/src/assets/math.svg",
+    color: "#77ccf4",
+  },
+  {
+    title: "Television",
+    icon: "/src/assets/tv.svg",
+    color: "#fe9295",
+  },
+];
