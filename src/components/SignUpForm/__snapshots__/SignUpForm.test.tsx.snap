@@ -1,0 +1,246 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SignUpForm > should match the snapshot 1`] = `
+<div>
+  <form
+    class="chakra-stack css-yd8sa2"
+    role="form"
+  >
+    <div
+      class="chakra-form-control css-0"
+      role="group"
+    >
+      <label
+        class="chakra-form__label css-uvho5g"
+        for="email"
+        id="field-:r0:-label"
+      >
+        Email address
+      </label>
+      <input
+        class="chakra-input css-0"
+        id="email"
+        placeholder="Email"
+        type="email"
+      />
+    </div>
+    <div
+      class="chakra-stack css-lgk7oi"
+    >
+      <div
+        class="chakra-form-control css-0"
+        role="group"
+      >
+        <label
+          class="chakra-form__label css-uvho5g"
+          for="name"
+          id="field-:r1:-label"
+        >
+          Name
+        </label>
+        <input
+          class="chakra-input css-0"
+          id="name"
+          placeholder="Name"
+          type="text"
+        />
+      </div>
+      <div
+        class="chakra-form-control css-0"
+        role="group"
+      >
+        <label
+          class="chakra-form__label css-uvho5g"
+          for="username"
+          id="field-:r2:-label"
+        >
+          Username
+        </label>
+        <input
+          class="chakra-input css-0"
+          id="username"
+          placeholder="Username"
+          type="text"
+        />
+      </div>
+    </div>
+    <div
+      class="chakra-stack css-lgk7oi"
+    >
+      <div
+        class="chakra-form-control css-0"
+        role="group"
+      >
+        <label
+          class="chakra-form__label css-uvho5g"
+          for="password"
+          id="field-:r3:-label"
+        >
+          Password
+        </label>
+        <input
+          class="chakra-input css-0"
+          id="password"
+          placeholder="Password"
+          type="password"
+        />
+      </div>
+      <div
+        class="chakra-form-control css-0"
+        role="group"
+      >
+        <label
+          class="chakra-form__label css-uvho5g"
+          for="passwordConfirmation"
+          id="field-:r4:-label"
+        >
+          Password confirmation
+        </label>
+        <input
+          class="chakra-input css-0"
+          id="passwordConfirmation"
+          placeholder="Password Confirmation"
+          type="password"
+        />
+      </div>
+    </div>
+    <div
+      class="chakra-form-control css-0"
+      role="group"
+    >
+      <label
+        class="chakra-form__label css-uvho5g"
+        for="avatar"
+        id="field-:r5:-label"
+      >
+        Avatar
+      </label>
+      <div
+        class="chakra-avatar__group css-1rs5v3u"
+        role="group"
+      >
+        <span
+          class="chakra-avatar css-1ggfo5f"
+        >
+          <svg
+            aria-label=" avatar"
+            class="chakra-avatar__svg css-16ite8i"
+            role="img"
+            viewBox="0 0 128 128"
+          >
+            <path
+              d="M103,102.1388 C93.094,111.92 79.3504,118 64.1638,118 C48.8056,118 34.9294,111.768 25,101.7892 L25,95.2 C25,86.8096 31.981,80 40.6,80 L87.4,80 C96.019,80 103,86.8096 103,95.2 L103,102.1388 Z"
+              fill="currentColor"
+            />
+            <path
+              d="M63.9961647,24 C51.2938136,24 41,34.2938136 41,46.9961647 C41,59.7061864 51.2938136,70 63.9961647,70 C76.6985159,70 87,59.7061864 87,46.9961647 C87,34.2938136 76.6985159,24 63.9961647,24"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+        <span
+          class="chakra-avatar css-1ggfo5f"
+        >
+          <svg
+            aria-label=" avatar"
+            class="chakra-avatar__svg css-16ite8i"
+            role="img"
+            viewBox="0 0 128 128"
+          >
+            <path
+              d="M103,102.1388 C93.094,111.92 79.3504,118 64.1638,118 C48.8056,118 34.9294,111.768 25,101.7892 L25,95.2 C25,86.8096 31.981,80 40.6,80 L87.4,80 C96.019,80 103,86.8096 103,95.2 L103,102.1388 Z"
+              fill="currentColor"
+            />
+            <path
+              d="M63.9961647,24 C51.2938136,24 41,34.2938136 41,46.9961647 C41,59.7061864 51.2938136,70 63.9961647,70 C76.6985159,70 87,59.7061864 87,46.9961647 C87,34.2938136 76.6985159,24 63.9961647,24"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+        <span
+          class="chakra-avatar css-1ggfo5f"
+        >
+          <svg
+            aria-label=" avatar"
+            class="chakra-avatar__svg css-16ite8i"
+            role="img"
+            viewBox="0 0 128 128"
+          >
+            <path
+              d="M103,102.1388 C93.094,111.92 79.3504,118 64.1638,118 C48.8056,118 34.9294,111.768 25,101.7892 L25,95.2 C25,86.8096 31.981,80 40.6,80 L87.4,80 C96.019,80 103,86.8096 103,95.2 L103,102.1388 Z"
+              fill="currentColor"
+            />
+            <path
+              d="M63.9961647,24 C51.2938136,24 41,34.2938136 41,46.9961647 C41,59.7061864 51.2938136,70 63.9961647,70 C76.6985159,70 87,59.7061864 87,46.9961647 C87,34.2938136 76.6985159,24 63.9961647,24"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+        <span
+          class="chakra-avatar css-1ggfo5f"
+        >
+          <svg
+            aria-label=" avatar"
+            class="chakra-avatar__svg css-16ite8i"
+            role="img"
+            viewBox="0 0 128 128"
+          >
+            <path
+              d="M103,102.1388 C93.094,111.92 79.3504,118 64.1638,118 C48.8056,118 34.9294,111.768 25,101.7892 L25,95.2 C25,86.8096 31.981,80 40.6,80 L87.4,80 C96.019,80 103,86.8096 103,95.2 L103,102.1388 Z"
+              fill="currentColor"
+            />
+            <path
+              d="M63.9961647,24 C51.2938136,24 41,34.2938136 41,46.9961647 C41,59.7061864 51.2938136,70 63.9961647,70 C76.6985159,70 87,59.7061864 87,46.9961647 C87,34.2938136 76.6985159,24 63.9961647,24"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+        <span
+          class="chakra-avatar css-1ggfo5f"
+        >
+          <svg
+            aria-label=" avatar"
+            class="chakra-avatar__svg css-16ite8i"
+            role="img"
+            viewBox="0 0 128 128"
+          >
+            <path
+              d="M103,102.1388 C93.094,111.92 79.3504,118 64.1638,118 C48.8056,118 34.9294,111.768 25,101.7892 L25,95.2 C25,86.8096 31.981,80 40.6,80 L87.4,80 C96.019,80 103,86.8096 103,95.2 L103,102.1388 Z"
+              fill="currentColor"
+            />
+            <path
+              d="M63.9961647,24 C51.2938136,24 41,34.2938136 41,46.9961647 C41,59.7061864 51.2938136,70 63.9961647,70 C76.6985159,70 87,59.7061864 87,46.9961647 C87,34.2938136 76.6985159,24 63.9961647,24"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+        <span
+          class="chakra-avatar css-1ggfo5f"
+        >
+          <svg
+            aria-label=" avatar"
+            class="chakra-avatar__svg css-16ite8i"
+            role="img"
+            viewBox="0 0 128 128"
+          >
+            <path
+              d="M103,102.1388 C93.094,111.92 79.3504,118 64.1638,118 C48.8056,118 34.9294,111.768 25,101.7892 L25,95.2 C25,86.8096 31.981,80 40.6,80 L87.4,80 C96.019,80 103,86.8096 103,95.2 L103,102.1388 Z"
+              fill="currentColor"
+            />
+            <path
+              d="M63.9961647,24 C51.2938136,24 41,34.2938136 41,46.9961647 C41,59.7061864 51.2938136,70 63.9961647,70 C76.6985159,70 87,59.7061864 87,46.9961647 C87,34.2938136 76.6985159,24 63.9961647,24"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+      </div>
+    </div>
+    <button
+      class="chakra-button css-uxt1e8"
+      type="submit"
+    >
+      Sign Up
+    </button>
+  </form>
+</div>
+`;
