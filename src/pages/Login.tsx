@@ -12,6 +12,7 @@ import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as AuthService from "../services/authService";
+import useAuth from "../hooks/useAuth";
 
 export interface LoginFormValues {
   email: string;
@@ -26,12 +27,13 @@ export default function Login() {
   } = useForm<LoginFormValues>();
   const navigate = useNavigate();
   const toast = useToast();
+  const { saveUserData } = useAuth();
 
   const onSubmit: SubmitHandler<LoginFormValues> = async (values) => {
     try {
       const { data } = await AuthService.login(values);
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("userData", JSON.stringify(data.user));
+
+      saveUserData(data);
 
       navigate("/");
     } catch (error) {

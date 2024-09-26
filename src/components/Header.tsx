@@ -1,28 +1,14 @@
 import { Avatar, Box, Container, Stack, Text } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
-interface UserData {
-  username: string;
-  avatar?: string;
-}
+import useAuth from "../hooks/useAuth";
 
 export default function Header() {
   const navigate = useNavigate();
 
-  const [userData, setUserData] = useState<UserData | null>(null);
-
-  useEffect(() => {
-    const userData = localStorage.getItem("userData");
-
-    if (!userData) return;
-
-    setUserData(JSON.parse(userData));
-  }, []);
+  const { userData, clearUserData } = useAuth();
 
   const handleLogout = () => {
-    localStorage.removeItem("userData");
-    setUserData(null);
+    clearUserData();
 
     navigate("/login");
   };

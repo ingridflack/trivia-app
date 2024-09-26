@@ -21,6 +21,7 @@ import {
 } from "../constants/trivia";
 import AsyncSelect from "react-select/async";
 import { MultiValue } from "react-select";
+import useAuth from "../hooks/useAuth";
 
 interface GameConfigValues {
   category: string;
@@ -51,6 +52,7 @@ export default function TriviaConfig() {
   const [invitedUsers, setInvitedUsers] = useState<
     MultiValue<UserSearchSelectOption>
   >([]);
+  const { userData } = useAuth();
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -99,8 +101,7 @@ export default function TriviaConfig() {
   };
 
   const handleLoadUsers = async (username: string) => {
-    const userData = localStorage.getItem("userData");
-    const currentUserId = userData ? JSON.parse(userData).id : "";
+    const currentUserId = userData ? userData.id : "";
 
     const { data } = await UserService.search({ username });
     return data
