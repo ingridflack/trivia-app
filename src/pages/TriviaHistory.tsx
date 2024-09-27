@@ -9,21 +9,18 @@ import {
   AccordionPanel,
   Badge,
   Box,
-  Card,
   Container,
-  Divider,
-  List,
-  ListItem,
-  Tag,
-  TagLabel,
+  Grid,
+  Heading,
   Text,
   Tooltip,
 } from "@chakra-ui/react";
 import Header from "../components/Header";
 import DOMPurify from "dompurify";
 import { badgeColor } from "../helpers/trivia";
-import { CheckIcon, SmallCloseIcon } from "@chakra-ui/icons";
-import { CATEGORY_LABELS } from "../constants/trivia";
+import { CheckIcon, CloseIcon } from "@chakra-ui/icons";
+import { TRIVIA_CATEGORIES } from "../constants/trivia";
+import { Footer } from "../components/Footer";
 
 export default function TriviaHistory() {
   const [triviaHistory, setTriviaHistory] = useState<TriviaHistoryInterface[]>(
@@ -44,152 +41,117 @@ export default function TriviaHistory() {
     <>
       <Header />
 
-      <Container marginTop="32px">
-        <Text color="gray.700" fontSize="3xl">
-          Game History
-        </Text>
+      <Container padding={{ base: "20px 0", md: "80px 0 120px" }}>
+        <Box as="header" marginBottom="40px">
+          <Heading fontSize="3xl">Game History</Heading>
+        </Box>
 
-        <List
-          w="100%"
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-        >
+        <Accordion allowMultiple>
           {triviaHistory
             .filter((item) => item.completed)
             .map((historyItem) => (
-              <Card
-                display="flex"
-                flexDirection={["column", "column", "row"]}
-                alignItems=""
-                maxW="992px"
-                shadow="xl"
-                w="100%"
-                marginBottom="20px"
+              <AccordionItem
+                key={historyItem.trivia._id}
+                backgroundColor="white"
+                marginBottom="10px"
               >
-                <ListItem key={historyItem.trivia._id} w="100%">
-                  <Accordion allowMultiple>
-                    <AccordionItem>
-                      <h2>
-                        <AccordionButton>
-                          <Box
-                            as="span"
-                            flex="1"
-                            textAlign="left"
-                            color="gray.500"
-                            display="flex"
-                            justifyContent="space-between"
-                          >
-                            <Box display="flex" alignItems="center" gap="16px">
-                              <Tooltip
-                                label={historyItem.trivia.status}
-                                textTransform="capitalize"
-                              >
-                                <Box
-                                  backgroundColor={
-                                    historyItem.trivia.status === "completed"
-                                      ? "green.500"
-                                      : "orange.500"
-                                  }
-                                  borderRadius="full"
-                                  width="10px"
-                                  height="10px"
-                                />
-                              </Tooltip>
-                              <Text>
-                                {CATEGORY_LABELS[historyItem.trivia.category] ||
-                                  "General Knowledge "}
-                              </Text>
-                            </Box>
-                            <Box display="flex" gap="30px">
-                              <Text>
-                                Score: {historyItem.trivia.score || 0} /{" "}
-                                {historyItem.items.length}
-                              </Text>
-                              <Badge
-                                display="flex"
-                                alignItems="center"
-                                justifyContent="center"
-                                colorScheme={badgeColor(
-                                  historyItem.trivia.difficulty
-                                )}
-                              >
-                                {historyItem.trivia.difficulty}
-                              </Badge>
-                              <Text marginRight="8px">
-                                {new Date(
-                                  historyItem.trivia.createdAt
-                                ).toLocaleDateString()}
-                              </Text>
-                            </Box>
-                          </Box>
-                          <AccordionIcon />
-                        </AccordionButton>
-                      </h2>
-                      <AccordionPanel pb={4} pr={16}>
-                        {historyItem.items.map((item) => (
-                          <>
-                            <Box
-                              display="flex"
-                              justifyContent="space-between"
-                              gap={4}
-                              margin="20px"
-                              key={item._id}
-                            >
-                              <Text
-                                color="gray.400"
-                                display="flex"
-                                fontSize="medium"
-                                dangerouslySetInnerHTML={{
-                                  __html: DOMPurify.sanitize(
-                                    item.question.question
-                                  ),
-                                }}
-                              />
-                              <Box display="flex" alignItems="center" gap="4">
-                                <Text
-                                  fontSize="small"
-                                  color="gray.500"
-                                  width="146px"
-                                >
-                                  Answer time: {item.answerTime}{" "}
-                                  {item.answerTime > 1 ? "seconds" : "second"}
-                                </Text>
+                <AccordionButton>
+                  <Box
+                    as="span"
+                    flex="1"
+                    textAlign="left"
+                    color="gray.500"
+                    display="flex"
+                    justifyContent="space-between"
+                  >
+                    <Box display="flex" alignItems="center" gap="16px">
+                      <Tooltip
+                        label={historyItem.trivia.status}
+                        textTransform="capitalize"
+                      >
+                        <Box
+                          backgroundColor={
+                            historyItem.trivia.status === "completed"
+                              ? "green.500"
+                              : "orange.500"
+                          }
+                          borderRadius="full"
+                          width="10px"
+                          height="10px"
+                        />
+                      </Tooltip>
+                      <Text>
+                        {TRIVIA_CATEGORIES[Number(historyItem.trivia.category)]
+                          ?.title || "General Knowledge "}
+                      </Text>
+                    </Box>
 
-                                <Tag
-                                  size="md"
-                                  key={item._id}
-                                  borderRadius="full"
-                                  variant="solid"
-                                  display="flex"
-                                  alignItems="center"
-                                  justifyContent="center"
-                                  colorScheme={item.isCorrect ? "green" : "red"}
-                                >
-                                  <TagLabel>
-                                    <Text fontSize="small" fontWeight="bold">
-                                      {item.isCorrect ? (
-                                        <CheckIcon />
-                                      ) : (
-                                        <SmallCloseIcon />
-                                      )}
-                                    </Text>
-                                  </TagLabel>
-                                </Tag>
-                              </Box>
-                            </Box>
-                            <Divider orientation="horizontal" />
-                          </>
-                        ))}
-                      </AccordionPanel>
-                    </AccordionItem>
-                  </Accordion>
-                </ListItem>
-              </Card>
+                    <Box display="flex" alignItems="center" gap="30px">
+                      <Text fontSize="sm">
+                        Score: {historyItem.trivia.score || 0} /{" "}
+                        {historyItem.items.length}
+                      </Text>
+                      <Badge
+                        display="flex"
+                        alignItems="center"
+                        justifyContent="center"
+                        colorScheme={badgeColor(historyItem.trivia.difficulty)}
+                      >
+                        {historyItem.trivia.difficulty}
+                      </Badge>
+                      <Text fontSize="sm">
+                        {new Date(
+                          historyItem.trivia.createdAt
+                        ).toLocaleDateString()}
+                      </Text>
+                      <AccordionIcon />
+                    </Box>
+                  </Box>
+                </AccordionButton>
+                <AccordionPanel padding={0}>
+                  <Grid
+                    templateColumns="repeat(2, 1fr)"
+                    borderTop="1px solid var(--chakra-colors-gray-100)"
+                  >
+                    {historyItem.items.map((item) => (
+                      <Box
+                        display="flex"
+                        alignItems="flex-start"
+                        justifyContent="space-between"
+                        gap={4}
+                        padding="20px"
+                        borderBottom="1px solid var(--chakra-colors-gray-100)"
+                        key={item._id}
+                        _odd={{
+                          borderRight:
+                            "1px solid var(--chakra-colors-gray-100)",
+                        }}
+                      >
+                        <Text
+                          color="gray.500"
+                          display="flex"
+                          fontSize="medium"
+                          dangerouslySetInnerHTML={{
+                            __html: DOMPurify.sanitize(item.question.question),
+                          }}
+                        />
+
+                        <Text
+                          fontSize="sm"
+                          color={item.isCorrect ? "green.500" : "red.500"}
+                        >
+                          {item.isCorrect ? <CheckIcon /> : <CloseIcon />}
+                        </Text>
+                      </Box>
+                    ))}
+                  </Grid>
+                </AccordionPanel>
+              </AccordionItem>
             ))}
-        </List>
+        </Accordion>
       </Container>
+
+      <Footer />
     </>
   );
 }

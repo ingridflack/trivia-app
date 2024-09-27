@@ -1,15 +1,10 @@
 import axios from "../config/api";
 import {
-  Category,
   ApiResponse,
   TriviaHistory,
   CreateTriviaBody,
   PendingTrivia,
 } from "../types/sharedTypes";
-
-interface CategoryResponse extends ApiResponse {
-  categories: Category[];
-}
 
 interface AnswerQuestionParams {
   answer: string;
@@ -48,9 +43,6 @@ interface TriviaHistoryResponse extends ApiResponse {
 interface PendingTriviaResponse extends ApiResponse {
   pendingTrivia: PendingTrivia[];
 }
-
-export const getCategories = () =>
-  axios.get<CategoryResponse>("/trivia/categories");
 
 export const createTrivia = (body: CreateTriviaBody) =>
   axios.post<TriviaResponse>("/trivia", body);

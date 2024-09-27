@@ -7,7 +7,7 @@ import * as TriviaService from "../services/triviaService";
 import { CreateTriviaBody, PendingTrivia } from "../types/sharedTypes";
 import { Footer } from "../components/Footer";
 import useAuth from "../hooks/useAuth";
-import { CATEGORY_CARDS_DATA } from "../constants/trivia";
+import { TRIVIA_CATEGORIES } from "../constants/trivia";
 import { CategoryCard } from "../components/CategoryCard";
 
 export default function Home() {
@@ -84,7 +84,7 @@ export default function Home() {
         </Container>
       </Box>
 
-      {userData && pendingTrivia.length && (
+      {userData && !!pendingTrivia.length && (
         <Container padding={{ base: "20px 0", md: "80px 0 120px" }}>
           <Box as="header" marginBottom="40px">
             <Heading fontSize="3xl">Pending trivias</Heading>
@@ -101,10 +101,10 @@ export default function Home() {
       >
         <Box as="header" textAlign="center" marginBottom="60px">
           <Heading fontSize={{ base: "3xl", md: "5xl" }} marginBottom="20px">
-            Prove your smarts
+            Show off your knowledge
           </Heading>
           <Text fontSize={{ base: "md", md: "xl" }}>
-            Complete a quiz and show your friends you're in the know.
+            Take a quiz and impress your friends with what you know!
           </Text>
         </Box>
 
@@ -114,7 +114,7 @@ export default function Home() {
           gap="16px"
           padding={{ base: "40px 20px", md: "0 0" }}
         >
-          {CATEGORY_CARDS_DATA.map((category) => (
+          {Object.values(TRIVIA_CATEGORIES).map((category) => (
             <CategoryCard
               title={category.title}
               icon={category.icon}

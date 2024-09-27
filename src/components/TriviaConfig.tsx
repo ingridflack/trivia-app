@@ -9,15 +9,16 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import * as TriviaService from "../services/triviaService";
 import * as UserService from "../services/userService";
-import { Category, UserSearchSelectOption } from "../types/sharedTypes";
+import { UserSearchSelectOption } from "../types/sharedTypes";
 import { useNavigate } from "react-router-dom";
 import {
   AMOUNT_OPTIONS,
   DIFFICULTY_OPTIONS,
   GAME_MODE_OPTIONS,
+  TRIVIA_CATEGORIES,
 } from "../constants/trivia";
 import AsyncSelect from "react-select/async";
 import { MultiValue } from "react-select";
@@ -38,14 +39,12 @@ export default function TriviaConfig() {
     formState: { errors, isSubmitting },
   } = useForm<GameConfigValues>({
     defaultValues: {
-      category: "any",
       difficulty: "any",
       type: "any",
       amount: 5,
     },
   });
 
-  const [categories, setCategories] = useState<Category[]>([]);
   const [gameMode, setGameMode] = useState("single");
   const navigate = useNavigate();
   const toast = useToast();
@@ -53,15 +52,6 @@ export default function TriviaConfig() {
     MultiValue<UserSearchSelectOption>
   >([]);
   const { userData } = useAuth();
-
-  useEffect(() => {
-    const fetchCategories = async () => {
-      const { data } = await TriviaService.getCategories();
-      setCategories(data.categories);
-    };
-
-    fetchCategories();
-  }, []);
 
   const onSubmit: SubmitHandler<GameConfigValues> = async (values) => {
     try {
@@ -131,10 +121,9 @@ export default function TriviaConfig() {
               required: "Category is required.",
             })}
           >
-            <option value="any">Any category</option>
-            {categories.map((category) => (
-              <option key={category.id} value={category.id}>
-                {category.name}
+            {Object.entries(TRIVIA_CATEGORIES).map(([id, { title }]) => (
+              <option key={id} value={id}>
+                {title}
               </option>
             ))}
           </Select>

@@ -2,14 +2,17 @@ import {
   Avatar,
   AvatarGroup,
   Badge,
+  Box,
   Button,
   Card,
+  Image,
   Stack,
   Text,
 } from "@chakra-ui/react";
 import { PendingTrivia } from "../../types/sharedTypes";
 import { badgeColor } from "../../helpers/trivia";
-import { CATEGORY_LABELS } from "../../constants/trivia";
+import { TRIVIA_CATEGORIES } from "../../constants/trivia";
+import { Link } from "react-router-dom";
 
 interface PendingTriviaListProps {
   pendingTriviaList: PendingTrivia[];
@@ -19,62 +22,77 @@ export const PendingTriviaList = ({
   pendingTriviaList,
 }: PendingTriviaListProps) => {
   return (
-    <Stack display="grid" gridTemplateColumns="repeat(4, 1fr)">
+    <Stack display="grid" gap="16px" gridTemplateColumns="repeat(4, 1fr)">
       {pendingTriviaList.map(({ trivia }) => (
-        <Card key={trivia._id} padding="16px" role="group">
+        <Card key={trivia._id}>
+          <Badge
+            colorScheme={badgeColor(trivia.difficulty)}
+            position="absolute"
+            top="4px"
+            right="4px"
+            size="xs"
+            fontSize="10px"
+          >
+            {trivia.difficulty}
+          </Badge>
+
           <Stack
             direction="row"
+            gap="10px"
+            padding="20px"
             alignItems="center"
-            justifyContent="space-between"
+            flex="1"
           >
-            <Text color="gray.500">
-              {CATEGORY_LABELS[trivia.category] || "General Knowledge"}
-            </Text>
-            <Badge colorScheme={badgeColor(trivia.difficulty)}>
-              {trivia.difficulty}
-            </Badge>
-          </Stack>
-
-          <AvatarGroup
-            size="sm"
-            display="flex"
-            marginTop="12px"
-            justifyContent="end"
-          >
-            {trivia.users.map((user) => (
-              <Avatar
-                key={user._id}
-                name={user.username}
-                src={user.avatar ? user.avatar : ""}
-                width="40px"
-                height="40px"
-                borderColor="white"
-                borderWidth={3}
-                bg="purple.500"
-                padding={2}
-                color={"white"}
+            <Box
+              width="50px"
+              height="50px"
+              borderRadius="full"
+              backgroundColor={
+                TRIVIA_CATEGORIES[Number(trivia.category)]?.color
+              }
+              flexShrink={0}
+            >
+              <Image
+                src={TRIVIA_CATEGORIES[Number(trivia.category)]?.icon}
+                alt={TRIVIA_CATEGORIES[Number(trivia.category)]?.title}
               />
-            ))}
-          </AvatarGroup>
+            </Box>
 
-          <Stack
-            alignItems="center"
-            justifyContent="center"
-            position="absolute"
-            w="100%"
-            h="100%"
-            left="0"
-            top="0"
-            opacity="0"
-            backgroundColor="rgba(0, 0, 0, 0.3)"
-            _groupHover={{ opacity: 1 }}
-            transition={"opacity 0.3s"}
-            borderRadius="6px"
-          >
-            <Button as="a" href={`/trivia/${trivia._id}`}>
-              Play!
-            </Button>
+            <Box>
+              <Text fontSize="md" fontWeight="bold">
+                {TRIVIA_CATEGORIES[Number(trivia.category)]?.title}
+              </Text>
+            </Box>
           </Stack>
+
+          <Button
+            as={Link}
+            to={`/trivia/${trivia._id}`}
+            backgroundColor={TRIVIA_CATEGORIES[Number(trivia.category)]?.color}
+            borderRadius="0 0 6px 6px"
+            size="lg"
+            color="black.600"
+            fontWeight="700"
+            transition="filter 300ms ease"
+            _hover={{
+              backgroundColor:
+                TRIVIA_CATEGORIES[Number(trivia.category)]?.color,
+              filter: "brightness(90%)",
+            }}
+          >
+            Join
+            <AvatarGroup size="xs" marginLeft="10px" max={3}>
+              {trivia.users.map((user) => (
+                <Avatar
+                  key={user._id}
+                  name={user.username}
+                  src={user.avatar ? user.avatar : ""}
+                  bg="purple.500"
+                  padding={1}
+                />
+              ))}
+            </AvatarGroup>
+          </Button>
         </Card>
       ))}
     </Stack>

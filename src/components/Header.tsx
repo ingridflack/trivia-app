@@ -9,8 +9,7 @@ export default function Header() {
 
   const handleLogout = () => {
     clearUserData();
-
-    navigate("/login");
+    navigate("/");
   };
 
   return (
