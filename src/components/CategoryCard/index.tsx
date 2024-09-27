@@ -1,17 +1,20 @@
 import { Box, Button, Card, Image, Text } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
 
 interface CategoryCardProps {
   title: string;
   icon: string;
   color: string;
+  onCardClick?: () => void;
 }
 
-export const CategoryCard = ({ title, icon, color }: CategoryCardProps) => {
+export const CategoryCard = ({
+  title,
+  icon,
+  color,
+  onCardClick,
+}: CategoryCardProps) => {
   return (
     <Card
-      as={Link}
-      to="/trivia/config"
       key={icon}
       position="relative"
       height="200px"
@@ -23,6 +26,7 @@ export const CategoryCard = ({ title, icon, color }: CategoryCardProps) => {
       transition="transform 300ms ease"
       _hover={{ transform: "scale(1.1)" }}
       marginTop="40px"
+      onClick={onCardClick}
     >
       <Box
         width="100px"

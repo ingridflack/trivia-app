@@ -12,6 +12,7 @@ import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as AuthService from "../services/authService";
+import * as TriviaService from "../services/triviaService";
 import useAuth from "../hooks/useAuth";
 
 export interface LoginFormValues {
@@ -34,6 +35,19 @@ export default function Login() {
       const { data } = await AuthService.login(values);
 
       saveUserData(data);
+
+      const triviaConfig = localStorage.getItem("triviaConfig");
+
+      if (triviaConfig) {
+        const { data } = await TriviaService.createTrivia(
+          JSON.parse(triviaConfig)
+        );
+
+        navigate(`/trivia/${data.triviaId}`);
+
+        localStorage.removeItem("triviaConfig");
+        return;
+      }
 
       navigate("/");
     } catch (error) {

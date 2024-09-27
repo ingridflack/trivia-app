@@ -27,25 +27,30 @@ export const CATEGORY_CARDS_DATA = [
     title: "General Knowledge",
     icon: "/src/assets/general-knowledge.svg",
     color: "#abe885",
+    params: { category: "9", difficulty: "any", type: "any", amount: 10 },
   },
   {
     title: "Books",
     icon: "/src/assets/books.svg",
     color: "#c88ab3",
+    params: { category: "10", difficulty: "any", type: "any", amount: 10 },
   },
   {
     title: "Japanese Anime & Manga",
     icon: "/src/assets/japanese.svg",
     color: "#ffaf65",
+    params: { category: "31", difficulty: "any", type: "any", amount: 10 },
   },
   {
     title: "Mathematics",
     icon: "/src/assets/math.svg",
     color: "#77ccf4",
+    params: { category: "19", difficulty: "any", type: "any", amount: 10 },
   },
   {
     title: "Television",
     icon: "/src/assets/tv.svg",
     color: "#fe9295",
+    params: { category: "14", difficulty: "any", type: "any", amount: 10 },
   },
 ];

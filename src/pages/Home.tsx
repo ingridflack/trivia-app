@@ -1,10 +1,10 @@
 import { Box, Button, Container, Heading, Image, Text } from "@chakra-ui/react";
 import Header from "../components/Header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { PendingTriviaList } from "../components/PendingTriviaList";
 import { useEffect, useState } from "react";
 import * as TriviaService from "../services/triviaService";
-import { PendingTrivia } from "../types/sharedTypes";
+import { CreateTriviaBody, PendingTrivia } from "../types/sharedTypes";
 import { Footer } from "../components/Footer";
 import useAuth from "../hooks/useAuth";
 import { CATEGORY_CARDS_DATA } from "../constants/trivia";
@@ -13,6 +13,7 @@ import { CategoryCard } from "../components/CategoryCard";
 export default function Home() {
   const [pendingTrivia, setPendingTrivia] = useState<PendingTrivia[]>([]);
   const { userData } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPendingTrivia = async () => {
@@ -26,6 +27,22 @@ export default function Home() {
 
     fetchPendingTrivia();
   }, []);
+
+  const handleCategoryCardClick = async (params: CreateTriviaBody) => {
+    try {
+      if (!userData) {
+        localStorage.setItem("triviaConfig", JSON.stringify(params));
+        navigate("/login");
+        return;
+      }
+
+      const { data } = await TriviaService.createTrivia(params);
+
+      navigate(`/trivia/${data.triviaId}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -102,6 +119,7 @@ export default function Home() {
               title={category.title}
               icon={category.icon}
               color={category.color}
+              onCardClick={() => handleCategoryCardClick(category.params)}
             />
           ))}
         </Container>
