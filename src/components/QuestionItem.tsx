@@ -27,7 +27,7 @@ export default function QuestionItem({
   return (
     <>
       <Text
-        fontSize="x-large"
+        fontSize={{ base: "xl", md: "x-large" }}
         fontWeight="bold"
         lineHeight="1.2"
         width="100%"
@@ -43,7 +43,7 @@ export default function QuestionItem({
           render={({ field }) => (
             <RadioGroup {...field}>
               <Grid
-                templateColumns="repeat(2, 1fr)"
+                templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }}
                 gap="20px"
                 marginTop="30px"
               >

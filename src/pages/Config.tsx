@@ -1,6 +1,7 @@
 import { Box, Card, Container, Image, Text } from "@chakra-ui/react";
 import TriviaConfig from "../components/TriviaConfig";
 import Header from "../components/Header";
+import { Footer } from "../components/Footer";
 
 export default function Config() {
   return (
@@ -20,6 +21,7 @@ export default function Config() {
           width="100%"
           paddingY="50px"
           paddingX="70px"
+          padding={{ base: "20px", md: "50px 70px" }}
           shadow="xl"
         >
           <Image
@@ -28,6 +30,7 @@ export default function Config() {
             width="388px"
             height="307px"
             pointerEvents="none"
+            display={{ base: "none", md: "none", lg: "block" }}
           />
           <Box maxW="392px" width="100%">
             <Text fontSize="xx-large" marginBottom="20px" color="gray.700">
@@ -37,6 +40,7 @@ export default function Config() {
           </Box>
         </Card>
       </Container>
+      <Footer />
     </>
   );
 }

@@ -110,7 +110,10 @@ export default function TriviaConfig() {
         flexDirection: "column",
       }}
     >
-      <Grid templateColumns="repeat(2, 1fr)" gap="0 20px">
+      <Grid
+        templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }}
+        gap="0 20px"
+      >
         <FormControl isInvalid={!!errors.category} minW="186px">
           <FormLabel htmlFor="category" fontSize="small" marginBottom="4px">
             Category

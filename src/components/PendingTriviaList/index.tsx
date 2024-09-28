@@ -22,7 +22,11 @@ export const PendingTriviaList = ({
   pendingTriviaList,
 }: PendingTriviaListProps) => {
   return (
-    <Stack display="grid" gap="16px" gridTemplateColumns="repeat(4, 1fr)">
+    <Stack
+      display="grid"
+      gap="16px"
+      gridTemplateColumns={{ base: "repeat(1fr)", md: "repeat(4, 1fr)" }}
+    >
       {pendingTriviaList.map(({ trivia }) => (
         <Card key={trivia._id}>
           <Badge

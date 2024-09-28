@@ -12,9 +12,9 @@ export const Footer = () => {
     >
       <Container>
         <Stack
-          direction="row"
+          direction={{ base: "column", md: "row" }}
           justifyContent="space-between"
-          alignItems="center"
+          alignItems={{ base: "flex-start", md: "center" }}
           spacing={4}
         >
           <Link to="/">

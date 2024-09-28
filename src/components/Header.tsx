@@ -13,8 +13,8 @@ export default function Header() {
   };
 
   return (
-    <Box as="header" bg="white" paddingY="5px" paddingX="50px">
-      <Container>
+    <Box as="header" bg="white" paddingX={{ base: "20px", md: "5px 50px" }}>
+      <Container padding="0">
         <Stack
           align="center"
           direction="row"

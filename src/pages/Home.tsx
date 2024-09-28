@@ -48,7 +48,10 @@ export default function Home() {
     <>
       <Header />
       <Box width="100%" backgroundColor="purple.500" overflow="hidden">
-        <Container paddingY="80px" position="relative">
+        <Container
+          padding={{ base: "40px 20px", md: "80px 0" }}
+          position="relative"
+        >
           <Text
             fontSize={{ base: "3xl", md: "6xl" }}
             lineHeight="1.2"
@@ -85,8 +88,8 @@ export default function Home() {
       </Box>
 
       {userData && !!pendingTrivia.length && (
-        <Container padding={{ base: "20px 0", md: "80px 0 120px" }}>
-          <Box as="header" marginBottom="40px">
+        <Container padding={{ base: "40px 20px", md: "80px 0 120px" }}>
+          <Box as="header" marginBottom={{ base: "20px", md: "40px" }}>
             <Heading fontSize="3xl">Pending trivias</Heading>
           </Box>
           <PendingTriviaList pendingTriviaList={pendingTrivia} />
@@ -95,11 +98,15 @@ export default function Home() {
 
       <Box
         as="section"
-        padding={{ base: "20px 0", md: "80px 0 120px" }}
+        padding={{ base: "40px 20px", md: "80px 0 120px" }}
         backgroundColor="gray.100"
         boxShadow="0px 30px 100px 0 rgba(39, 39, 39, 0.2);"
       >
-        <Box as="header" textAlign="center" marginBottom="60px">
+        <Box
+          as="header"
+          textAlign="center"
+          marginBottom={{ base: "20px", md: "60px" }}
+        >
           <Heading fontSize={{ base: "3xl", md: "5xl" }} marginBottom="20px">
             Show off your knowledge
           </Heading>
@@ -112,7 +119,7 @@ export default function Home() {
           display="grid"
           gridTemplateColumns={{ base: "repeat(1fr)", md: "repeat(5, 1fr)" }}
           gap="16px"
-          padding={{ base: "40px 20px", md: "0 0" }}
+          padding={{ base: "0", md: "0 0" }}
         >
           {Object.values(TRIVIA_CATEGORIES).map((category) => (
             <CategoryCard

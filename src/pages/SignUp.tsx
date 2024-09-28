@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as AuthService from "../services/authService";
+import { Footer } from "../components/Footer";
 
 export interface SignUpValues {
   email: string;
@@ -69,7 +70,7 @@ export default function SignUp() {
           flexDirection={["column", "column", "row"]}
           justifyContent="space-around"
           width="100%"
-          padding="32px"
+          padding={{ base: "20px", md: "32px" }}
           shadow="xl"
           maxW="635px"
         >
@@ -87,6 +88,7 @@ export default function SignUp() {
           </Box>
         </Card>
       </Container>
+      <Footer />
     </>
   );
 }

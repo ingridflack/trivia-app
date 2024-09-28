@@ -2,9 +2,8 @@
 
 exports[`CategoryCard > should match the snapshot 1`] = `
 <div>
-  <a
+  <div
     class="chakra-card css-1ws3iy8"
-    href="/trivia/config"
   >
     <div
       class="css-mssj5r"
@@ -26,6 +25,6 @@ exports[`CategoryCard > should match the snapshot 1`] = `
     >
       Play
     </button>
-  </a>
+  </div>
 </div>
 `;

@@ -3,6 +3,7 @@ import { render } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import { PendingTriviaList } from ".";
 import { PendingTrivia } from "../../types/sharedTypes";
+import { MemoryRouter } from "react-router-dom";
 
 const mockPendingTriviaList: PendingTrivia[] = [
   {
@@ -32,7 +33,9 @@ const mockPendingTriviaList: PendingTrivia[] = [
 describe("PendingTriviaList", () => {
   it("should match the snapshot", () => {
     const { container } = render(
-      <PendingTriviaList pendingTriviaList={mockPendingTriviaList} />
+      <MemoryRouter>
+        <PendingTriviaList pendingTriviaList={mockPendingTriviaList} />
+      </MemoryRouter>
     );
 
     expect(container).toMatchSnapshot();
@@ -40,7 +43,9 @@ describe("PendingTriviaList", () => {
 
   it("should render the pending trivia list with the correct amount of items", () => {
     const { container } = render(
-      <PendingTriviaList pendingTriviaList={mockPendingTriviaList} />
+      <MemoryRouter>
+        <PendingTriviaList pendingTriviaList={mockPendingTriviaList} />
+      </MemoryRouter>
     );
 
     const pendingTriviaItems = container.querySelectorAll(".chakra-card");

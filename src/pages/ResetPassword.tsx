@@ -4,6 +4,7 @@ import ResetPasswordForm from "../components/ResetPasswordForm";
 import { useNavigate, useParams } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as AuthService from "../services/authService";
+import { Footer } from "../components/Footer";
 
 export interface ResetPasswordFormValues {
   password: string;
@@ -63,7 +64,7 @@ export default function ResetPassword() {
           flexDirection={["column", "column", "row"]}
           justifyContent="space-around"
           width="100%"
-          padding="70px"
+          padding={{ base: "40px 20px", md: "80px 0" }}
           shadow="xl"
         >
           <Box maxW="392px" width="100%">
@@ -84,9 +85,11 @@ export default function ResetPassword() {
             width="325px"
             height="324px"
             pointerEvents="none"
+            display={{ base: "none", md: "none", lg: "block" }}
           />
         </Card>
       </Container>
+      <Footer />
     </>
   );
 }

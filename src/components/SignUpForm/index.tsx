@@ -55,7 +55,7 @@ export default function SignUpForm({
         </FormErrorMessage>
       </FormControl>
 
-      <Stack direction="row" gap="16px">
+      <Stack direction={{ base: "column", md: "row" }} gap="16px">
         <FormControl isInvalid={!!errors.name}>
           <FormLabel htmlFor="name">Name</FormLabel>
           <Input
@@ -91,7 +91,7 @@ export default function SignUpForm({
         </FormControl>
       </Stack>
 
-      <Stack direction="row" gap="16px">
+      <Stack direction={{ base: "column", md: "row" }} gap="16px">
         <FormControl isInvalid={!!errors.password}>
           <FormLabel htmlFor="password">Password</FormLabel>
           <Input

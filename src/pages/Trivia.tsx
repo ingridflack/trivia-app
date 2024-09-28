@@ -19,6 +19,7 @@ import useTimer from "../hooks/useTimer";
 import { ANSWER_TIME_LIMIT } from "../constants/trivia";
 import Header from "../components/Header";
 import { badgeColor } from "../helpers/trivia";
+import { Footer } from "../components/Footer";
 
 export interface AnswerFormValues {
   answer: string;
@@ -158,8 +159,7 @@ export default function Trivia() {
             gap="48px"
             alignItems=""
             maxW="992px"
-            paddingY="35px"
-            paddingX="45px"
+            padding={{ base: "20px", md: "35px 45px" }}
             shadow="xl"
             minHeight="345px"
           >
@@ -214,9 +214,11 @@ export default function Trivia() {
             width="229px"
             height="322px"
             pointerEvents="none"
+            display={{ base: "none", md: "none", lg: "block" }}
           />
         </Box>
       </Container>
+      <Footer />
     </>
   );
 }

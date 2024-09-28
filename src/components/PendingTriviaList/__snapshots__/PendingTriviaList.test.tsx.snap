@@ -3,119 +3,127 @@
 exports[`PendingTriviaList > should match the snapshot 1`] = `
 <div>
   <div
-    class="chakra-stack css-17gphto"
+    class="chakra-stack css-1sa45dc"
   >
     <div
-      class="chakra-card css-u646wo"
-      role="group"
+      class="chakra-card css-2dlz7"
     >
-      <div
-        class="chakra-stack css-1y3f6ad"
+      <span
+        class="chakra-badge css-8k89l4"
       >
-        <p
-          class="chakra-text css-ax9bdp"
+        easy
+      </span>
+      <div
+        class="chakra-stack css-xzl3c"
+      >
+        <div
+          class="css-7d8kcm"
         >
-          General Knowledge
-        </p>
-        <span
-          class="chakra-badge css-ifsvay"
+          <img
+            class="chakra-image css-0"
+          />
+        </div>
+        <div
+          class="css-0"
         >
-          easy
-        </span>
+          <p
+            class="chakra-text css-8ler1h"
+          />
+        </div>
       </div>
-      <div
-        class="chakra-avatar__group css-1fv303w"
-        role="group"
+      <a
+        class="chakra-button css-10idvi4"
+        href="/trivia/66c8f351942dd47ad29d4ba1"
       >
-        <span
-          class="chakra-avatar css-1xczbvk"
+        Join
+        <div
+          class="chakra-avatar__group css-1monvpv"
+          role="group"
         >
-          <div
-            aria-label="User2"
-            class="chakra-avatar__initials css-0"
-            role="img"
+          <span
+            class="chakra-avatar css-r8mluz"
           >
-            U
-          </div>
-        </span>
-        <span
-          class="chakra-avatar css-1o6hphw"
-        >
-          <div
-            aria-label="User1"
-            class="chakra-avatar__initials css-0"
-            role="img"
+            <div
+              aria-label="User2"
+              class="chakra-avatar__initials css-0"
+              role="img"
+            >
+              U
+            </div>
+          </span>
+          <span
+            class="chakra-avatar css-1r121ij"
           >
-            U
-          </div>
-        </span>
-      </div>
-      <div
-        class="chakra-stack css-10cxrny"
-      >
-        <a
-          class="chakra-button css-4xx2wk"
-          href="/trivia/66c8f351942dd47ad29d4ba1"
-        >
-          Play!
-        </a>
-      </div>
+            <div
+              aria-label="User1"
+              class="chakra-avatar__initials css-0"
+              role="img"
+            >
+              U
+            </div>
+          </span>
+        </div>
+      </a>
     </div>
     <div
-      class="chakra-card css-u646wo"
-      role="group"
+      class="chakra-card css-2dlz7"
     >
-      <div
-        class="chakra-stack css-1y3f6ad"
+      <span
+        class="chakra-badge css-8k89l4"
       >
-        <p
-          class="chakra-text css-ax9bdp"
+        medium
+      </span>
+      <div
+        class="chakra-stack css-xzl3c"
+      >
+        <div
+          class="css-7d8kcm"
         >
-          General Knowledge
-        </p>
-        <span
-          class="chakra-badge css-ifsvay"
+          <img
+            class="chakra-image css-0"
+          />
+        </div>
+        <div
+          class="css-0"
         >
-          medium
-        </span>
+          <p
+            class="chakra-text css-8ler1h"
+          />
+        </div>
       </div>
-      <div
-        class="chakra-avatar__group css-1fv303w"
-        role="group"
+      <a
+        class="chakra-button css-10idvi4"
+        href="/trivia/66c8f351942dd47ad29d4ba2"
       >
-        <span
-          class="chakra-avatar css-1xczbvk"
+        Join
+        <div
+          class="chakra-avatar__group css-1monvpv"
+          role="group"
         >
-          <div
-            aria-label="User4"
-            class="chakra-avatar__initials css-0"
-            role="img"
+          <span
+            class="chakra-avatar css-r8mluz"
           >
-            U
-          </div>
-        </span>
-        <span
-          class="chakra-avatar css-1o6hphw"
-        >
-          <div
-            aria-label="User3"
-            class="chakra-avatar__initials css-0"
-            role="img"
+            <div
+              aria-label="User4"
+              class="chakra-avatar__initials css-0"
+              role="img"
+            >
+              U
+            </div>
+          </span>
+          <span
+            class="chakra-avatar css-1r121ij"
           >
-            U
-          </div>
-        </span>
-      </div>
-      <div
-        class="chakra-stack css-10cxrny"
-      >
-        <a
-          class="chakra-button css-4xx2wk"
-          href="/trivia/66c8f351942dd47ad29d4ba2"
-        >
-          Play!
-        </a>
-      </div>
+            <div
+              aria-label="User3"
+              class="chakra-avatar__initials css-0"
+              role="img"
+            >
+              U
+            </div>
+          </span>
+        </div>
+      </a>
     </div>
   </div>
 </div>

@@ -1,19 +1,12 @@
-import {
-  Box,
-  Card,
-  Container,
-  Image,
-  Link,
-  Text,
-  useToast,
-} from "@chakra-ui/react";
+import { Box, Card, Container, Image, Text, useToast } from "@chakra-ui/react";
 import LoginForm from "../components/LoginForm";
 import Header from "../components/Header";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as AuthService from "../services/authService";
 import * as TriviaService from "../services/triviaService";
 import useAuth from "../hooks/useAuth";
+import { Footer } from "../components/Footer";
 
 export interface LoginFormValues {
   email: string;
@@ -75,10 +68,10 @@ export default function Login() {
       >
         <Card
           display="flex"
-          flexDirection={["column", "column", "row"]}
+          flexDirection="row"
           justifyContent="space-around"
           width="100%"
-          padding="70px"
+          padding={{ base: "20px", md: "70px" }}
           shadow="xl"
         >
           <Box maxW="392px" width="100%">
@@ -92,18 +85,16 @@ export default function Login() {
               register={register}
             />
 
-            <Box marginTop="20px" display="flex" justifyContent="space-between">
-              <Link
-                fontSize="small"
-                color="gray.500"
-                href="/trivia/recovery-email"
-              >
-                Forgot your password?
-              </Link>
+            <Box
+              marginTop="20px"
+              display="flex"
+              justifyContent="space-between"
+              fontSize="small"
+              color="gray.500"
+            >
+              <Link to="/trivia/recovery-email">Forgot your password?</Link>
 
-              <Link fontSize="small" color="gray.500" href="/sign-up">
-                Create an account
-              </Link>
+              <Link to="/sign-up">Create an account</Link>
             </Box>
           </Box>
 
@@ -113,9 +104,11 @@ export default function Login() {
             width="325px"
             height="324px"
             pointerEvents="none"
+            display={{ base: "none", md: "none", lg: "block" }}
           />
         </Card>
       </Container>
+      <Footer />
     </>
   );
 }
