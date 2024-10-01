@@ -6,102 +6,47 @@ import {
   FormLabel,
   Grid,
   Select,
-  useToast,
 } from "@chakra-ui/react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { useState } from "react";
-import * as TriviaService from "../services/triviaService";
-import * as UserService from "../services/userService";
-import { UserSearchSelectOption } from "../types/sharedTypes";
-import { useNavigate } from "react-router-dom";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
+
+import { UserSearchSelectOption } from "../../types/sharedTypes";
 import {
   AMOUNT_OPTIONS,
   DIFFICULTY_OPTIONS,
   GAME_MODE_OPTIONS,
   TRIVIA_CATEGORIES,
-} from "../constants/trivia";
+} from "../../constants/trivia";
 import AsyncSelect from "react-select/async";
 import { MultiValue } from "react-select";
-import useAuth from "../hooks/useAuth";
+import { GameConfigValues } from "../../pages/Config";
 
-interface GameConfigValues {
-  category: string;
-  difficulty: string;
-  amount: number;
+export interface TriviaConfigProps {
+  onLoadUsers: (inputValue: string) => Promise<UserSearchSelectOption[]>;
+  onInviteUser: (value: MultiValue<UserSearchSelectOption>) => void;
+  onGameModeChange: (gameMode: string) => void;
+  onSubmit: (e?: React.BaseSyntheticEvent) => Promise<void>;
+  errors: FieldErrors<GameConfigValues>;
+  register: UseFormRegister<GameConfigValues>;
+  isSubmitting: boolean;
   gameMode: string;
-  type: string;
+  invitedUsers: MultiValue<UserSearchSelectOption>;
 }
 
-export default function TriviaConfig() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm<GameConfigValues>({
-    defaultValues: {
-      difficulty: "any",
-      type: "any",
-      amount: 5,
-    },
-  });
-
-  const [gameMode, setGameMode] = useState("single");
-  const navigate = useNavigate();
-  const toast = useToast();
-  const [invitedUsers, setInvitedUsers] = useState<
-    MultiValue<UserSearchSelectOption>
-  >([]);
-  const { userData } = useAuth();
-
-  const onSubmit: SubmitHandler<GameConfigValues> = async (values) => {
-    try {
-      const invitedUsersIds =
-        gameMode === "multi"
-          ? invitedUsers.map((option) => option.value)
-          : undefined;
-
-      const body = {
-        ...values,
-        invitedUsers: invitedUsersIds,
-      };
-
-      const { data } = await TriviaService.createTrivia(body);
-
-      navigate(`/trivia/${data.triviaId}`);
-    } catch {
-      console.log("error");
-
-      toast({
-        title: "Oops!",
-        description: "Something went wrong. Try again.",
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-        position: "top-right",
-      });
-    }
-  };
-
-  const handleGameModeChange = (value: string) => {
-    setGameMode(value);
-  };
-
-  const handleInviteUser = (value: MultiValue<UserSearchSelectOption>) => {
-    setInvitedUsers(value);
-  };
-
-  const handleLoadUsers = async (username: string) => {
-    const currentUserId = userData ? userData.id : "";
-
-    const { data } = await UserService.search({ username });
-    return data
-      .filter((user) => user._id !== currentUserId)
-      .map((user) => ({ value: user._id, label: user.username }));
-  };
-
+export default function TriviaConfig({
+  onLoadUsers,
+  onInviteUser,
+  onGameModeChange,
+  onSubmit,
+  errors,
+  register,
+  isSubmitting,
+  gameMode,
+  invitedUsers,
+}: TriviaConfigProps) {
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      role="form"
+      onSubmit={onSubmit}
       style={{
         width: "100%",
         display: "flex",
@@ -201,7 +146,7 @@ export default function TriviaConfig() {
             {...register("gameMode", {
               required: "Game mode is required.",
             })}
-            onChange={(e) => handleGameModeChange(e.target.value)}
+            onChange={(e) => onGameModeChange(e.target.value)}
           >
             {GAME_MODE_OPTIONS.map((option) => (
               <option key={option.value} value={option.value}>
@@ -234,14 +179,14 @@ export default function TriviaConfig() {
               <AsyncSelect
                 isMulti
                 cacheOptions
-                loadOptions={handleLoadUsers}
+                loadOptions={onLoadUsers}
                 placeholder="Select user"
                 options={[
                   { value: "user1", label: "User 1" },
                   { value: "user2", label: "User 2" },
                   { value: "user3", label: "User 3" },
                 ]}
-                onChange={handleInviteUser}
+                onChange={onInviteUser}
               />
             </FormControl>
           </Flex>

@@ -1,0 +1,243 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TriviaConfig > should match the snapshot 1`] = `
+<div>
+  <form
+    role="form"
+    style="width: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column;"
+  >
+    <div
+      class="css-1ggap6e"
+    >
+      <div
+        class="chakra-form-control css-1u79ci6"
+        role="group"
+      >
+        <label
+          class="chakra-form__label css-t3kal5"
+          for="category"
+          id="field-:r0:-label"
+        >
+          Category
+        </label>
+        <div
+          class="chakra-select__wrapper css-42b2qy"
+        >
+          <select
+            class="chakra-select css-1ik61og"
+            id="category"
+          >
+            <option
+              value="9"
+            >
+              General Knowledge
+            </option>
+            <option
+              value="10"
+            >
+              Books
+            </option>
+            <option
+              value="14"
+            >
+              Television
+            </option>
+            <option
+              value="19"
+            >
+              Mathematics
+            </option>
+            <option
+              value="31"
+            >
+              Japanese Anime & Manga
+            </option>
+          </select>
+          <div
+            class="chakra-select__icon-wrapper css-162mkon"
+          >
+            <svg
+              aria-hidden="true"
+              class="chakra-select__icon"
+              focusable="false"
+              role="presentation"
+              style="width: 1em; height: 1em; color: currentColor;"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div
+        class="chakra-form-control css-1u79ci6"
+        role="group"
+      >
+        <label
+          class="chakra-form__label css-t3kal5"
+          for="difficulty"
+          id="field-:r1:-label"
+        >
+          Difficulty
+        </label>
+        <div
+          class="chakra-select__wrapper css-42b2qy"
+        >
+          <select
+            class="chakra-select css-1ik61og"
+            id="difficulty"
+          >
+            <option
+              value="any"
+            >
+              Any
+            </option>
+            <option
+              value="easy"
+            >
+              Easy
+            </option>
+            <option
+              value="medium"
+            >
+              Medium
+            </option>
+            <option
+              value="hard"
+            >
+              Hard
+            </option>
+          </select>
+          <div
+            class="chakra-select__icon-wrapper css-162mkon"
+          >
+            <svg
+              aria-hidden="true"
+              class="chakra-select__icon"
+              focusable="false"
+              role="presentation"
+              style="width: 1em; height: 1em; color: currentColor;"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div
+        class="chakra-form-control css-1u79ci6"
+        role="group"
+      >
+        <label
+          class="chakra-form__label css-19h9qxr"
+          for="amount"
+          id="field-:r2:-label"
+        >
+          Number of questions
+        </label>
+        <div
+          class="chakra-select__wrapper css-42b2qy"
+        >
+          <select
+            class="chakra-select css-1ik61og"
+            id="amount"
+          >
+            <option
+              value="5"
+            >
+              5
+            </option>
+            <option
+              value="10"
+            >
+              10
+            </option>
+            <option
+              value="15"
+            >
+              15
+            </option>
+          </select>
+          <div
+            class="chakra-select__icon-wrapper css-162mkon"
+          >
+            <svg
+              aria-hidden="true"
+              class="chakra-select__icon"
+              focusable="false"
+              role="presentation"
+              style="width: 1em; height: 1em; color: currentColor;"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div
+        class="chakra-form-control css-1u79ci6"
+        role="group"
+      >
+        <label
+          class="chakra-form__label css-19h9qxr"
+          for="gameMode"
+          id="field-:r3:-label"
+        >
+          Game mode
+        </label>
+        <div
+          class="chakra-select__wrapper css-42b2qy"
+        >
+          <select
+            class="chakra-select css-1ik61og"
+            id="gameMode"
+          >
+            <option
+              value="single"
+            >
+              Single player
+            </option>
+            <option
+              value="multi"
+            >
+              Multiplayer
+            </option>
+          </select>
+          <div
+            class="chakra-select__icon-wrapper css-162mkon"
+          >
+            <svg
+              aria-hidden="true"
+              class="chakra-select__icon"
+              focusable="false"
+              role="presentation"
+              style="width: 1em; height: 1em; color: currentColor;"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button
+      class="chakra-button css-1w54gy2"
+      type="submit"
+    >
+      Start trivia
+    </button>
+  </form>
+</div>
+`;
