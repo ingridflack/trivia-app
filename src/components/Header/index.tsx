@@ -1,6 +1,6 @@
 import { Avatar, Box, Container, Stack, Text } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 
 export default function Header() {
   const navigate = useNavigate();
