@@ -51,7 +51,8 @@ describe("Header", () => {
       userData: userDataMock,
       clearUserData,
     });
-    const { debug } = render(
+
+    render(
       <MemoryRouter>
         <Header />
       </MemoryRouter>
@@ -60,7 +61,7 @@ describe("Header", () => {
     expect(screen.getByText(/History/i)).toBeTruthy();
     expect(screen.getByText(/Logout/i)).toBeTruthy();
     expect(screen.getByText(userDataMock.username)).toBeTruthy();
-    debug();
+
     expect(screen.getByRole("img")).toBeTruthy();
   });
 

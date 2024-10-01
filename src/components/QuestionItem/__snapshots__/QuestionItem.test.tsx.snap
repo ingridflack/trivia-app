@@ -1,0 +1,127 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`QuestionItem > should match snapshot 1`] = `
+<div>
+  <p
+    class="chakra-text css-1wwbc3v"
+  >
+    What is the capital of France?
+  </p>
+  <div
+    class="chakra-form-control css-1rr4qq7"
+    role="group"
+  >
+    <div
+      class="chakra-radio-group css-0"
+      role="radiogroup"
+    >
+      <div
+        class="css-1sehaq3"
+      >
+        <label
+          class="chakra-radio css-1nqw95c"
+        >
+          <input
+            class="chakra-radio__input"
+            id="radio-:r2:"
+            name="answer"
+            style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+            type="radio"
+            value="Paris"
+          />
+          <span
+            aria-hidden="true"
+            class="chakra-radio__control css-ssalds"
+          />
+          <span
+            class="chakra-radio__label css-1y8kf23"
+          >
+            <p
+              class="chakra-text css-0"
+            >
+              Paris
+            </p>
+          </span>
+        </label>
+        <label
+          class="chakra-radio css-1nqw95c"
+        >
+          <input
+            class="chakra-radio__input"
+            id="radio-:r3:"
+            name="answer"
+            style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+            type="radio"
+            value="London"
+          />
+          <span
+            aria-hidden="true"
+            class="chakra-radio__control css-ssalds"
+          />
+          <span
+            class="chakra-radio__label css-1y8kf23"
+          >
+            <p
+              class="chakra-text css-0"
+            >
+              London
+            </p>
+          </span>
+        </label>
+        <label
+          class="chakra-radio css-1nqw95c"
+        >
+          <input
+            class="chakra-radio__input"
+            id="radio-:r4:"
+            name="answer"
+            style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+            type="radio"
+            value="Berlin"
+          />
+          <span
+            aria-hidden="true"
+            class="chakra-radio__control css-ssalds"
+          />
+          <span
+            class="chakra-radio__label css-1y8kf23"
+          >
+            <p
+              class="chakra-text css-0"
+            >
+              Berlin
+            </p>
+          </span>
+        </label>
+        <label
+          class="chakra-radio css-1nqw95c"
+        >
+          <input
+            class="chakra-radio__input"
+            id="radio-:r5:"
+            name="answer"
+            style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; white-space: nowrap; position: absolute;"
+            type="radio"
+            value="Madrid"
+          />
+          <span
+            aria-hidden="true"
+            class="chakra-radio__control css-ssalds"
+          />
+          <span
+            class="chakra-radio__label css-1y8kf23"
+          >
+            <p
+              class="chakra-text css-0"
+            >
+              Madrid
+            </p>
+          </span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`QuestionItem > should match the snapshot when question is undefined 1`] = `<div />`;
