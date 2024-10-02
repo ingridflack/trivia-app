@@ -8,8 +8,9 @@ import {
 } from "@chakra-ui/react";
 import DOMPurify from "dompurify";
 import { Control, Controller, FieldErrors } from "react-hook-form";
-import { AnswerFormValues } from "../../pages/Trivia";
+
 import { TriviaQuestion } from "../../services/triviaService";
+import { AnswerFormValues } from "../../pages/Trivia";
 
 interface QuestionItemProps {
   question?: TriviaQuestion;

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import * as TriviaService from "../services/triviaService";
-import QuestionItem from "../components/QuestionItem";
+import * as TriviaService from "../../services/triviaService";
+import QuestionItem from "../../components/QuestionItem";
 import { SubmitHandler, useForm } from "react-hook-form";
 import {
   Badge,
@@ -14,12 +14,12 @@ import {
   Text,
   useToast,
 } from "@chakra-ui/react";
-import Timer from "../components/Timer";
-import useTimer from "../hooks/useTimer";
-import { ANSWER_TIME_LIMIT } from "../constants/trivia";
-import Header from "../components/Header";
-import { badgeColor } from "../helpers/trivia";
-import { Footer } from "../components/Footer";
+import Timer from "../../components/Timer";
+import useTimer from "../../hooks/useTimer";
+import { ANSWER_TIME_LIMIT } from "../../constants/trivia";
+import Header from "../../components/Header";
+import { badgeColor } from "../../helpers/trivia";
+import { Footer } from "../../components/Footer";
 
 export interface AnswerFormValues {
   answer: string;

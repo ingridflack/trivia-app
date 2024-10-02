@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import * as TriviaService from "../services/triviaService";
-import { TriviaHistory as TriviaHistoryInterface } from "../types/sharedTypes";
+import * as TriviaService from "../../services/triviaService";
+import { TriviaHistory as TriviaHistoryInterface } from "../../types/sharedTypes";
 import {
   Accordion,
   AccordionButton,
@@ -15,12 +15,12 @@ import {
   Text,
   Tooltip,
 } from "@chakra-ui/react";
-import Header from "../components/Header";
+import Header from "../../components/Header";
 import DOMPurify from "dompurify";
-import { badgeColor } from "../helpers/trivia";
+import { badgeColor } from "../../helpers/trivia";
 import { CheckIcon, CloseIcon } from "@chakra-ui/icons";
-import { TRIVIA_CATEGORIES } from "../constants/trivia";
-import { Footer } from "../components/Footer";
+import { TRIVIA_CATEGORIES } from "../../constants/trivia";
+import { Footer } from "../../components/Footer";
 import { Link } from "react-router-dom";
 
 export default function TriviaHistory() {
@@ -30,9 +30,12 @@ export default function TriviaHistory() {
 
   useEffect(() => {
     const fetchTriviaHistory = async () => {
-      const { data } = await TriviaService.getTriviaHistory();
-
-      setTriviaHistory(data.triviaHistory);
+      try {
+        const { data } = await TriviaService.getTriviaHistory();
+        setTriviaHistory(data.triviaHistory);
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     fetchTriviaHistory();

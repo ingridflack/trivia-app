@@ -1,0 +1,212 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Login > should match the snapshot 1`] = `
+<div>
+  <header
+    class="css-cyjglw"
+  >
+    <div
+      class="chakra-container css-old1by"
+    >
+      <div
+        class="chakra-stack css-2jbh02"
+      >
+        <a
+          href="/"
+        >
+          <p
+            class="chakra-text css-kkaoep"
+          >
+            Trivia
+          </p>
+        </a>
+        <div
+          class="css-j0ozid"
+        >
+          <a
+            href="/login"
+          >
+             Sign in 
+          </a>
+          <a
+            href="/sign-up"
+          >
+             Sign Up 
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div
+    class="chakra-container css-3i1d8n"
+  >
+    <div
+      class="chakra-card css-yp61un"
+    >
+      <div
+        class="css-1updlva"
+      >
+        <p
+          class="chakra-text css-mvfx24"
+        >
+          Sign in
+        </p>
+        <form
+          class="chakra-stack css-2umoaz"
+          role="form"
+        >
+          <div
+            class="chakra-form-control css-0"
+            role="group"
+          >
+            <label
+              class="chakra-form__label css-uvho5g"
+              for="email"
+              id="field-:r0:-label"
+            >
+              Email address
+            </label>
+            <input
+              class="chakra-input css-0"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              type="email"
+            />
+          </div>
+          <div
+            class="chakra-form-control css-0"
+            role="group"
+          >
+            <label
+              class="chakra-form__label css-uvho5g"
+              for="password"
+              id="field-:r1:-label"
+            >
+              Password
+            </label>
+            <input
+              class="chakra-input css-0"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+              type="password"
+            />
+          </div>
+          <button
+            class="chakra-button css-uxt1e8"
+            type="submit"
+          >
+            Sign in
+          </button>
+        </form>
+        <div
+          class="css-1ddn805"
+        >
+          <a
+            href="/trivia/recovery-email"
+          >
+            Forgot your password?
+          </a>
+          <a
+            href="/sign-up"
+          >
+            Create an account
+          </a>
+        </div>
+      </div>
+      <img
+        alt="Login image"
+        class="chakra-image css-1b9ujuc"
+        src="src/assets/login.svg"
+      />
+    </div>
+  </div>
+  <footer
+    class="css-1s2lyti"
+  >
+    <div
+      class="chakra-container css-0"
+    >
+      <div
+        class="chakra-stack css-11h4xmw"
+      >
+        <a
+          href="/"
+        >
+          <p
+            class="chakra-text css-rekzoj"
+          >
+            Trivia
+          </p>
+        </a>
+        <div
+          class="css-0"
+        >
+          <strong
+            class="chakra-heading css-kf3i1p"
+          >
+            Site map
+          </strong>
+          <div
+            class="chakra-stack css-1ko7mmx"
+          >
+            <a
+              href="/"
+            >
+              Home
+            </a>
+            <a
+              href="/login"
+            >
+              Sign in
+            </a>
+            <a
+              href="/sign-up"
+            >
+              Sign up
+            </a>
+          </div>
+        </div>
+        <div
+          class="css-0"
+        >
+          <strong
+            class="chakra-heading css-kf3i1p"
+          >
+            Social
+          </strong>
+          <div
+            class="chakra-stack css-1ko7mmx"
+          >
+            <a
+              href="https://www.linkedin.com/in/ingrid-flack/"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://github.com/ingridflack"
+            >
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="chakra-stack css-1y3yl0q"
+      >
+        <p
+          class="chakra-text css-0"
+        >
+          © 2024 Trivia App
+        </p>
+        <p
+          class="chakra-text css-0"
+        >
+          Developed by Ingrid Flack
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+`;

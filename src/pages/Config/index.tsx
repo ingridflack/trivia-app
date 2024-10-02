@@ -1,15 +1,15 @@
 import { Box, Card, Container, Image, Text, useToast } from "@chakra-ui/react";
-import TriviaConfig from "../components/TriviaConfig";
-import Header from "../components/Header";
-import { Footer } from "../components/Footer";
-import * as UserService from "../services/userService";
-import * as TriviaService from "../services/triviaService";
+import TriviaConfig from "../../components/TriviaConfig";
+import Header from "../../components/Header";
+import { Footer } from "../../components/Footer";
+import * as UserService from "../../services/userService";
+import * as TriviaService from "../../services/triviaService";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { MultiValue } from "react-select";
-import { UserSearchSelectOption } from "../types/sharedTypes";
-import useAuth from "../hooks/useAuth";
+import { UserSearchSelectOption } from "../../types/sharedTypes";
+import useAuth from "../../hooks/useAuth";
 
 export interface GameConfigValues {
   category: string;

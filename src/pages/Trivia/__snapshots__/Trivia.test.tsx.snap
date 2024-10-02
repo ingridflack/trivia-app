@@ -1,0 +1,202 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Trivia > should match the snapshot 1`] = `
+<div>
+  <header
+    class="css-cyjglw"
+  >
+    <div
+      class="chakra-container css-old1by"
+    >
+      <div
+        class="chakra-stack css-2jbh02"
+      >
+        <a
+          href="/"
+        >
+          <p
+            class="chakra-text css-kkaoep"
+          >
+            Trivia
+          </p>
+        </a>
+        <div
+          class="css-j0ozid"
+        >
+          <a
+            href="/login"
+          >
+             Sign in 
+          </a>
+          <a
+            href="/sign-up"
+          >
+             Sign Up 
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div
+    class="chakra-container css-b6ivgp"
+  >
+    <div
+      class="css-1kxonj9"
+    >
+      <p
+        class="chakra-text css-ko7xmz"
+      >
+        Question 
+        1
+        /10
+      </p>
+      <div
+        class="chakra-card css-umnoxe"
+      >
+        <div
+          class="css-u0ormi"
+        >
+          <div
+            aria-valuemax="15"
+            aria-valuemin="0"
+            aria-valuenow="15"
+            class="chakra-progress css-1wsiu6z"
+            role="progressbar"
+          >
+            <svg
+              class="css-1hrl48y"
+              viewBox="0 0 100 100"
+            >
+              <circle
+                class="chakra-progress__track css-1bhxzgy"
+                cx="50"
+                cy="50"
+                r="42"
+                stroke-width="4px"
+              />
+              <circle
+                class="chakra-progress__indicator css-12qt19m"
+                cx="50"
+                cy="50"
+                r="42"
+                stroke-dasharray="264 0"
+                stroke-dashoffset="66"
+                stroke-width="4px"
+              />
+            </svg>
+            <div
+              class="css-tvcbta"
+            >
+              15
+            </div>
+          </div>
+          <span
+            class="chakra-badge css-1k2q7t8"
+          />
+        </div>
+        <form
+          class="chakra-stack css-8g8ihq"
+        >
+          <button
+            class="chakra-button css-mu2xh3"
+            type="submit"
+          >
+            Answer
+          </button>
+        </form>
+      </div>
+      <img
+        alt="Question image"
+        class="chakra-image css-thp9o"
+        src="/src/assets/trivia-question.svg"
+      />
+    </div>
+  </div>
+  <footer
+    class="css-1s2lyti"
+  >
+    <div
+      class="chakra-container css-0"
+    >
+      <div
+        class="chakra-stack css-11h4xmw"
+      >
+        <a
+          href="/"
+        >
+          <p
+            class="chakra-text css-rekzoj"
+          >
+            Trivia
+          </p>
+        </a>
+        <div
+          class="css-0"
+        >
+          <strong
+            class="chakra-heading css-kf3i1p"
+          >
+            Site map
+          </strong>
+          <div
+            class="chakra-stack css-1ko7mmx"
+          >
+            <a
+              href="/"
+            >
+              Home
+            </a>
+            <a
+              href="/login"
+            >
+              Sign in
+            </a>
+            <a
+              href="/sign-up"
+            >
+              Sign up
+            </a>
+          </div>
+        </div>
+        <div
+          class="css-0"
+        >
+          <strong
+            class="chakra-heading css-kf3i1p"
+          >
+            Social
+          </strong>
+          <div
+            class="chakra-stack css-1ko7mmx"
+          >
+            <a
+              href="https://www.linkedin.com/in/ingrid-flack/"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://github.com/ingridflack"
+            >
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="chakra-stack css-1y3yl0q"
+      >
+        <p
+          class="chakra-text css-0"
+        >
+          © 2024 Trivia App
+        </p>
+        <p
+          class="chakra-text css-0"
+        >
+          Developed by Ingrid Flack
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+`;

@@ -1,8 +1,9 @@
 import { cleanup, fireEvent, render } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import TriviaConfig, { TriviaConfigProps } from ".";
-import { GameConfigValues } from "../../pages/Config";
+
 import { FieldErrors } from "react-hook-form";
+import { GameConfigValues } from "../../pages/Config";
 
 const formFieldsData = [
   {

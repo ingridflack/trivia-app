@@ -1,14 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
-import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
+
 import PrivateRoute from "./components/PrivateRoute";
-import Trivia from "./pages/Trivia";
-import TriviaHistory from "./pages/TriviaHistory";
-import Config from "./pages/Config";
 
 import Home from "./pages/Home";
+import Config from "./pages/Config";
+import Login from "./pages/Login";
 import RequestResetPasswordLink from "./pages/RequestResetPasswordLink";
 import ResetPassword from "./pages/ResetPassword";
+import SignUp from "./pages/SignUp";
+import Trivia from "./pages/Trivia";
+import TriviaHistory from "./pages/TriviaHistory";
 
 export const router = createBrowserRouter([
   {

@@ -1,8 +1,9 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import SignUpForm, { SignUpFormProps } from ".";
 import { cleanup, fireEvent, render, renderHook } from "@testing-library/react";
-import { SignUpValues } from "../../pages/SignUp";
+
 import { FieldErrors, useForm } from "react-hook-form";
+import { SignUpValues } from "../../pages/SignUp";
 
 const { result } = renderHook(() => useForm());
 

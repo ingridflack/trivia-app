@@ -1,10 +1,10 @@
 import { Box, Card, Container, Text, useToast } from "@chakra-ui/react";
-import SignUpForm from "../components/SignUpForm";
-import Header from "../components/Header";
+import SignUpForm from "../../components/SignUpForm";
+import Header from "../../components/Header";
 import { useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
-import * as AuthService from "../services/authService";
-import { Footer } from "../components/Footer";
+import * as AuthService from "../../services/authService";
+import { Footer } from "../../components/Footer";
 
 export interface SignUpValues {
   email: string;

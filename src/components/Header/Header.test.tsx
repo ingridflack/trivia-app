@@ -1,5 +1,5 @@
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, Mock, vi } from "vitest";
 import useAuth from "../../hooks/useAuth";
 import { MemoryRouter } from "react-router-dom";
 import Header from ".";
@@ -30,8 +30,7 @@ describe("Header", () => {
   };
 
   beforeEach(() => {
-    // @ts-expect-error mockReturnValue is not defined in the type
-    (useAuth as vi.Mock).mockReturnValue({ userData: null, clearUserData });
+    (useAuth as Mock).mockReturnValue({ userData: null, clearUserData });
   });
 
   it("should render the sign in and sign up links when the user is not logged in", () => {
@@ -66,9 +65,7 @@ describe("Header", () => {
   });
 
   it('should call "clearUserData" and navigate to the home page when the user logs out', () => {
-    // @ts-expect-error mockReturnValue is not defined in the type
-
-    (useAuth as vi.Mock).mockReturnValue({
+    (useAuth as Mock).mockReturnValue({
       userData: userDataMock,
       clearUserData,
     });

@@ -1,5 +1,5 @@
 import { MemoryRouter } from "react-router-dom";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it, Mock, vi } from "vitest";
 import PrivateRoute from ".";
 import useAuth from "../../hooks/useAuth";
 import { cleanup, render } from "@testing-library/react";
@@ -20,8 +20,7 @@ describe("PrivateRoute", () => {
   });
 
   it("should render the component when userData is present", () => {
-    // @ts-expect-error mockReturnValue is not defined in the type
-    (useAuth as vi.Mock).mockReturnValue({ userData: userDataMock });
+    (useAuth as Mock).mockReturnValue({ userData: userDataMock });
 
     const { getByText } = render(
       <MemoryRouter>
@@ -33,8 +32,7 @@ describe("PrivateRoute", () => {
   });
 
   it("should redirect to /login when userData is absent", () => {
-    // @ts-expect-error mockReturnValue is not defined in the type
-    (useAuth as vi.Mock).mockReturnValue({ userData: null });
+    (useAuth as Mock).mockReturnValue({ userData: null });
 
     const { queryByText } = render(
       <MemoryRouter>

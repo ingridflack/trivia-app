@@ -1,10 +1,10 @@
 import { Box, Card, Container, Image, Text, useToast } from "@chakra-ui/react";
-import Header from "../components/Header";
-import ResetPasswordForm from "../components/ResetPasswordForm";
+import Header from "../../components/Header";
+import ResetPasswordForm from "../../components/ResetPasswordForm";
 import { useNavigate, useParams } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
-import * as AuthService from "../services/authService";
-import { Footer } from "../components/Footer";
+import * as AuthService from "../../services/authService";
+import { Footer } from "../../components/Footer";
 
 export interface ResetPasswordFormValues {
   password: string;

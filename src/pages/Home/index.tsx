@@ -1,14 +1,14 @@
 import { Box, Button, Container, Heading, Image, Text } from "@chakra-ui/react";
-import Header from "../components/Header";
+import Header from "../../components/Header";
 import { Link, useNavigate } from "react-router-dom";
-import { PendingTriviaList } from "../components/PendingTriviaList";
+import { PendingTriviaList } from "../../components/PendingTriviaList";
 import { useEffect, useState } from "react";
-import * as TriviaService from "../services/triviaService";
-import { CreateTriviaBody, PendingTrivia } from "../types/sharedTypes";
-import { Footer } from "../components/Footer";
-import useAuth from "../hooks/useAuth";
-import { TRIVIA_CATEGORIES } from "../constants/trivia";
-import { CategoryCard } from "../components/CategoryCard";
+import * as TriviaService from "../../services/triviaService";
+import { CreateTriviaBody, PendingTrivia } from "../../types/sharedTypes";
+import { Footer } from "../../components/Footer";
+import useAuth from "../../hooks/useAuth";
+import { TRIVIA_CATEGORIES } from "../../constants/trivia";
+import { CategoryCard } from "../../components/CategoryCard";
 
 export default function Home() {
   const [pendingTrivia, setPendingTrivia] = useState<PendingTrivia[]>([]);
@@ -123,6 +123,7 @@ export default function Home() {
         >
           {Object.values(TRIVIA_CATEGORIES).map((category) => (
             <CategoryCard
+              key={category.title}
               title={category.title}
               icon={category.icon}
               color={category.color}

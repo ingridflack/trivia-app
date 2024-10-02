@@ -1,0 +1,676 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Home > should match the snapshot when userData is absent 1`] = `
+<div>
+  <header
+    class="css-cyjglw"
+  >
+    <div
+      class="chakra-container css-old1by"
+    >
+      <div
+        class="chakra-stack css-2jbh02"
+      >
+        <a
+          href="/"
+        >
+          <p
+            class="chakra-text css-kkaoep"
+          >
+            Trivia
+          </p>
+        </a>
+        <div
+          class="css-j0ozid"
+        >
+          <a
+            href="/login"
+          >
+             Sign in 
+          </a>
+          <a
+            href="/sign-up"
+          >
+             Sign Up 
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div
+    class="css-hkf5rz"
+  >
+    <div
+      class="chakra-container css-1snqisn"
+    >
+      <p
+        class="chakra-text css-141jhoy"
+      >
+        Challenge yourself in a trivia match!
+      </p>
+      <a
+        class="chakra-button css-4cakko"
+        href="/trivia/config"
+      >
+        Start a trivia
+      </a>
+      <img
+        alt="Home image"
+        class="chakra-image css-1tbuem2"
+        src="/src/assets/home.svg"
+      />
+    </div>
+  </div>
+  <section
+    class="css-og67dw"
+  >
+    <header
+      class="css-1fos7ah"
+    >
+      <h2
+        class="chakra-heading css-z7ul1s"
+      >
+        Show off your knowledge
+      </h2>
+      <p
+        class="chakra-text css-qym2lc"
+      >
+        Take a quiz and impress your friends with what you know!
+      </p>
+    </header>
+    <div
+      class="chakra-container css-14z87jx"
+    >
+      <div
+        class="chakra-card css-1ws3iy8"
+      >
+        <div
+          class="css-q6t6sw"
+        >
+          <img
+            alt="General Knowledge"
+            class="chakra-image css-0"
+            src="/src/assets/general-knowledge.svg"
+          />
+        </div>
+        <p
+          class="chakra-text css-1ey7oos"
+        >
+          General Knowledge
+        </p>
+        <button
+          class="chakra-button css-1k532n6"
+          type="button"
+        >
+          Play
+        </button>
+      </div>
+      <div
+        class="chakra-card css-1ws3iy8"
+      >
+        <div
+          class="css-zuybwl"
+        >
+          <img
+            alt="Books"
+            class="chakra-image css-0"
+            src="/src/assets/books.svg"
+          />
+        </div>
+        <p
+          class="chakra-text css-1ey7oos"
+        >
+          Books
+        </p>
+        <button
+          class="chakra-button css-1k532n6"
+          type="button"
+        >
+          Play
+        </button>
+      </div>
+      <div
+        class="chakra-card css-1ws3iy8"
+      >
+        <div
+          class="css-1gu8hpm"
+        >
+          <img
+            alt="Television"
+            class="chakra-image css-0"
+            src="/src/assets/tv.svg"
+          />
+        </div>
+        <p
+          class="chakra-text css-1ey7oos"
+        >
+          Television
+        </p>
+        <button
+          class="chakra-button css-1k532n6"
+          type="button"
+        >
+          Play
+        </button>
+      </div>
+      <div
+        class="chakra-card css-1ws3iy8"
+      >
+        <div
+          class="css-mtd76j"
+        >
+          <img
+            alt="Mathematics"
+            class="chakra-image css-0"
+            src="/src/assets/math.svg"
+          />
+        </div>
+        <p
+          class="chakra-text css-1ey7oos"
+        >
+          Mathematics
+        </p>
+        <button
+          class="chakra-button css-1k532n6"
+          type="button"
+        >
+          Play
+        </button>
+      </div>
+      <div
+        class="chakra-card css-1ws3iy8"
+      >
+        <div
+          class="css-1fsmisw"
+        >
+          <img
+            alt="Japanese Anime & Manga"
+            class="chakra-image css-0"
+            src="/src/assets/japanese.svg"
+          />
+        </div>
+        <p
+          class="chakra-text css-1ey7oos"
+        >
+          Japanese Anime & Manga
+        </p>
+        <button
+          class="chakra-button css-1k532n6"
+          type="button"
+        >
+          Play
+        </button>
+      </div>
+    </div>
+  </section>
+  <footer
+    class="css-1s2lyti"
+  >
+    <div
+      class="chakra-container css-0"
+    >
+      <div
+        class="chakra-stack css-11h4xmw"
+      >
+        <a
+          href="/"
+        >
+          <p
+            class="chakra-text css-rekzoj"
+          >
+            Trivia
+          </p>
+        </a>
+        <div
+          class="css-0"
+        >
+          <strong
+            class="chakra-heading css-kf3i1p"
+          >
+            Site map
+          </strong>
+          <div
+            class="chakra-stack css-1ko7mmx"
+          >
+            <a
+              href="/"
+            >
+              Home
+            </a>
+            <a
+              href="/login"
+            >
+              Sign in
+            </a>
+            <a
+              href="/sign-up"
+            >
+              Sign up
+            </a>
+          </div>
+        </div>
+        <div
+          class="css-0"
+        >
+          <strong
+            class="chakra-heading css-kf3i1p"
+          >
+            Social
+          </strong>
+          <div
+            class="chakra-stack css-1ko7mmx"
+          >
+            <a
+              href="https://www.linkedin.com/in/ingrid-flack/"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://github.com/ingridflack"
+            >
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="chakra-stack css-1y3yl0q"
+      >
+        <p
+          class="chakra-text css-0"
+        >
+          © 2024 Trivia App
+        </p>
+        <p
+          class="chakra-text css-0"
+        >
+          Developed by Ingrid Flack
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+`;
+
+exports[`Home > should match the snapshot when userData is present and has pending trivia 1`] = `
+<div>
+  <header
+    class="css-cyjglw"
+  >
+    <div
+      class="chakra-container css-old1by"
+    >
+      <div
+        class="chakra-stack css-2jbh02"
+      >
+        <a
+          href="/"
+        >
+          <p
+            class="chakra-text css-kkaoep"
+          >
+            Trivia
+          </p>
+        </a>
+        <div
+          class="css-j0ozid"
+        >
+          <a
+            href="/trivia/history"
+          >
+             History 
+          </a>
+          <a
+            href="/login"
+          >
+            Logout
+          </a>
+          <span
+            class="chakra-avatar css-1et69xt"
+          >
+            <svg
+              aria-label=" avatar"
+              class="chakra-avatar__svg css-16ite8i"
+              role="img"
+              viewBox="0 0 128 128"
+            >
+              <path
+                d="M103,102.1388 C93.094,111.92 79.3504,118 64.1638,118 C48.8056,118 34.9294,111.768 25,101.7892 L25,95.2 C25,86.8096 31.981,80 40.6,80 L87.4,80 C96.019,80 103,86.8096 103,95.2 L103,102.1388 Z"
+                fill="currentColor"
+              />
+              <path
+                d="M63.9961647,24 C51.2938136,24 41,34.2938136 41,46.9961647 C41,59.7061864 51.2938136,70 63.9961647,70 C76.6985159,70 87,59.7061864 87,46.9961647 C87,34.2938136 76.6985159,24 63.9961647,24"
+                fill="currentColor"
+              />
+            </svg>
+          </span>
+          <p
+            class="chakra-text css-11nn4uy"
+          >
+             
+            testUsername
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div
+    class="css-hkf5rz"
+  >
+    <div
+      class="chakra-container css-1snqisn"
+    >
+      <p
+        class="chakra-text css-141jhoy"
+      >
+        Challenge yourself in a trivia match!
+      </p>
+      <a
+        class="chakra-button css-4cakko"
+        href="/trivia/config"
+      >
+        Start a trivia
+      </a>
+      <img
+        alt="Home image"
+        class="chakra-image css-1tbuem2"
+        src="/src/assets/home.svg"
+      />
+    </div>
+  </div>
+  <div
+    class="chakra-container css-1clgay9"
+  >
+    <header
+      class="css-8tu9to"
+    >
+      <h2
+        class="chakra-heading css-1tapsqs"
+      >
+        Pending trivias
+      </h2>
+    </header>
+    <div
+      class="chakra-stack css-1sa45dc"
+    >
+      <div
+        class="chakra-card css-2dlz7"
+      >
+        <span
+          class="chakra-badge css-8k89l4"
+        >
+          easy
+        </span>
+        <div
+          class="chakra-stack css-xzl3c"
+        >
+          <div
+            class="css-7d8kcm"
+          >
+            <img
+              class="chakra-image css-0"
+            />
+          </div>
+          <div
+            class="css-0"
+          >
+            <p
+              class="chakra-text css-8ler1h"
+            />
+          </div>
+        </div>
+        <a
+          class="chakra-button css-10idvi4"
+          href="/trivia/trivia1"
+        >
+          Join
+          <div
+            class="chakra-avatar__group css-1monvpv"
+            role="group"
+          >
+            <span
+              class="chakra-avatar css-r8mluz"
+            >
+              <div
+                aria-label="testUsername"
+                class="chakra-avatar__initials css-0"
+                role="img"
+              >
+                t
+              </div>
+            </span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <section
+    class="css-og67dw"
+  >
+    <header
+      class="css-1fos7ah"
+    >
+      <h2
+        class="chakra-heading css-z7ul1s"
+      >
+        Show off your knowledge
+      </h2>
+      <p
+        class="chakra-text css-qym2lc"
+      >
+        Take a quiz and impress your friends with what you know!
+      </p>
+    </header>
+    <div
+      class="chakra-container css-14z87jx"
+    >
+      <div
+        class="chakra-card css-1ws3iy8"
+      >
+        <div
+          class="css-q6t6sw"
+        >
+          <img
+            alt="General Knowledge"
+            class="chakra-image css-0"
+            src="/src/assets/general-knowledge.svg"
+          />
+        </div>
+        <p
+          class="chakra-text css-1ey7oos"
+        >
+          General Knowledge
+        </p>
+        <button
+          class="chakra-button css-1k532n6"
+          type="button"
+        >
+          Play
+        </button>
+      </div>
+      <div
+        class="chakra-card css-1ws3iy8"
+      >
+        <div
+          class="css-zuybwl"
+        >
+          <img
+            alt="Books"
+            class="chakra-image css-0"
+            src="/src/assets/books.svg"
+          />
+        </div>
+        <p
+          class="chakra-text css-1ey7oos"
+        >
+          Books
+        </p>
+        <button
+          class="chakra-button css-1k532n6"
+          type="button"
+        >
+          Play
+        </button>
+      </div>
+      <div
+        class="chakra-card css-1ws3iy8"
+      >
+        <div
+          class="css-1gu8hpm"
+        >
+          <img
+            alt="Television"
+            class="chakra-image css-0"
+            src="/src/assets/tv.svg"
+          />
+        </div>
+        <p
+          class="chakra-text css-1ey7oos"
+        >
+          Television
+        </p>
+        <button
+          class="chakra-button css-1k532n6"
+          type="button"
+        >
+          Play
+        </button>
+      </div>
+      <div
+        class="chakra-card css-1ws3iy8"
+      >
+        <div
+          class="css-mtd76j"
+        >
+          <img
+            alt="Mathematics"
+            class="chakra-image css-0"
+            src="/src/assets/math.svg"
+          />
+        </div>
+        <p
+          class="chakra-text css-1ey7oos"
+        >
+          Mathematics
+        </p>
+        <button
+          class="chakra-button css-1k532n6"
+          type="button"
+        >
+          Play
+        </button>
+      </div>
+      <div
+        class="chakra-card css-1ws3iy8"
+      >
+        <div
+          class="css-1fsmisw"
+        >
+          <img
+            alt="Japanese Anime & Manga"
+            class="chakra-image css-0"
+            src="/src/assets/japanese.svg"
+          />
+        </div>
+        <p
+          class="chakra-text css-1ey7oos"
+        >
+          Japanese Anime & Manga
+        </p>
+        <button
+          class="chakra-button css-1k532n6"
+          type="button"
+        >
+          Play
+        </button>
+      </div>
+    </div>
+  </section>
+  <footer
+    class="css-1s2lyti"
+  >
+    <div
+      class="chakra-container css-0"
+    >
+      <div
+        class="chakra-stack css-11h4xmw"
+      >
+        <a
+          href="/"
+        >
+          <p
+            class="chakra-text css-rekzoj"
+          >
+            Trivia
+          </p>
+        </a>
+        <div
+          class="css-0"
+        >
+          <strong
+            class="chakra-heading css-kf3i1p"
+          >
+            Site map
+          </strong>
+          <div
+            class="chakra-stack css-1ko7mmx"
+          >
+            <a
+              href="/"
+            >
+              Home
+            </a>
+            <a
+              href="/login"
+            >
+              Sign in
+            </a>
+            <a
+              href="/sign-up"
+            >
+              Sign up
+            </a>
+          </div>
+        </div>
+        <div
+          class="css-0"
+        >
+          <strong
+            class="chakra-heading css-kf3i1p"
+          >
+            Social
+          </strong>
+          <div
+            class="chakra-stack css-1ko7mmx"
+          >
+            <a
+              href="https://www.linkedin.com/in/ingrid-flack/"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://github.com/ingridflack"
+            >
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="chakra-stack css-1y3yl0q"
+      >
+        <p
+          class="chakra-text css-0"
+        >
+          © 2024 Trivia App
+        </p>
+        <p
+          class="chakra-text css-0"
+        >
+          Developed by Ingrid Flack
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+`;
