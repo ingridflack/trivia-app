@@ -100,7 +100,7 @@ export default function Login() {
           </Box>
 
           <Image
-            src="src/assets/login.svg"
+            src="/assets/login.svg"
             alt="Login image"
             width="325px"
             height="324px"
