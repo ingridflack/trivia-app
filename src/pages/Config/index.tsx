@@ -108,7 +108,7 @@ export default function Config() {
           shadow="xl"
         >
           <Image
-            src="/src/assets/setup.svg"
+            src="/assets/setup.svg"
             alt="Login image"
             width="388px"
             height="307px"

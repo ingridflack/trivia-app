@@ -78,7 +78,7 @@ export default function RequestResetPasswordLink() {
           </Box>
 
           <Image
-            src="/src/assets/recovery.svg"
+            src="/assets/recovery.svg"
             alt="Login image"
             width="325px"
             height="324px"

@@ -76,7 +76,7 @@ export default function Home() {
               Start a trivia
             </Button>
             <Image
-              src="/src/assets/home.svg"
+              src="/assets/home.svg"
               alt="Home image"
               position="absolute"
               right="-160px"

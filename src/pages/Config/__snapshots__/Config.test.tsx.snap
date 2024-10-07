@@ -46,7 +46,7 @@ exports[`Config > should match the snapshot 1`] = `
       <img
         alt="Login image"
         class="chakra-image css-1k0ltxj"
-        src="/src/assets/setup.svg"
+        src="/assets/setup.svg"
       />
       <div
         class="css-1updlva"

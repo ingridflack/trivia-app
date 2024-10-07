@@ -207,7 +207,7 @@ export default function Trivia() {
           </Card>
 
           <Image
-            src="/src/assets/trivia-question.svg"
+            src="/assets/trivia-question.svg"
             alt="Question image"
             position="absolute"
             right="-180px"

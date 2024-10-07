@@ -60,7 +60,7 @@ exports[`Home > should match the snapshot when userData is absent 1`] = `
         <img
           alt="Home image"
           class="chakra-image css-1tbuem2"
-          src="/src/assets/home.svg"
+          src="/assets/home.svg"
         />
       </div>
     </div>
@@ -93,7 +93,7 @@ exports[`Home > should match the snapshot when userData is absent 1`] = `
             <img
               alt="General Knowledge"
               class="chakra-image css-0"
-              src="/src/assets/general-knowledge.svg"
+              src="/assets/general-knowledge.svg"
             />
           </div>
           <p
@@ -117,7 +117,7 @@ exports[`Home > should match the snapshot when userData is absent 1`] = `
             <img
               alt="Books"
               class="chakra-image css-0"
-              src="/src/assets/books.svg"
+              src="/assets/books.svg"
             />
           </div>
           <p
@@ -141,7 +141,7 @@ exports[`Home > should match the snapshot when userData is absent 1`] = `
             <img
               alt="Television"
               class="chakra-image css-0"
-              src="/src/assets/tv.svg"
+              src="/assets/tv.svg"
             />
           </div>
           <p
@@ -165,7 +165,7 @@ exports[`Home > should match the snapshot when userData is absent 1`] = `
             <img
               alt="Mathematics"
               class="chakra-image css-0"
-              src="/src/assets/math.svg"
+              src="/assets/math.svg"
             />
           </div>
           <p
@@ -189,7 +189,7 @@ exports[`Home > should match the snapshot when userData is absent 1`] = `
             <img
               alt="Japanese Anime & Manga"
               class="chakra-image css-0"
-              src="/src/assets/japanese.svg"
+              src="/assets/japanese.svg"
             />
           </div>
           <p
@@ -381,7 +381,7 @@ exports[`Home > should match the snapshot when userData is present and has pendi
         <img
           alt="Home image"
           class="chakra-image css-1tbuem2"
-          src="/src/assets/home.svg"
+          src="/assets/home.svg"
         />
       </div>
     </div>
@@ -480,7 +480,7 @@ exports[`Home > should match the snapshot when userData is present and has pendi
             <img
               alt="General Knowledge"
               class="chakra-image css-0"
-              src="/src/assets/general-knowledge.svg"
+              src="/assets/general-knowledge.svg"
             />
           </div>
           <p
@@ -504,7 +504,7 @@ exports[`Home > should match the snapshot when userData is present and has pendi
             <img
               alt="Books"
               class="chakra-image css-0"
-              src="/src/assets/books.svg"
+              src="/assets/books.svg"
             />
           </div>
           <p
@@ -528,7 +528,7 @@ exports[`Home > should match the snapshot when userData is present and has pendi
             <img
               alt="Television"
               class="chakra-image css-0"
-              src="/src/assets/tv.svg"
+              src="/assets/tv.svg"
             />
           </div>
           <p
@@ -552,7 +552,7 @@ exports[`Home > should match the snapshot when userData is present and has pendi
             <img
               alt="Mathematics"
               class="chakra-image css-0"
-              src="/src/assets/math.svg"
+              src="/assets/math.svg"
             />
           </div>
           <p
@@ -576,7 +576,7 @@ exports[`Home > should match the snapshot when userData is present and has pendi
             <img
               alt="Japanese Anime & Manga"
               class="chakra-image css-0"
-              src="/src/assets/japanese.svg"
+              src="/assets/japanese.svg"
             />
           </div>
           <p

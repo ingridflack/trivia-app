@@ -108,7 +108,7 @@ exports[`Trivia > should match the snapshot 1`] = `
       <img
         alt="Question image"
         class="chakra-image css-thp9o"
-        src="/src/assets/trivia-question.svg"
+        src="/assets/trivia-question.svg"
       />
     </div>
   </main>

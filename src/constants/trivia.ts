@@ -30,31 +30,31 @@ export const TRIVIA_CATEGORIES: Record<
 > = {
   9: {
     title: "General Knowledge",
-    icon: "/src/assets/general-knowledge.svg",
+    icon: "/assets/general-knowledge.svg",
     color: "#abe885",
     params: { category: "9", difficulty: "any", type: "any", amount: 10 },
   },
   10: {
     title: "Books",
-    icon: "/src/assets/books.svg",
+    icon: "/assets/books.svg",
     color: "#c88ab3",
     params: { category: "10", difficulty: "any", type: "any", amount: 10 },
   },
   31: {
     title: "Japanese Anime & Manga",
-    icon: "/src/assets/japanese.svg",
+    icon: "/assets/japanese.svg",
     color: "#ffaf65",
     params: { category: "31", difficulty: "any", type: "any", amount: 10 },
   },
   19: {
     title: "Mathematics",
-    icon: "/src/assets/math.svg",
+    icon: "/assets/math.svg",
     color: "#77ccf4",
     params: { category: "19", difficulty: "any", type: "any", amount: 10 },
   },
   14: {
     title: "Television",
-    icon: "/src/assets/tv.svg",
+    icon: "/assets/tv.svg",
     color: "#fe9295",
     params: { category: "14", difficulty: "any", type: "any", amount: 10 },
   },
