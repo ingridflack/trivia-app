@@ -50,6 +50,7 @@ export default function RequestResetPasswordLink() {
       <Header />
 
       <Container
+        as="main"
         display="flex"
         alignItems="center"
         justifyContent="center"

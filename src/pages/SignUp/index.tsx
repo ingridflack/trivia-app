@@ -59,6 +59,7 @@ export default function SignUp() {
       <Header />
 
       <Container
+        as="main"
         display="flex"
         alignItems="center"
         justifyContent="center"

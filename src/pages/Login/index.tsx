@@ -61,6 +61,7 @@ export default function Login() {
       <Header />
 
       <Container
+        as="main"
         display="flex"
         alignItems="center"
         justifyContent="center"

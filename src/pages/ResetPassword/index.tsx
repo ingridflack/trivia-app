@@ -54,6 +54,7 @@ export default function ResetPassword() {
       <Header />
 
       <Container
+        as="main"
         display="flex"
         alignItems="center"
         justifyContent="center"

@@ -138,6 +138,7 @@ export default function Trivia() {
       <Header />
 
       <Container
+        as="main"
         display="flex"
         alignItems="center"
         justifyContent="center"

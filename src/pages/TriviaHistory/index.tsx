@@ -45,7 +45,7 @@ export default function TriviaHistory() {
     <>
       <Header />
 
-      <Container padding={{ base: "40px 20px", md: "80px 0 120px" }}>
+      <Container as="main" padding={{ base: "40px 20px", md: "80px 0 120px" }}>
         <Box as="header" marginBottom="40px">
           <Heading fontSize="3xl">Trivia History</Heading>
         </Box>

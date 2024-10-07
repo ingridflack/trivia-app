@@ -37,7 +37,7 @@ exports[`SignUp > should match the snapshot 1`] = `
       </div>
     </div>
   </header>
-  <div
+  <main
     class="chakra-container css-7or84d"
   >
     <div
@@ -298,7 +298,7 @@ exports[`SignUp > should match the snapshot 1`] = `
         </form>
       </div>
     </div>
-  </div>
+  </main>
   <footer
     class="css-1s2lyti"
   >

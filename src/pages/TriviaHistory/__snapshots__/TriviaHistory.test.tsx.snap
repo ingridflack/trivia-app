@@ -37,7 +37,7 @@ exports[`TriviaHistory > should match the snapshot when trivia history is empty 
       </div>
     </div>
   </header>
-  <div
+  <main
     class="chakra-container css-1clgay9"
   >
     <header
@@ -63,7 +63,7 @@ exports[`TriviaHistory > should match the snapshot when trivia history is empty 
        
       to start a game!
     </p>
-  </div>
+  </main>
   <footer
     class="css-1s2lyti"
   >
@@ -190,7 +190,7 @@ exports[`TriviaHistory > should match the snapshot when trivia history is presen
       </div>
     </div>
   </header>
-  <div
+  <main
     class="chakra-container css-1clgay9"
   >
     <header
@@ -334,7 +334,7 @@ exports[`TriviaHistory > should match the snapshot when trivia history is presen
         </div>
       </div>
     </div>
-  </div>
+  </main>
   <footer
     class="css-1s2lyti"
   >

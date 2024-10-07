@@ -37,7 +37,7 @@ exports[`Trivia > should match the snapshot 1`] = `
       </div>
     </div>
   </header>
-  <div
+  <main
     class="chakra-container css-b6ivgp"
   >
     <div
@@ -111,7 +111,7 @@ exports[`Trivia > should match the snapshot 1`] = `
         src="/src/assets/trivia-question.svg"
       />
     </div>
-  </div>
+  </main>
   <footer
     class="css-1s2lyti"
   >
