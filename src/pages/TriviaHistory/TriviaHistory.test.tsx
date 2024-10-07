@@ -25,7 +25,6 @@ describe("TriviaHistory", () => {
               category: "1",
               createdAt: "2023-10-01T00:00:00Z",
               difficulty: "easy",
-              score: 5,
               status: "completed",
             },
             items: [
@@ -43,6 +42,7 @@ describe("TriviaHistory", () => {
               },
             ],
             completed: true,
+            score: 5,
           },
         ],
       },

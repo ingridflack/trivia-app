@@ -22,7 +22,6 @@ export interface Trivia {
   difficulty: string;
   game_mode: string;
   questions: Question[];
-  score: number;
   users: User[];
   status: string;
   _id: string;
@@ -36,6 +35,7 @@ export interface TriviaHistory {
     _id: string;
   }[];
   trivia: Trivia;
+  score: number;
   completed: boolean;
 }
 

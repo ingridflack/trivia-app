@@ -95,7 +95,7 @@ export default function TriviaHistory() {
 
                       <Box display="flex" alignItems="center" gap="30px">
                         <Text fontSize="sm">
-                          Score: {historyItem.trivia.score || 0} /{" "}
+                          Score: {historyItem.score || 0} /{" "}
                           {historyItem.items.length}
                         </Text>
                         <Badge
