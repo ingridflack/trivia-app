@@ -171,7 +171,7 @@ export default function Trivia() {
             fontWeight="600"
             marginBottom="10px"
           >
-            Question {currentQuestionIndex}/10
+            Question {currentQuestionIndex}
           </Text>
           <Card
             display="flex"
