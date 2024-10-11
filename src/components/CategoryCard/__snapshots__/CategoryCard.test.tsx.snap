@@ -20,7 +20,7 @@ exports[`CategoryCard > should match the snapshot 1`] = `
       Test Category
     </p>
     <button
-      class="chakra-button css-1k532n6"
+      class="chakra-button css-c24asi"
       type="button"
     >
       Play

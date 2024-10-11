@@ -58,15 +58,16 @@ export default function ResetPassword() {
         display="flex"
         alignItems="center"
         justifyContent="center"
-        minH="calc(var(--chakra-vh) - 50px)" // 100vh - 50px (height of the header)
+        paddingY="32px"
       >
         <Card
           display="flex"
           flexDirection={["column", "column", "row"]}
           justifyContent="space-around"
           width="100%"
-          padding={{ base: "40px 20px", md: "80px 0" }}
+          padding={{ base: "20px", md: "32px" }}
           shadow="xl"
+          maxW="635px"
         >
           <Box maxW="392px" width="100%">
             <Text fontSize="xx-large" marginBottom="32px" color="gray.700">

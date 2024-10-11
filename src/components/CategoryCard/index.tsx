@@ -45,7 +45,7 @@ export const CategoryCard = ({
         {title}
       </Text>
 
-      <Button colorScheme="purple" width="100px">
+      <Button colorScheme="purple" minWidth="100px">
         Play
       </Button>
     </Card>

@@ -95,7 +95,6 @@ export default function Config() {
         display="flex"
         alignItems="center"
         justifyContent="center"
-        minH="calc(var(--chakra-vh) - 50px)" // 100vh - 50px (height of the header)
       >
         <Card
           display="flex"

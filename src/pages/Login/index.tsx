@@ -65,7 +65,7 @@ export default function Login() {
         display="flex"
         alignItems="center"
         justifyContent="center"
-        minH="calc(var(--chakra-vh) - 50px)" // 100vh - 50px (height of the header)
+        paddingY="32px"
       >
         <Card
           display="flex"

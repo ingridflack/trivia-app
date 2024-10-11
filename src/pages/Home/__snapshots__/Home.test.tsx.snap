@@ -6,7 +6,7 @@ exports[`Home > should match the snapshot when userData is absent 1`] = `
     class="css-cyjglw"
   >
     <div
-      class="chakra-container css-old1by"
+      class="chakra-container css-1g360fb"
     >
       <div
         class="chakra-stack css-2jbh02"
@@ -52,7 +52,7 @@ exports[`Home > should match the snapshot when userData is absent 1`] = `
           Challenge yourself in a trivia match!
         </p>
         <a
-          class="chakra-button css-4cakko"
+          class="chakra-button css-1pz0k6f"
           href="/trivia/config"
         >
           Start a trivia
@@ -102,7 +102,7 @@ exports[`Home > should match the snapshot when userData is absent 1`] = `
             General Knowledge
           </p>
           <button
-            class="chakra-button css-1k532n6"
+            class="chakra-button css-c24asi"
             type="button"
           >
             Play
@@ -126,7 +126,7 @@ exports[`Home > should match the snapshot when userData is absent 1`] = `
             Books
           </p>
           <button
-            class="chakra-button css-1k532n6"
+            class="chakra-button css-c24asi"
             type="button"
           >
             Play
@@ -150,7 +150,7 @@ exports[`Home > should match the snapshot when userData is absent 1`] = `
             Television
           </p>
           <button
-            class="chakra-button css-1k532n6"
+            class="chakra-button css-c24asi"
             type="button"
           >
             Play
@@ -174,7 +174,7 @@ exports[`Home > should match the snapshot when userData is absent 1`] = `
             Mathematics
           </p>
           <button
-            class="chakra-button css-1k532n6"
+            class="chakra-button css-c24asi"
             type="button"
           >
             Play
@@ -198,7 +198,7 @@ exports[`Home > should match the snapshot when userData is absent 1`] = `
             Japanese Anime & Manga
           </p>
           <button
-            class="chakra-button css-1k532n6"
+            class="chakra-button css-c24asi"
             type="button"
           >
             Play
@@ -302,7 +302,7 @@ exports[`Home > should match the snapshot when userData is present and has pendi
     class="css-cyjglw"
   >
     <div
-      class="chakra-container css-old1by"
+      class="chakra-container css-1g360fb"
     >
       <div
         class="chakra-stack css-2jbh02"
@@ -324,36 +324,61 @@ exports[`Home > should match the snapshot when userData is present and has pendi
           >
              History 
           </a>
+          <div
+            class="chakra-stack css-1mlvmbj"
+          >
+            <span
+              class="chakra-avatar css-30inpg"
+            >
+              <svg
+                aria-label=" avatar"
+                class="chakra-avatar__svg css-16ite8i"
+                role="img"
+                viewBox="0 0 128 128"
+              >
+                <path
+                  d="M103,102.1388 C93.094,111.92 79.3504,118 64.1638,118 C48.8056,118 34.9294,111.768 25,101.7892 L25,95.2 C25,86.8096 31.981,80 40.6,80 L87.4,80 C96.019,80 103,86.8096 103,95.2 L103,102.1388 Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M63.9961647,24 C51.2938136,24 41,34.2938136 41,46.9961647 C41,59.7061864 51.2938136,70 63.9961647,70 C76.6985159,70 87,59.7061864 87,46.9961647 C87,34.2938136 76.6985159,24 63.9961647,24"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+            <p
+              class="chakra-text css-2n6pz9"
+            >
+               
+              testUsername
+            </p>
+          </div>
           <a
             href="/login"
           >
-            Logout
-          </a>
-          <span
-            class="chakra-avatar css-1et69xt"
-          >
             <svg
-              aria-label=" avatar"
-              class="chakra-avatar__svg css-16ite8i"
-              role="img"
-              viewBox="0 0 128 128"
+              fill="#000000"
+              height="14px"
+              id="Capa_1"
+              version="1.1"
+              viewBox="0 0 384.971 384.971"
+              width="14px"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                d="M103,102.1388 C93.094,111.92 79.3504,118 64.1638,118 C48.8056,118 34.9294,111.768 25,101.7892 L25,95.2 C25,86.8096 31.981,80 40.6,80 L87.4,80 C96.019,80 103,86.8096 103,95.2 L103,102.1388 Z"
-                fill="currentColor"
-              />
-              <path
-                d="M63.9961647,24 C51.2938136,24 41,34.2938136 41,46.9961647 C41,59.7061864 51.2938136,70 63.9961647,70 C76.6985159,70 87,59.7061864 87,46.9961647 C87,34.2938136 76.6985159,24 63.9961647,24"
-                fill="currentColor"
-              />
+              <g>
+                <g
+                  id="Sign_Out"
+                >
+                  <path
+                    d="M180.455,360.91H24.061V24.061h156.394c6.641,0,12.03-5.39,12.03-12.03s-5.39-12.03-12.03-12.03H12.03    C5.39,0.001,0,5.39,0,12.031V372.94c0,6.641,5.39,12.03,12.03,12.03h168.424c6.641,0,12.03-5.39,12.03-12.03    C192.485,366.299,187.095,360.91,180.455,360.91z"
+                  />
+                  <path
+                    d="M381.481,184.088l-83.009-84.2c-4.704-4.752-12.319-4.74-17.011,0c-4.704,4.74-4.704,12.439,0,17.179l62.558,63.46H96.279    c-6.641,0-12.03,5.438-12.03,12.151c0,6.713,5.39,12.151,12.03,12.151h247.74l-62.558,63.46c-4.704,4.752-4.704,12.439,0,17.179    c4.704,4.752,12.319,4.752,17.011,0l82.997-84.2C386.113,196.588,386.161,188.756,381.481,184.088z"
+                  />
+                </g>
+              </g>
             </svg>
-          </span>
-          <p
-            class="chakra-text css-11nn4uy"
-          >
-             
-            testUsername
-          </p>
+          </a>
         </div>
       </div>
     </div>
@@ -373,7 +398,7 @@ exports[`Home > should match the snapshot when userData is present and has pendi
           Challenge yourself in a trivia match!
         </p>
         <a
-          class="chakra-button css-4cakko"
+          class="chakra-button css-1pz0k6f"
           href="/trivia/config"
         >
           Start a trivia
@@ -489,7 +514,7 @@ exports[`Home > should match the snapshot when userData is present and has pendi
             General Knowledge
           </p>
           <button
-            class="chakra-button css-1k532n6"
+            class="chakra-button css-c24asi"
             type="button"
           >
             Play
@@ -513,7 +538,7 @@ exports[`Home > should match the snapshot when userData is present and has pendi
             Books
           </p>
           <button
-            class="chakra-button css-1k532n6"
+            class="chakra-button css-c24asi"
             type="button"
           >
             Play
@@ -537,7 +562,7 @@ exports[`Home > should match the snapshot when userData is present and has pendi
             Television
           </p>
           <button
-            class="chakra-button css-1k532n6"
+            class="chakra-button css-c24asi"
             type="button"
           >
             Play
@@ -561,7 +586,7 @@ exports[`Home > should match the snapshot when userData is present and has pendi
             Mathematics
           </p>
           <button
-            class="chakra-button css-1k532n6"
+            class="chakra-button css-c24asi"
             type="button"
           >
             Play
@@ -585,7 +610,7 @@ exports[`Home > should match the snapshot when userData is present and has pendi
             Japanese Anime & Manga
           </p>
           <button
-            class="chakra-button css-1k532n6"
+            class="chakra-button css-c24asi"
             type="button"
           >
             Play

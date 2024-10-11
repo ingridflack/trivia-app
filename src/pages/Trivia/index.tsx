@@ -163,7 +163,6 @@ export default function Trivia() {
         alignItems="center"
         justifyContent="center"
         flexDirection="column"
-        minH="calc(var(--chakra-vh) - 50px)" // 100vh - 50px (height of the header)
       >
         <Box width="100%" position="relative">
           <Text

@@ -19,6 +19,37 @@ import useAuth from "../../hooks/useAuth";
 import { TRIVIA_CATEGORIES } from "../../constants/trivia";
 import { CategoryCard } from "../../components/CategoryCard";
 
+interface PendingTriviaContentProps {
+  isLoading: boolean;
+  list: PendingTrivia[];
+}
+
+function PendingTriviaContent({ isLoading, list }: PendingTriviaContentProps) {
+  if (isLoading) {
+    return (
+      <Stack
+        display="grid"
+        gap="16px"
+        gridTemplateColumns={{
+          base: "repeat(1fr)",
+          md: "repeat(4, 1fr)",
+        }}
+      >
+        <Skeleton height="138px" width="100%" borderRadius="md" />
+        <Skeleton height="138px" width="100%" borderRadius="md" />
+        <Skeleton height="138px" width="100%" borderRadius="md" />
+        <Skeleton height="138px" width="100%" borderRadius="md" />
+      </Stack>
+    );
+  }
+
+  if (!list.length) {
+    return <Text>No pending trivias</Text>;
+  }
+
+  return <PendingTriviaList pendingTriviaList={list} />;
+}
+
 export default function Home() {
   const [pendingTrivia, setPendingTrivia] = useState<PendingTrivia[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -79,7 +110,7 @@ export default function Home() {
             <Button
               backgroundColor="green.400"
               color="white"
-              width="180px"
+              minWidth="180px"
               _hover="green.400"
               marginTop="38px"
               as={Link}
@@ -107,25 +138,7 @@ export default function Home() {
               <Heading fontSize="3xl">Pending trivias</Heading>
             </Box>
 
-            {isLoading ? (
-              <Stack
-                display="grid"
-                gap="16px"
-                gridTemplateColumns={{
-                  base: "repeat(1fr)",
-                  md: "repeat(4, 1fr)",
-                }}
-              >
-                <Skeleton height="138px" width="100%" borderRadius="md" />
-                <Skeleton height="138px" width="100%" borderRadius="md" />
-                <Skeleton height="138px" width="100%" borderRadius="md" />
-                <Skeleton height="138px" width="100%" borderRadius="md" />
-              </Stack>
-            ) : pendingTrivia.length ? (
-              <PendingTriviaList pendingTriviaList={pendingTrivia} />
-            ) : (
-              <Text>No pending trivias</Text>
-            )}
+            <PendingTriviaContent isLoading={isLoading} list={pendingTrivia} />
           </Container>
         )}
 

@@ -6,7 +6,7 @@ exports[`Trivia > should match the snapshot 1`] = `
     class="css-cyjglw"
   >
     <div
-      class="chakra-container css-old1by"
+      class="chakra-container css-1g360fb"
     >
       <div
         class="chakra-stack css-2jbh02"
@@ -38,7 +38,7 @@ exports[`Trivia > should match the snapshot 1`] = `
     </div>
   </header>
   <main
-    class="chakra-container css-b6ivgp"
+    class="chakra-container css-b93e9j"
   >
     <div
       class="css-1kxonj9"
@@ -54,55 +54,48 @@ exports[`Trivia > should match the snapshot 1`] = `
         class="chakra-card css-umnoxe"
       >
         <div
-          class="css-u0ormi"
+          class="css-ydhgod"
         >
           <div
-            aria-valuemax="15"
-            aria-valuemin="0"
-            aria-valuenow="15"
-            class="chakra-progress css-1wsiu6z"
-            role="progressbar"
+            class="chakra-stack css-py8sb8"
           >
-            <svg
-              class="css-1hrl48y"
-              viewBox="0 0 100 100"
-            >
-              <circle
-                class="chakra-progress__track css-1bhxzgy"
-                cx="50"
-                cy="50"
-                r="42"
-                stroke-width="4px"
-              />
-              <circle
-                class="chakra-progress__indicator css-12qt19m"
-                cx="50"
-                cy="50"
-                r="42"
-                stroke-dasharray="264 0"
-                stroke-dashoffset="66"
-                stroke-width="4px"
-              />
-            </svg>
             <div
-              class="css-tvcbta"
-            >
-              15
-            </div>
+              class="chakra-skeleton css-1mhey06"
+            />
+            <div
+              class="chakra-skeleton css-gh4u1o"
+            />
           </div>
-          <span
-            class="chakra-badge css-1k2q7t8"
-          />
         </div>
         <form
-          class="chakra-stack css-8g8ihq"
+          class="chakra-stack css-tgpajw"
         >
-          <button
-            class="chakra-button css-mu2xh3"
-            type="submit"
+          <div
+            class="chakra-stack css-1069lhh"
           >
-            Answer
-          </button>
+            <p
+              class="chakra-skeleton css-168vbtr"
+            />
+            <div
+              class="chakra-stack css-1ywvnpj"
+            >
+              <div
+                class="chakra-skeleton css-1u1dhr4"
+              />
+              <div
+                class="chakra-skeleton css-1mg5xl8"
+              />
+              <div
+                class="chakra-skeleton css-16eank5"
+              />
+              <div
+                class="chakra-skeleton css-1pht03p"
+              />
+            </div>
+            <div
+              class="chakra-skeleton css-df4m0m"
+            />
+          </div>
         </form>
       </div>
       <img

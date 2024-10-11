@@ -64,7 +64,6 @@ export default function SignUp() {
         alignItems="center"
         justifyContent="center"
         paddingY="32px"
-        minH="calc(var(--chakra-vh) - 50px)" // 100vh - 50px (height of the header)
       >
         <Card
           display="flex"
