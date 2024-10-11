@@ -95,6 +95,7 @@ export default function Config() {
         display="flex"
         alignItems="center"
         justifyContent="center"
+        paddingY="32px"
       >
         <Card
           display="flex"

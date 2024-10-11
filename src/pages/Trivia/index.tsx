@@ -163,6 +163,7 @@ export default function Trivia() {
         alignItems="center"
         justifyContent="center"
         flexDirection="column"
+        paddingY="32px"
       >
         <Box width="100%" position="relative">
           <Text
