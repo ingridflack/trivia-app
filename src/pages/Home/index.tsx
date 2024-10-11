@@ -1,4 +1,13 @@
-import { Box, Button, Container, Heading, Image, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Container,
+  Heading,
+  Image,
+  Skeleton,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 import Header from "../../components/Header";
 import { Link, useNavigate } from "react-router-dom";
 import { PendingTriviaList } from "../../components/PendingTriviaList";
@@ -12,6 +21,7 @@ import { CategoryCard } from "../../components/CategoryCard";
 
 export default function Home() {
   const [pendingTrivia, setPendingTrivia] = useState<PendingTrivia[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const { userData } = useAuth();
   const navigate = useNavigate();
 
@@ -22,6 +32,8 @@ export default function Home() {
         setPendingTrivia(data.pendingTrivia);
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -89,12 +101,31 @@ export default function Home() {
           </Container>
         </Box>
 
-        {userData && !!pendingTrivia.length && (
+        {userData && (
           <Container padding={{ base: "40px 20px", md: "80px 0 120px" }}>
             <Box as="header" marginBottom={{ base: "20px", md: "40px" }}>
               <Heading fontSize="3xl">Pending trivias</Heading>
             </Box>
-            <PendingTriviaList pendingTriviaList={pendingTrivia} />
+
+            {isLoading ? (
+              <Stack
+                display="grid"
+                gap="16px"
+                gridTemplateColumns={{
+                  base: "repeat(1fr)",
+                  md: "repeat(4, 1fr)",
+                }}
+              >
+                <Skeleton height="138px" width="100%" borderRadius="md" />
+                <Skeleton height="138px" width="100%" borderRadius="md" />
+                <Skeleton height="138px" width="100%" borderRadius="md" />
+                <Skeleton height="138px" width="100%" borderRadius="md" />
+              </Stack>
+            ) : pendingTrivia.length ? (
+              <PendingTriviaList pendingTriviaList={pendingTrivia} />
+            ) : (
+              <Text>No pending trivias</Text>
+            )}
           </Container>
         )}
 

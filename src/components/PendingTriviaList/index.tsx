@@ -42,7 +42,6 @@ export const PendingTriviaList = ({
             >
               {trivia.difficulty}
             </Badge>
-
             <Stack
               direction="row"
               gap="10px"
@@ -66,7 +65,6 @@ export const PendingTriviaList = ({
                 </Text>
               </Box>
             </Stack>
-
             <Button
               as={Link}
               to={`/trivia/${trivia._id}`}

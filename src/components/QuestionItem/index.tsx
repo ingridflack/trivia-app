@@ -11,6 +11,7 @@ import { Control, Controller, FieldErrors } from "react-hook-form";
 
 import { TriviaQuestion } from "../../services/triviaService";
 import { AnswerFormValues } from "../../pages/Trivia";
+import { memo } from "react";
 
 interface QuestionItemProps {
   question?: TriviaQuestion;
@@ -18,11 +19,7 @@ interface QuestionItemProps {
   errors: FieldErrors<AnswerFormValues>;
 }
 
-export default function QuestionItem({
-  question,
-  errors,
-  control,
-}: QuestionItemProps) {
+function QuestionItem({ question, errors, control }: QuestionItemProps) {
   if (!question) return null;
 
   return (
@@ -68,3 +65,5 @@ export default function QuestionItem({
     </>
   );
 }
+
+export default memo(QuestionItem);

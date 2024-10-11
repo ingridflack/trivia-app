@@ -10,6 +10,8 @@ import {
   Card,
   Container,
   Image,
+  Skeleton,
+  SkeletonCircle,
   Stack,
   Text,
   useToast,
@@ -39,6 +41,7 @@ export default function Trivia() {
   const navigate = useNavigate();
   const toast = useToast();
   const formRef = useRef<HTMLFormElement>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleTimeOut = useCallback(async () => {
     formRef.current?.dispatchEvent(
@@ -46,7 +49,14 @@ export default function Trivia() {
     );
   }, []);
 
-  const { timeLeft, resetTimer, startTime, elapsedTime } = useTimer({
+  const {
+    timeLeft,
+    resetTimer,
+    startTime,
+    elapsedTime,
+    startTimer,
+    pauseTimer,
+  } = useTimer({
     startTime: ANSWER_TIME_LIMIT,
     onTimeOut: handleTimeOut,
   });
@@ -61,11 +71,19 @@ export default function Trivia() {
         setQuestion(data.question);
       } catch {
         console.log("error");
+      } finally {
+        setIsLoading(false);
       }
     };
 
     fetchTrivia(triviaId);
   }, [triviaId]);
+
+  useEffect(() => {
+    if (!isLoading) {
+      startTimer();
+    }
+  }, [isLoading, startTimer]);
 
   const handleNextQuestion = (nextQuestion: TriviaService.TriviaQuestion) => {
     reset();
@@ -78,6 +96,8 @@ export default function Trivia() {
     if (!question || !triviaId) return;
 
     try {
+      pauseTimer();
+
       const { data } = await TriviaService.answerQuestion({
         questionId: question._id,
         answer: values.answer,
@@ -169,15 +189,25 @@ export default function Trivia() {
               display="flex"
               alignItems="center"
               flexDirection="column"
+              width="80px"
             >
-              <Timer value={timeLeft} maxValue={startTime} />
-              <Badge
-                colorScheme={badgeColor(question?.difficulty)}
-                marginTop="20px"
-                variant="outline"
-              >
-                {question?.difficulty}
-              </Badge>
+              {isLoading ? (
+                <Stack width="74px" alignItems="center">
+                  <SkeletonCircle size="63px" marginTop="5px" />
+                  <Skeleton marginTop="25px" height="18px" width="50px" />
+                </Stack>
+              ) : (
+                <>
+                  <Timer value={timeLeft} maxValue={startTime} />
+                  <Badge
+                    colorScheme={badgeColor(question?.difficulty)}
+                    marginTop="20px"
+                    variant="outline"
+                  >
+                    {question?.difficulty}
+                  </Badge>
+                </>
+              )}
             </Box>
 
             <Stack
@@ -185,24 +215,47 @@ export default function Trivia() {
               as="form"
               ref={formRef}
               onSubmit={handleSubmit(onSubmit)}
+              width="100%"
             >
-              <QuestionItem
-                question={question}
-                control={control}
-                errors={errors}
-              />
+              {isLoading ? (
+                <Stack height="100%">
+                  <Skeleton as="p" height="30px" width="90%" />
+                  <Stack
+                    gridTemplateColumns="repeat(2, 1fr)"
+                    display="grid"
+                    gap="20px"
+                    marginTop="30px"
+                    flex="1"
+                    gridTemplateRows="20px 20px"
+                  >
+                    <Skeleton height="20px" width="40%" />
+                    <Skeleton height="20px" width="60%" />
+                    <Skeleton height="20px" width="55%" />
+                    <Skeleton height="20px" width="50%" />
+                  </Stack>
+                  <Skeleton height="40px" width="270px" />
+                </Stack>
+              ) : (
+                <>
+                  <QuestionItem
+                    question={question}
+                    control={control}
+                    errors={errors}
+                  />
 
-              <Button
-                colorScheme="purple"
-                size="md"
-                width="100%"
-                maxWidth="270px"
-                marginTop="16px"
-                isLoading={isSubmitting}
-                type="submit"
-              >
-                Answer
-              </Button>
+                  <Button
+                    colorScheme="purple"
+                    size="md"
+                    width="100%"
+                    maxWidth="270px"
+                    marginTop="16px"
+                    isLoading={isSubmitting}
+                    type="submit"
+                  >
+                    Answer
+                  </Button>
+                </>
+              )}
             </Stack>
           </Card>
 

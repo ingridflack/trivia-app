@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 interface UseTimerProps {
   onTimeOut?: (timeLeft: number) => void;
@@ -20,9 +20,15 @@ export default function useTimer({ onTimeOut, startTime = 30 }: UseTimerProps) {
   }, [onTimeOut, timeLeft]);
 
   useEffect(() => {
-    setTimerInterval();
-
     return () => clearTimerInterval();
+  }, []);
+
+  const startTimer = useCallback(() => {
+    setTimerInterval();
+  }, []);
+
+  const pauseTimer = useCallback(() => {
+    clearTimerInterval();
   }, []);
 
   const setTimerInterval = () => {
@@ -41,5 +47,13 @@ export default function useTimer({ onTimeOut, startTime = 30 }: UseTimerProps) {
     setTimeLeft(startTime);
   };
 
-  return { timeLeft, startTime, elapsedTime, setTimeLeft, resetTimer };
+  return {
+    timeLeft,
+    startTime,
+    elapsedTime,
+    setTimeLeft,
+    pauseTimer,
+    resetTimer,
+    startTimer,
+  };
 }
