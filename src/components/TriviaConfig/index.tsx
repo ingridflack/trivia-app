@@ -58,6 +58,7 @@ export default function TriviaConfig({
       <Grid
         templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }}
         gap="0 20px"
+        width="100%"
       >
         <FormControl isInvalid={!!errors.category} minW="186px">
           <FormLabel htmlFor="category" fontSize="small" marginBottom="4px">
@@ -83,7 +84,7 @@ export default function TriviaConfig({
         <FormControl isInvalid={!!errors.difficulty} minW="186px">
           <FormLabel
             htmlFor="difficulty"
-            marginTop="16px"
+            marginTop={{ base: "16px", md: 0 }}
             fontSize="small"
             marginBottom="4px"
           >
