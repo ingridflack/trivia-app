@@ -105,7 +105,12 @@ function TriviaHistoryContent({
                   </Text>
                 </Box>
 
-                <Box display="flex" alignItems="center" gap="30px">
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  gap="30px"
+                  whiteSpace="nowrap"
+                >
                   <Text fontSize="sm">
                     Score: {historyItem.score || 0} / {historyItem.items.length}
                   </Text>

@@ -81,7 +81,12 @@ export default function TriviaConfig({
         </FormControl>
 
         <FormControl isInvalid={!!errors.difficulty} minW="186px">
-          <FormLabel htmlFor="difficulty" fontSize="small" marginBottom="4px">
+          <FormLabel
+            htmlFor="difficulty"
+            marginTop="16px"
+            fontSize="small"
+            marginBottom="4px"
+          >
             Difficulty
           </FormLabel>
 
